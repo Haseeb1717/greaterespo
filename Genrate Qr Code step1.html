@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>Flex Parallel Layout</title>
+    <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    gap: 1.5em;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.btn {
+    background-color: #28C258;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+}
+
+.menu-icon {
+    display: none; /* Initially hide the menu icon */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+/* Sidebar styling */
+.sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #fff; /* Sidebar color */
+    color: black;
+    transition: left 0.3s; /* Transition for sliding effect */
+    padding: 20px;
+    z-index: 1000;
+}
+
+.sidebar.active {
+    left: 0; /* Show sidebar */
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-top: 50px;
+}
+
+.sidebar ul li {
+    margin-bottom: 30px;
+}
+
+.sidebar ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+@media (max-width: 764px) {
+    .menu-icon {
+        display: block; /* Show the menu icon */
+    }
+
+    nav ul {
+        display: none; /* Hide navigation links on small screens */
+    }
+
+    .sidebar {
+        left: -250px; /* Initially hide sidebar */
+    }
+}
+
+.active {
+    color: #28C258;
+}
+
+footer {
+    background-color: #fff;
+    padding: 60px 0;
+    color: black;
+    margin-top: 150px;
+}
+
+.container {
+    max-width: 1170px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-col {
+    flex-basis: 20%;
+    margin-bottom: 20px;
+    min-width: 200px;
+}
+
+.footer-col h4 {
+    font-size: 1.5rem;
+    color: black;
+    margin-bottom: 10px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #28C258;
+    height: 2px;
+    width: 50px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: #28C258;
+}
+
+.footer-col form {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-col form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.footer-col form button {
+    padding: 10px;
+    background-color: #28C258;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer-col form button:hover {
+    background-color: #28C258;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #28C258;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #28C258;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #777;
+    padding-top: 10px;
+}
+
+.footer-bottom p {
+    color: black;
+}
+
+.footer-bottom a {
+    color: black;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.footer-bottom a:hover {
+    color: #28C258;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .footer-col {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    flex-wrap: nowrap;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 4px;
+    background-color: #ddd;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0;
+    background-color: #28C258;
+    transition: width 0.4s ease;
+}
+
+.progress-bar.active::after {
+    width: 100%;
+}
+
+.step {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #333;
+    transition: background-color 0.4s ease, transform 0.2s ease;
+    margin-left: -15px;
+    z-index: 1;
+}
+
+.step.active {
+    background-color: #28C258;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.progress-bar + .step {
+    margin-left: 20px;
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.parallel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto; /* Changed from 100vh to auto for better responsiveness */
+    padding: 20px;
+    gap: 20px; /* Reduced gap for smaller screens */
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+@media (max-width: 1287px) {
+    .parallel-container {
+        flex-direction: column;
+        margin-top: 50px; /* Adjusted margin for smaller screens */
+    }
+}
+
+@media (max-width: 764px) {
+    .parallel-container {
+        flex-direction: column;
+        margin-top: 20px; /* Adjusted margin for smaller screens */
+    }
+}
+
+.left-side {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four buttons in one line */
+    gap: 15px;
+    margin-right: 20px;
+}
+
+@media (max-width: 764px) {
+    .left-side {
+        grid-template-columns: repeat(2, 1fr); /* Two buttons in one line */
+    }
+}
+
+@media (max-width: 430px) {
+    .left-side {
+        grid-template-columns: 1fr; /* One button in one line */
+    }
+}
+
+.left-side button {
+    padding: 20px 40px;
+    width: 100%; /* Changed to 100% for better responsiveness */
+    min-width: 100px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #f7f7f7;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.137); /* Box shadow */
+    border: none;
+    color: #28C258;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.left-side button.active-category {
+    border: 1px solid #28C258;
+}
+
+.right-side img {
+    width: 100%; /* Changed to 100% for better responsiveness */
+    max-width: 300px; /* Max width to maintain size */
+    height: auto;
+    border-radius: 8px;
+}
+
+
+.content-area {
+    display: none;
+    text-align: center;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.content-area.active {
+    display: block;
+}
+
+    </style>
+</head>
+<body>
+
+    <!---HEADER SECTION-->
+    <header>
+        <div class="logo">Logo</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">QR Generator</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Log in</a></li>
+                <li><a href="#" class="btn">Try It Free</a></li>
+            </ul>
+            <div class="menu-icon" onclick="toggleSidebar()">
+                <i class="material-icons">menu</i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="#">QR Generator</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Log in</a></li>
+            <li><a href="#" class="btn">Try It Free</a></li>
+        </ul>
+    </div>
+  <!--Header section END-->
+    <!-- Main Section Start -->
+    
+    <div class="progress-container">
+        <div class="step active" id="step1">1</div>
+        <div class="progress-bar" id="bar1"></div>
+        <div class="step" id="step2">2</div>
+        <div class="progress-bar" id="bar2"></div>
+        <div class="step" id="step3">3</div>
+    </div>
+    
+    <div class="buttons" id="fixedbtns">
+        <button class="btn" id="prevBtn" disabled>Previous</button>
+        <button class="btn" id="nextBtn" disabled>Next</button>
+    </div>
+    
+    <section class="content-area active" id="content1" style="margin-top:50px; ">
+        <h1><span>1</span>Select type of QR code</h1>
+        <div class="parallel-container">
+            <div class="left-side">
+                <button onclick="selectCategory(0, this)"><i class="material-icons">person</i><br><br>V-Card 1<br><br>
+                    <p style="color: #333;">Go for WhatsApp</p></button>
+                <button onclick="selectCategory(1, this)"><i class="material-icons">phone_iphone</i><br><br>App<br><br>
+                    <p style="color: #333;">Go for WhatsApp</p></button>
+                <button onclick="selectCategory(2, this)"><i class="material-icons">language</i><br><br>Website</button>
+                <button onclick="selectCategory(3, this)"><i class="material-icons">picture_as_pdf</i><br><br>PDF<br><br>
+                    <p style="color: #333;">Go for WhatsApp</p></button>
+                <!-- Add more buttons as needed -->
+            </div>
+            <div class="right-side">
+                <img id="displayImg" src="Images/MOBILE-removebg-preview.png" alt="Sample Image">
+            </div>
+        </div>
+    </section>
+    
+    <div class="content-area" id="content2">
+        <h1>Step 2</h1>
+        <div id="step2Content">
+            <!-- Step 2 content will be injected here based on the selected category -->
+        </div>
+    </div>
+    
+    <div class="content-area" id="content3">
+        <h1>Step 3</h1>
+        <div id="step3Content">
+            <!-- Step 3 content will be injected here based on the selected category -->
+        </div>
+    </div>
+    
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- Company Column -->
+            <div class="footer-col" id="footer-col1">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Get started</a></li>
+                </ul>
+            </div>
+
+            <!-- Services Column -->
+            <div class="footer-col" id="footer-col2">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">App design</a></li>
+                    <li><a href="#">Web design</a></li>
+                    <li><a href="#">Logo design</a></li>
+                    <li><a href="#">Banner design</a></li>
+                </ul>
+            </div>
+
+            <!-- Account Column -->
+            <div class="footer-col" id="footer-col3">
+                <h4>Account</h4>
+                <ul>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">My account</a></li>
+                    <li><a href="#">Preferences</a></li>
+                    <li><a href="#">Purchase</a></li>
+                </ul>
+            </div>
+
+            <!-- Courses Column -->
+            <div class="footer-col" id="footer-col4">
+                <h4>Courses</h4>
+                <ul>
+                    <li><a href="#">HTML & CSS</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                    <li><a href="#">Photography</a></li>
+                    <li><a href="#">Photoshop</a></li>
+                </ul>
+            </div>
+
+            <!-- Subscribe Column -->
+            <div class="footer-col" id="footer-col5">
+                <h4>Registration</h4>
+                <form action="#">
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="social-icons" id="footer-col6">
+            <a href="#"><i class="material-icons">facebook</i></a>
+            <a href="#"><i class="ri-twitter-line"></i></a>
+            <a href="#"><i class="ri-instagram-line"></i></a>
+            <a href="#"><i class="ri-linkedin-fill"></i></a>
+            <a href="#"><i class="ri-whatsapp-line" ></i></a>
+        </div>
+
+        <div class="footer-bottom"7 id="footer-col">
+            <p>&copy; 2024 QR. All rights reserved</p>
+            <p><a href="#">Privacy policy</a> | <a href="#">Terms & conditions</a></p>
+        </div>
+    </div>
+</footer>
+<style>
+    .forsteps-flex{
+        max-width:90%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap:100px;
+    
+    }
+    .steps2-section{
+        max-width:1440px;
+        margin: 0 auto;
+    }
+   .flex-for-layout{
+    display: flex;
+        align-items: center;
+    justify-content:center;
+    }
+   .colors{
+border-radius: 10px;
+padding: 10px;
+border:1px solid gray;
+   }
+   .color1{
+    background-color: green;
+   }
+</style>
+<script>
+    let currentStep = 1;
+    const images = ["Image/V-cardMobile-removebg-preview.png", "Image/ForApp-removebg-preview.png", "Image/img3.png", "Image/img4.png"];
+    let selectedCategory = -1;
+
+    function selectCategory(index, button) {
+        document.getElementById("displayImg").src = images[index];
+        document.getElementById("nextBtn").disabled = false;
+
+        const buttons = document.querySelectorAll(".left-side button");
+        buttons.forEach(btn => btn.classList.remove("active-category"));
+        button.classList.add("active-category");
+        selectedCategory = index;
+
+        // Update Step 2 content based on selected category
+        updateStep2Content();
+    }
+
+    function updateStep2Content() {
+        const step2Content = document.getElementById("step2Content");
+        switch (selectedCategory) {
+            case 0:
+                step2Content.innerHTML = `
+      <section clas="steps2-section">
+        <div class="steps2-container">
+                <div class="forsteps-flex">
+          <div class="forstepsleft">
+      <h2>Select color</h2>
+      <div class=""flex-for-layout">
+     <div class="colors-flex">
+        <div class="colors color1"></div>
+        <div class="colors color2"></div>
+        <div class="colors color3"></div>
+        <div class="colors color4"></div>
+        <div class="colors color5"></div>
+        <div class="colors color1"></div>
+    </div>  
+        </div>
+        </div>
+           <div class="forsteps-flexright">
+           <img src="V-cardMobile-removebg-preview.png">
+           </div>
+           </div>
+           </section>
+            `;
+                break;
+            case 1:
+                step2Content.innerHTML = `
+                    <p>You selected the App category. Please provide the app details:</p>
+                    <label for="appName">App Name:</label>
+                    <input type="text" id="appName" placeholder="Enter your app name">
+                    <label for="appDescription">Description:</label>
+                    <textarea id="appDescription" placeholder="Enter a brief description of your app"></textarea>
+                `;
+                break;
+            case 2:
+                step2Content.innerHTML = `
+                    <p>You selected the Website category. Please enter the following details:</p>
+                    <label for="websiteURL">Website URL:</label>
+                    <input type="url" id="websiteURL" placeholder="Enter your website URL">
+                `;
+                break;
+            case 3:
+                step2Content.innerHTML = `
+                    <p>You selected the PDF category. Please provide the following details:</p>
+                    <label for="pdfTitle">PDF Title:</label>
+                    <input type="text" id="pdfTitle" placeholder="Enter the title of the PDF">
+                    <label for="pdfDescription">Description:</label>
+                    <textarea id="pdfDescription" placeholder="Enter a brief description of your PDF"></textarea>
+                `;
+                break;
+            default:
+                step2Content.innerHTML = "<p>Please select a category first.</p>";
+        }
+    }
+
+    function updateStep3Content() {
+        const step3Content = document.getElementById("step3Content");
+        switch (selectedCategory) {
+            case 0:
+                step3Content.innerHTML = `
+                    <p>Final details for V-Card 1:</p>
+                    <p>Name: <span id="finalName">${document.getElementById("name").value}</span></p>
+                    <p>Email: <span id="finalEmail">${document.getElementById("email").value}</span></p>
+                `;
+                break;
+            case 1:
+                step3Content.innerHTML = `
+                <div class="app-flex">  
+               <div class="app-left">
+                    <p>Final details for the App:</p>
+                    <p>App Name: <span id="finalAppName">${document.getElementById("appName").value}</span></p>
+                    <p>Description: <span id="finalAppDescription">${document.getElementById("appDescription").value}</span></p>
+               </div>
+               <div class="app-img">
+                <img src="ForApp-removebg-preview.png"
+                </div> 
+                </div>
+                    `;
+                break;
+            case 2:
+                step3Content.innerHTML = `
+                    <p>Final details for the Website:</p>
+                    <p>Website URL: <span id="finalWebsiteURL">${document.getElementById("websiteURL").value}</span></p>
+                `;
+                break;
+            case 3:
+                step3Content.innerHTML = `
+                    <p>Final details for the PDF:</p>
+                    <p>Title: <span id="finalPdfTitle">${document.getElementById("pdfTitle").value}</span></p>
+                    <p>Description: <span id="finalPdfDescription">${document.getElementById("pdfDescription").value}</span></p>
+                `;
+                break;
+            default:
+                step3Content.innerHTML = "<p>Please select a category first.</p>";
+        }
+    }
+
+    document.getElementById("nextBtn").addEventListener("click", () => {
+        if (currentStep < 3) {
+            document.getElementById("content" + currentStep).classList.remove("active");
+            document.getElementById("step" + currentStep).classList.remove("active");
+            document.getElementById("bar" + currentStep).classList.add("active");
+
+            currentStep++;
+            document.getElementById("step" + currentStep).classList.add("active");
+            document.getElementById("content" + currentStep).classList.add("active");
+
+            // Update Step 3 content based on the selected category
+            if (currentStep === 3) {
+                updateStep3Content();
+            }
+
+            document.getElementById("prevBtn").disabled = currentStep === 1;
+            document.getElementById("nextBtn").disabled = currentStep === 3;
+        }
+    });
+
+    document.getElementById("prevBtn").addEventListener("click", () => {
+        if (currentStep > 1) {
+            document.getElementById("content" + currentStep).classList.remove("active");
+            document.getElementById("step" + currentStep).classList.remove("active");
+            document.getElementById("bar" + (currentStep - 1)).classList.remove("active");
+
+            currentStep--;
+            document.getElementById("step" + currentStep).classList.add("active");
+            document.getElementById("content" + currentStep).classList.add("active");
+
+            // Update Step 2 content based on the selected category if coming back from step 3
+            if (currentStep === 2) {
+                updateStep2Content();
+            }
+
+            document.getElementById("prevBtn").disabled = currentStep === 1;
+            document.getElementById("nextBtn").disabled = currentStep === 3;
+        }
+    });
+</script></body>
+</html>

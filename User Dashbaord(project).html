@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Syne', sans-serif;
+    background-color: #FCFEFE; /* Optional background for better visibility */
+
+  }
+
+.material-icons-outlined {
+  vertical-align: middle;
+  line-height: 1px;
+}
+
+.font-weight-bold {
+  font-weight: 600;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 270px 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 3fr;
+  grid-template-areas:
+    " sidebar header header header"
+    "sidebar main main main";
+  height: 100vh;
+}
+
+
+/* ---------- HEADER ---------- */
+
+.header {
+  grid-area: header;
+  height: 70px;
+  background-color:#E8E9EB;
+   
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px 0 30px;
+  box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+}
+
+.menu-icon {
+  display: none;
+}
+
+
+/* ---------- SIDEBAR ---------- */
+
+#sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  background-color: #fff;
+  color: #9799ab;
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+
+}
+
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 20px 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar-title > span {
+  display: none;
+}
+
+.sidebar-brand {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar-list {
+  padding: 0;
+  margin-top: 15px;
+  list-style-type: none;
+}
+
+.sidebar-list-item {
+  padding: 20px 20px 20px 20px;
+}
+
+.sidebar-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.sidebar-list-item:nth-child(8)> a {
+color: #28C258;
+}
+.sidebar-list-item > a {
+  text-decoration: none;
+  color: #9799ab;
+  margin-left: 20px;
+}
+.sidebar-list-item  :hover{
+
+  color:#28C258;
+  
+}
+
+
+.sidebar-responsive {
+  display: inline !important;
+  position: absolute;
+  /*
+    the z-index of the ApexCharts is 11
+    we want the z-index of the sidebar higher so that
+    the charts are not showing over the sidebar 
+    on small screens
+  */
+  z-index: 12 !important;
+}
+
+
+/* ---------- MAIN ---------- */
+
+.main-container {
+  grid-area: main;
+  overflow-y: auto;
+  padding: 20px 20px;
+  background-color:#E8E9EB;
+    
+}
+
+
+/* ---------- SCROLLBARS ---------- */
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #a5aaad;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color:#28C258;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a5aaad;
+}
+.header-left{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- MEDIA QUERIES ---------- */
+
+
+/* Medium <= 992px */
+@media screen and (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      "header"
+      "main";
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline;
+  }
+
+  .sidebar-title > span {
+    display: inline;
+  }
+}
+
+/* Small <= 768px */
+@media screen and (max-width: 768px) {
+  .main-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
+}
+
+/* Extra Small <= 576px */
+@media screen and (max-width: 576px) {
+  .header-left {
+    display: none;
+  }
+}
+.sidebar-list-item:nth-child(8){
+  background-color:#fff;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        
+  color:#28C258;
+  border-left: 3px solid #28C258;
+  border-radius: 5px;
+  
+}
+.sidebar-list-item:hover{
+  background-color:#fff;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-left: 3px solid #28C258;
+         
+  color:#28C258;
+ 
+}
+.Explore{
+  cursor: pointer;
+  padding: 10px 30px;
+background-color: transparent;
+color: #28C258;
+border: 1px solid #28C258;
+}
+
+.Explore:hover{
+  background-color: #28C258;
+  color: #fff;
+}
+</style> 
+</head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+      <h2><i class="material-icons-outlined"><i class="ri-git-merge-fill"></i></i> Project</h2>
+        </div>
+        <div class="header-right">
+        <button class="Explore">Explore info</button>
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-icons-outlined">qr_code_2</span> QR CODE Genrator
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+            <li class="sidebar-list-item">
+                <a href="#" target="_blank">
+                  <span class="material-icons-outlined">dashboard</span> Dashboard
+                </a>
+              </li>
+         
+            <li class="sidebar-list-item">
+            <a href="Admin Dashboard.html" target="_blank">
+              <span class="material-icons-outlined">signal_cellular_alt</span> Analysis
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="Genrate Qr Code step1.html" target="_blank">
+              <span class="material-icons-outlined">add_circle</span>  Genrate QR CODE 
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">bookmark</span>  Saved QR CODE
+            </a>
+          </li>
+          
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">local_library</span>  QR CODE Reader 
+            </a>
+          </li>
+        
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">qr_code_2</span>   My Qr code
+            </a>
+          </li>
+          
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">link</span>   Links
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined"><i class="ri-git-merge-fill"></i></span>     Projects
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="Genrate Qr Code step1.html" target="_blank">
+              <span class="material-icons-outlined">adjust</span> Pixels 
+            </a>
+          </li>
+      
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">language</span> Custom Domains
+            </a>
+          </li>
+       
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">person</span> My Account
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="Billing.html" target="_blank">
+              <span class="material-icons-outlined">credit_score</span> Billing
+            </a>
+          </li>
+     </ul>
+     <style>
+      #bottomul{
+        margin-top: 50px;
+      }
+     </style>
+     <ul class="sidebar-list" id="bottomul">
+          <hr style="width: 200px; margin-left:20px;" id="bottom">
+          <li class="sidebar-list-item" id="bottom">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">contact_phone</span> Contact Us 
+            </a>
+          </li>
+          <li class="sidebar-list-item" id="bottom">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">quiz</span> FAQ,s
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <style>
+         /* Flex container for buttons */
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: 100%;
+      max-width: 1200px;
+      justify-content: center;
+      padding: 1rem;
+      margin-left: -20px;
+    }
+
+    /* Button styling */
+    .button-container button {
+      flex: 1 1 18%; /* 18% allows for 5 buttons in a row with spacing */
+      min-width: 110px;
+      padding: 2rem;
+      font-size: 1rem;
+      background-color:transparent;
+      color: white;
+      color: #28C258;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 1s;
+      border: 1px solid #28C258;
+      color: black;
+      border-radius: 5px;
+    }
+    .button-container button i{
+      color: #28C258;
+    }
+    .button-container button i:hover{
+      color: #fff;
+    }
+    
+    
+    .button-container button:hover {
+      background-color: #28C258;
+      color: #fff;
+    }
+
+    /* Media query for smaller screens */
+    @media (max-width: 600px) {
+      .button-container button {
+        flex: 1 1 100%; /* Stack buttons on small screens */
+      }
+    }
+      </style>
+      <!-- End Sidebar -->
+      <!-- Main -->
+      <main class="main-container">
+  
+    <style>
+    .qr-flex{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+      }
+      .createbtn{
+        padding: 12px 22px;
+        background-color: transparent;
+        color:black;
+        border: 1px solid #28C258;
+  display: flex;
+        align-items: center;
+   justify-content: center;
+   gap: 10px;
+      }
+      .createbtn:hover{
+        background-color: #28C258;
+        color:#fff;
+      }
+     </style>
+        <div class="two-button-tabs">
+      <button class="Qr-button"><i class="material-icons">language</i>  Domain</button>
+    <button class="Bar-code"><i class="material-icons">add_circle</i>connect  Domain</button> 
+    </div>
+      <div class="Qr-code-container">
+<div class="qr-flex">
+  <h2>QR CODES</h2>
+  <button class="createbtn"><i class="material-icons">add_circle</i> Qr Code</button>
+</div>      
+<div class="Qr-card">
+  <div class="Qr-card-left">
+      <div class="Qr-info">
+      <span>Name</span>
+      <br>
+      <br>
+      <div class="title">jupiter </div>
+      </div>
+  </div>
+  <div class="center">
+      <div class="folder">color</div>
+ <br>
+      <br>
+      <a href="#" class="link" id="pending">#333</a>
+
+  </div>
+ 
+  <div class="Qr-card-right">
+      <div class="scans">
+         <br>
+          <div class="scan-count"><i class="material-icons">link</i> <i class="material-icons">qr_code_2</i> </div>
+      </div>
+      <div class="Qr-buttons">
+          <button class="detail-btn"><i class="material-icons">edit</i></button>
+          <button class="menu-btn"><i class="material-icons">delete</i></button>
+      </div>
+  </div>
+  </div>
+        
+<div class="Qr-card">
+    <div class="Qr-card-left">
+        <div class="Qr-info">
+        <span>Name</span>
+        <br>
+        <br>
+        <div class="title">jupiter </div>
+        </div>
+    </div>
+    <div class="center">
+        <div class="folder">color</div>
+   <br>
+        <br>
+        <a href="#" class="link" id="pending">#333</a>
+  
+    </div>
+   
+    <div class="Qr-card-right">
+        <div class="scans">
+           <br>
+            <div class="scan-count"><i class="material-icons">link</i> <i class="material-icons">qr_code_2</i> </div>
+        </div>
+        <div class="Qr-buttons">
+            <button class="detail-btn"><i class="material-icons">edit</i></button>
+            <button class="menu-btn"><i class="material-icons">delete</i></button>
+        </div>
+    </div>
+    </div>
+          
+<div class="Qr-card">
+    <div class="Qr-card-left">
+        <div class="Qr-info">
+        <span>Name</span>
+        <br>
+        <br>
+        <div class="title">jupiter </div>
+        </div>
+    </div>
+    <div class="center">
+        <div class="folder">color</div>
+   <br>
+        <br>
+        <a href="#" class="link" id="pending">#333</a>
+  
+    </div>
+   
+    <div class="Qr-card-right">
+        <div class="scans">
+           <br>
+            <div class="scan-count"><i class="material-icons">link</i> <i class="material-icons">qr_code_2</i> </div>
+        </div>
+        <div class="Qr-buttons">
+            <button class="detail-btn"><i class="material-icons">edit</i></button>
+            <button class="menu-btn"><i class="material-icons">delete</i></button>
+        </div>
+    </div>
+    </div>
+    <style>
+      p{
+        margin-top: 30px;
+        font-size: 25px;
+        text-align: center;
+        font-weight: bolder;
+      }
+      .note{
+        color:red;
+      }.not-exist {
+        max-width: 90%;
+        text-align: center;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc; /* Optional styling */
+        border-radius: 8px; /* Optional styling */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional styling */
+        display: flex; /* Added to center content */
+        flex-direction: column; /* Align items in a column */
+        align-items: center; /* Horizontally center items */
+        justify-content: center; /* Vertically center items */
+        min-height: 400px; /* Optional: Ensures sufficient height for centering */
+    }
+    
+    .notexistimg img {
+    margin: 0 auto;
+    margin-left: 400px;
+    max-width: 700px; /* Adjust for desired size */
+        height: 400px; /* Set desired height */
+        object-fit: cover; /* Ensures the image maintains proportions */
+    }
+    
+    .not-exist h2 {
+        margin: 20px 0;
+        font-size: 1.8rem; /* Slightly larger font */
+        color: #333; /* Adjust color if needed */
+    }
+    
+    .not-exist button {
+        background-color:#28C258; /* Primary button color */
+        color: #fff;
+        border: none;
+        padding: 15px 30px; /* Larger button */
+        font-size: 1.2rem; /* Slightly larger font size */
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap:10px;
+      }
+    
+    .not-exist button:hover {
+        background-color:#28C258; /* Darker shade on hover */
+    }
+    
+    </style>
+        <p><strong><span class="note">NOTE :</span>  IF THE QR DOES NOT EXIST DISPLAY FOLLOWING UI</strong></p>
+     <div class="not-exist">
+        <div class="notexistimg">
+            <img src="doesntexist.png" alt="No QR Code">
+        </div>
+        <h2>There are no QR codes to show</h2>
+        <button class="createbtnexist"><i class="material-icons">add_circle</i>Create QR Code</button>
+    </div>
+    
+</div>
+<style>
+    #pending{
+        background-color: gold;
+        padding: 10px;
+        border-radius: 10px;
+        color: #fff;
+    }
+    .Qr-code-container-Scan{
+        display: none;
+    }
+    #delivered{
+     background-color:azure;
+     color: black;
+     padding: 10px;
+     border-radius: 5px;
+     color: #28C258;
+
+    }
+    .domain-heading{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        color: #28C258;
+    }
+    </style>
+<div class="Qr-code-container-Scan">
+      
+    <div class="form-container">
+        <h2 class="domain-heading"><i class="material-icons">language</i> Connect custom domain</h2>
+        <br>
+        <br>
+        <div class="input-group">
+            <label for="input1">Name</label>
+            <input type="text" id="input1">
+        </div>
+        <div class="input-group">
+            <label for="input2"><i class="material-icons">palette</i> Color</label>
+            <input type="color" id="input2" name="color" value="#ff0000" aria-label="Choose a color">
+        </div>
+        
+        <p class="para-domain">The color is used to help differentiate projects.
+        </p>
+        <br>
+        <br>
+        <button class="submit-btn">Create</button>
+    </div>
+</div>
+  
+      </main>
+       </div>
+       
+       <style>
+       .para-domain{
+        text-align: left;
+       }
+       .form-container {
+            padding: 3rem;
+            border-radius: 10px;
+            width: 700px;
+            text-align: center;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .form-container h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        gap: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #28C258;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+            outline: none;
+        }
+
+    .input-group {
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+
+    label {
+        font-weight: bold;
+        color: #555;
+        display: block;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .color-picker-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    input[type="color"] {
+     width: 100%;
+        height: 40px;
+        padding: 0;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    input[type="color"]:hover {
+        transform: scale(1.1);
+    }
+
+    .color-display {
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        background-color: #ff0000; /* Default color */
+        border-radius: 50%;
+        margin-left: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="color"]:focus + .color-display {
+        border: 2px solid #28C258; /* Green border on focus */
+    }
+
+    .input-group label i {
+        font-size: 1.2rem;
+    }
+        input{
+            transition: background-color 0.6s ease, border-color 0.5s ease, transform 0.3s ease; /* Smooth transition for background, border, and scaling */
+            }
+    
+            @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    
+    input:focus {
+        border: 1px solid #28C258; /* Green border on focus */
+        outline: none; /* Remove default outline */
+        animation: pulse 0.6s ease; /* Pulse animation on focus */
+    }
+    
+        .submit-btn {
+            background-color:#28C258;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color:#28C258;
+        }
+    </style>
+    <style>
+       .two-button-tabs{
+          display: flex;
+          align-items: center;
+
+    gap:5px;
+    margin-top: 30px;
+        }
+   
+      
+ .two-button-tabs button{
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+ 
+ }
+        .two-button-tabs button:first-child{
+background-color: #fff;
+border: none;
+        }
+       
+        .two-button-tabs button{
+          padding: 10px 30px;
+        }
+      .Qr-code-container,.Qr-code-container-Scan{
+        background-color:#fff;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        padding: 25px;
+      
+      }
+          .Qr-card {
+         justify-content: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        .Qr-card-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .qr-section .qr-code {
+            width: 80px;
+            height: 80px;
+        }
+
+        .Qr-info {
+            margin-left: 10px;
+            line-height: 1.2;
+            color: #28C258;
+        }
+
+        .category {
+            color: orange;
+            font-weight: bold;
+        }
+
+        .title {
+            font-size: 18px;
+            margin: 5px 0;
+            display: flex;
+gap: 30px;
+            align-items: center;
+        }
+
+        .date, .folder, .link, .modified-date {
+            font-size: 1rem;
+            color: #888;
+            margin: 2px 0;
+            line-height: 1.5;
+        }
+
+        .link {
+            color: #28C258;
+            text-decoration: none;
+            line-height: 1.5;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .Qr-card-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .scans {
+            text-align: center;
+            margin-right: 170px;
+        }
+
+        .scans span {
+            display: block;
+            font-size: 20px;
+     color: black;
+        }
+
+        
+        .scan-count {
+        font-size: 24px;
+         color:#28C258;      
+         font-weight: bold;
+        }
+
+        .Qr-buttons {
+            display: flex;
+            gap: 10px;
+            color: #28C258;
+        }
+
+        .download-btn, .detail-btn, .menu-btn {
+            border: 1px solid #28C258;
+            color: #28C258;
+            background-color: #fff;
+            padding: 15px 30px;
+            font-size: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn:hover, .detail-btn:hover, .menu-btn:hover {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .Qr-card {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+                width: 90%;
+            }
+
+            .Qr-card-left, .Qr-card-right {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .scans {
+                margin-right: 0;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+
+            .Qr-buttons {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                gap: 10px;
+            }
+
+            .download-btn, .detail-btn, .menu-btn {
+                width: auto;
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 16px;
+            }
+
+            .scan-count {
+                font-size: 20px;
+            }
+
+            .download-btn, .detail-btn, .menu-btn {
+                width: 100%;
+                text-align: center;
+                padding: 10px;
+                font-size: 13px;
+            }
+
+            .Qr-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+       </style>
+    <!-- Scripts -->
+    <!-- ApexCharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+    <!-- Custom JS -->
+
+    <script>
+      // SIDEBAR TOGGLE
+  let sidebarOpen = false;
+  const sidebar = document.getElementById('sidebar');
+  
+  function openSidebar() {
+      if (!sidebarOpen) {
+          sidebar.classList.add('sidebar-responsive');
+          sidebarOpen = true;
+      }
+  }
+  
+  function closeSidebar() {
+      if (sidebarOpen) {
+          sidebar.classList.remove('sidebar-responsive');
+          sidebarOpen = false;
+      }
+  }
+  
+  // Select the buttons and panels
+  const QRButton = document.querySelector('.Qr-button');
+  const ScanButton = document.querySelector('.Bar-code');
+  const QRSavePanel = document.querySelector('.Qr-code-container');
+  const BarCodeSavePanel = document.querySelector('.Qr-code-container-Scan');
+  
+  // Function to show General Information panel and hide Billing panel
+  QRButton.addEventListener('click', () => {
+      QRSavePanel.style.display = 'block';
+      BarCodeSavePanel.style.display = 'none';
+  });
+  
+  // Function to show Billing panel and hide General Information panel
+  ScanButton.addEventListener('click', () => {
+      QRSavePanel.style.display = 'none';
+      BarCodeSavePanel.style.display = 'block';
+  });
+  
+  // Set initial display to General Information panel
+  QRSavePanel.style.display = 'block';
+  
+  // Add a click event listener for QR button
+  QRButton.addEventListener("click", function() {
+      // Change the button's background color
+      QRButton.style.backgroundColor = "#fff";
+      // Change the text color
+      QRButton.style.color = "#28C258";
+      ScanButton.style.backgroundColor = "#ddd";
+      // Change the text color of Scan button
+      ScanButton.style.color = "black";
+  });
+  
+  // Add a click event listener for Scan button
+  ScanButton.addEventListener("click", function() {
+      // Change the button's background color
+      ScanButton.style.backgroundColor = "#fff";
+      // Change the text color
+      ScanButton.style.color = "#28C258";
+      QRButton.style.backgroundColor = "#ddd";
+      // Change the text color of QR button
+      QRButton.style.color = "black";
+  });
+  
+  </script>
+</body>
+</html>

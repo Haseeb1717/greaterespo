@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator with Frames</title>
+    <style>
+        /* Style for the QR code container */
+        .qr-container {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .frame-selection {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .frame-button {
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+        }
+
+        .frame-button svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .frame-button.selected {
+            border-color: #007bff;
+            background-color: #e0eaff;
+        }
+    </style>
+</head>
+<body>
+    <div class="qr-container">
+        <h2>QR Code Generator with Frames</h2>
+
+        <!-- Placeholder for the QR Code -->
+        <div id="qr-code-container">
+            <svg id="qr-code" width="200" height="200" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <rect x="10" y="10" width="50" height="50" fill="black"/>
+            </svg>
+        </div>
+
+        <!-- Frame selection buttons -->
+        <div class="frame-selection">
+            <button class="frame-button" onclick="selectFrame('none')">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" fill="none" stroke="black" stroke-width="2" />
+                </svg>
+            </button>
+            <button class="frame-button" onclick="selectFrame('bottom')">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" fill="none" stroke="black" stroke-width="2" />
+                    <rect x="10" y="70" width="80" height="20" fill="black" />
+                </svg>
+            </button>
+            <button class="frame-button" onclick="selectFrame('top')">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" fill="none" stroke="black" stroke-width="2" />
+                    <rect x="10" y="10" width="80" height="20" fill="black" />
+                </svg>
+            </button>
+            <button class="frame-button" onclick="selectFrame('balloon-bottom')">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" fill="none" stroke="black" stroke-width="2" />
+                    <circle cx="50" cy="80" r="10" fill="black" />
+                </svg>
+            </button>
+            <button class="frame-button" onclick="selectFrame('ribbon-top')">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" fill="none" stroke="black" stroke-width="2" />
+                    <path d="M 0,10 L 50,30 L 100,10 Z" fill="black" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Function to generate and apply the selected QR code frame
+        function generateQRCode(frame) {
+            const qrData = "https://example.com"; // QR code data
+
+            // Construct the base QR code SVG
+            let qrSVG = `<svg id="qr-code" width="200" height="200" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                            <rect x="10" y="10" width="50" height="50" fill="black"/>
+                          </svg>`;
+
+            // Add frame to the QR code SVG
+            if (frame === 'bottom') {
+                qrSVG = `<svg id="qr-code" width="200" height="200" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <rect width="100" height="100" fill="none" stroke="black" stroke-width="2" />
+            
+                    </svg>`;
+            } else if (frame === 'top') {
+                qrSVG = `<svg id="qr-code" width="200" height="200" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                            <rect x="10" y="10" width="50" height="50" fill="black"/>
+                            <rect x="10" y="10" width="80" height="20" fill="black" />
+                          </svg>`;
+            } else if (frame === 'balloon-bottom') {
+                qrSVG = `<svg id="qr-code" width="200" height="200" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                            <rect x="10" y="10" width="50" height="50" fill="black"/>
+                            <circle cx="50" cy="80" r="10" fill="black" />
+                          </svg>`;
+            } else if (frame === 'ribbon-top') {
+                qrSVG = `<svg id="qr-code" width="200" height="200" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                            <rect x="10" y="10" width="50" height="50" fill="black"/>
+                            <path d="M 0,10 L 50,30 L 100,10 Z" fill="black" />
+                          </svg>`;
+            }
+
+            // Update the QR code container with the generated QR code
+            document.getElementById('qr-code').innerHTML = qrSVG;
+        }
+
+        // Function to handle frame selection
+        function selectFrame(frame) {
+            // Remove 'selected' class from all buttons
+            const buttons = document.querySelectorAll('.frame-button');
+            buttons.forEach(button => button.classList.remove('selected'));
+
+            // Add 'selected' class to the clicked button
+            const selectedButton = event.target.closest('.frame-button');
+            selectedButton.classList.add('selected');
+
+            // Generate QR code with the selected frame
+            generateQRCode(frame);
+        }
+
+        // Initial QR code with no frame
+        generateQRCode('none');
+    </script>
+</body>
+</html>

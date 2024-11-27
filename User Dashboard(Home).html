@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="User Dashboard(Home).css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+  
+</head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+      <h2><i class="material-icons-outlined">grid_view</i> Dashboard</h2>
+        </div>
+        <div class="header-right">
+        <button class="Explore">Explore info</button>
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-icons-outlined">qr_code_2</span> QR CODE Genrator
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+            <li class="sidebar-list-item">
+                <a href="User Dashboard(Home).html" target="_blank">
+                  <span class="material-icons-outlined">dashboard</span> Dashboard
+                </a>
+              </li>
+         
+            <li class="sidebar-list-item">
+            <a href="User Dashbaord(Analytics).html" target="_blank">
+              <span class="material-icons-outlined">signal_cellular_alt</span> Analysis
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="Genrate Qr Code step1.html" target="_blank">
+              <span class="material-icons-outlined">add_circle</span>  Genrate QR CODE 
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="User Dashbaord(SAVED QRCODE).html" target="_blank">
+              <span class="material-icons-outlined">bookmark</span>  Saved QR CODE
+            </a>
+          </li>
+          
+          <li class="sidebar-list-item">
+            <a href="User Dashbaord(QR READER).html" target="_blank">
+              <span class="material-icons-outlined">local_library</span>  QR CODE Reader 
+            </a>
+          </li>
+        
+          <li class="sidebar-list-item">
+            <a href="User Dashbaord(MY QR).html" target="_blank">
+              <span class="material-icons-outlined">qr_code_2</span>   My Qr code
+            </a>
+          </li>
+          
+          <li class="sidebar-list-item">
+            <a href="User Dashbaord(Link).html" target="_blank">
+              <span class="material-icons-outlined">link</span>       Links
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="User Dashbaord(project).html" target="_blank">
+              <span class="material-icons-outlined">link</span>     Projects
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="User Dashbaord(Pixels).html" target="_blank">
+              <span class="material-icons-outlined">adjust</span> Pixels 
+            </a>
+          </li>
+        
+          <li class="sidebar-list-item">
+            <a href="User Dashbaord(Custom Domain).html" target="_blank">
+              <span class="material-icons-outlined">language</span>      Custom Domains
+            </a>
+          </li>
+       
+          <li class="sidebar-list-item">
+            <a href="User Dashbaord(Account).html" target="_blank">
+              <span class="material-icons-outlined">person</span> My Account
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="Billing.html" target="_blank">
+              <span class="material-icons-outlined">credit_score</span> Billing
+            </a>
+          </li>
+         </ul>
+     <style>
+     </style>
+     <ul class="sidebar-list" id="bottomul">
+          <hr style="width: 200px; margin-left:20px;" id="bottom">
+          <li class="sidebar-list-item" id="bottom">
+            <a href="Contact Us.html" target="_blank">
+              <span class="material-icons-outlined">contact_phone</span> Contact Us 
+            </a>
+          </li>
+          <li class="sidebar-list-item" id="bottom">
+            <a href="FAQ.html" target="_blank">
+              <span class="material-icons-outlined">quiz</span> FAQ,s
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+      <!-- Main -->
+      <main class="main-container">
+  
+        <div class="button-container">
+          <button><i class="material-icons-outlined">qr_code_2</i> 12 Qr code</button>
+          <button><i class="material-icons-outlined"></i> 12 Qr code</button>
+          <button><i class="material-icons-outlined">link</i>  7 Links </button>
+          <button><i class="material-icons-outlined">qr_code_2</i> 12 Qr code</button>
+          <button><i class="material-icons-outlined">language</i> 3 Domains</button>     
+        </div>
+        <div class="update-container">
+          <div class="input-container">
+            <label for="search" class="label">Search</label>
+            <div class="search-wrapper">
+              <input type="text" id="search" class="search-input">
+              <i class="fas fa-search search-icon"></i>
+            </div>
+          </div>
+          
+          <div class="dropdown-container">
+            <label for="dropdown1" class="label">Dropdown 1</label>
+            <select id="dropdown1" class="dropdown">
+              <option value="">Option 1</option>
+              <option value="">Option 2</option>
+              <option value="">Option 3</option>
+            </select>
+          </div>
+          
+          <div class="dropdown-container">
+            <label for="dropdown2" class="label">Dropdown 2</label>
+            <select id="dropdown2" class="dropdown">
+              <option value="">Option 1</option>
+              <option value="">Option 2</option>
+              <option value="">Option 3</option>
+            </select>
+          </div>
+          
+          <div class="dropdown-container">
+            <label for="dropdown3" class="label">Dropdown 3</label>
+            <select id="dropdown3" class="dropdown">
+              <option value="">Option 1</option>
+              <option value="">Option 2</option>
+              <option value="">Option 3</option>
+            </select>
+          </div>
+          
+          <div class="dropdown-container">
+            <label for="dropdown4" class="label">Dropdown 4</label>
+            <select id="dropdown4" class="dropdown">
+              <option value="">Option 1</option>
+              <option value="">Option 2</option>
+              <option value="">Option 3</option>
+            </select>
+          </div>
+        </div>
+        <div class="two-button-tabs">
+      <button class="Qr-button">QR Codes</button>
+    <button class="Bar-code">Bar Code</button> 
+    </div>
+      <div class="Qr-code-container">
+<div class="qr-flex">
+  <h2>QR CODES</h2>
+  <button class="createbtn"><i class="material-icons">add_circle</i> Qr Code</button>
+</div>      
+<div class="Qr-card">
+  <div class="Qr-card-left">
+      <div class="qr-section">
+          <img src="logo-removebg-preview.png" alt="QR Code" class="qr-code">
+      </div>
+      <div class="Qr-info">
+          <div class="category">Category</div>
+          <div class="title">Title of the QR Card <i class="material-icons">edit</i></div>
+          <div class="date">Date: Jan 1, 2024</div>
+      </div>
+  </div>
+  <div class="center">
+      <div class="folder">Folder: Documents</div>
+      <a href="#" class="link">View Details</a>
+      <div class="modified-date">Last modified: Jan 5, 2024</div>
+
+  </div>
+ 
+  <div class="Qr-card-right">
+      <div class="scans">
+          <span>Scans</span>
+          <div class="scan-count">0</div>
+      </div>
+      <div class="Qr-buttons">
+          <button class="download-btn">Download</button>
+          <button class="detail-btn">Details</button>
+          <button class="menu-btn"><i class="material-icons">more_vert</i></button>
+          <div class="dropdown-menu-panel">
+            <a href="#"><i class="material-icons">edit</i> QR content</a>
+            <a href="#"><i class="material-icons">palette</i> QR Design</a>
+            <a href="#"><i class="material-icons">change_circle</i> QR Type</a>
+            <a href="#"><i class="material-icons">content_copy</i> Duplicate</a>
+            <a href="#"><i class="material-icons">send</i> Send to</a>
+            <a href="#"><i class="material-icons">pause_circle</i> Pause</a>
+            <a href="#"><i class="material-icons">delete</i> Delete</a>
+         
+         
+          </div>
+        
+        </div>
+  </div>
+  </div>
+  <div class="Qr-card">
+    <div class="Qr-card-left">
+        <div class="qr-section">
+            <img src="logo-removebg-preview.png" alt="QR Code" class="qr-code">
+        </div>
+        <div class="Qr-info">
+            <div class="category">Category</div>
+          <div class="title">Title of the QR Card <i class="material-icons">edit</i></div>
+            <div class="date">Date: Jan 1, 2024</div>
+        </div>
+    </div>
+    <div class="center">
+        <div class="folder">Folder: Documents</div>
+        <a href="#" class="link">View Details</a>
+        <div class="modified-date">Last modified: Jan 5, 2024</div>
+  
+    </div>
+   
+    <div class="Qr-card-right">
+        <div class="scans">
+            <span>Scans</span>
+            <div class="scan-count">0</div>
+        </div>
+        <div class="Qr-buttons">
+            <button class="download-btn">Download</button>
+            <button class="detail-btn">Details</button>
+            <button class="menu-btn" id="second-menu"><i class="material-icons">more_vert</i></button>
+            <div class="dropdown-menu-panel">
+              <a href="#"><i class="material-icons">edit</i> QR content</a>
+              <a href="#"><i class="material-icons">palette</i> QR Design</a>
+              <a href="#"><i class="material-icons">change_circle</i> QR Type</a>
+              <a href="#"><i class="material-icons">content_copy</i> Duplicate</a>
+              <a href="#"><i class="material-icons">send</i> Send to</a>
+              <a href="#"><i class="material-icons">pause_circle</i> Pause</a>
+              <a href="#"><i class="material-icons">delete</i> Delete</a>
+           
+           
+            </div>
+          
+          </div>
+    </div>
+    </div>
+    <style>
+  p{
+    margin-top: 30px;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bolder;
+  }
+  .note{
+    color:red;
+  }.not-exist {
+    max-width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc; /* Optional styling */
+    border-radius: 8px; /* Optional styling */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional styling */
+    display: flex; /* Added to center content */
+    flex-direction: column; /* Align items in a column */
+    align-items: center; /* Horizontally center items */
+    justify-content: center; /* Vertically center items */
+    min-height: 400px; /* Optional: Ensures sufficient height for centering */
+}
+
+.notexistimg img {
+margin: 0 auto;
+margin-left: 400px;
+max-width: 700px; /* Adjust for desired size */
+    height: 400px; /* Set desired height */
+    object-fit: cover; /* Ensures the image maintains proportions */
+}
+
+.not-exist h2 {
+    margin: 20px 0;
+    font-size: 1.8rem; /* Slightly larger font */
+    color: #333; /* Adjust color if needed */
+}
+
+.not-exist button {
+    background-color:#28C258; /* Primary button color */
+    color: #fff;
+    border: none;
+    padding: 15px 30px; /* Larger button */
+    font-size: 1.2rem; /* Slightly larger font size */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+display: flex;
+align-items: center;
+gap:10px;
+  }
+
+.not-exist button:hover {
+    background-color:#28C258; /* Darker shade on hover */
+}
+
+</style>
+    <p><strong><span class="note">NOTE :</span>  IF THE QR DOES NOT EXIST DISPLAY FOLLOWING UI</strong></p>
+ <div class="not-exist">
+    <div class="notexistimg">
+        <img src="doesntexist.png" alt="No QR Code">
+    </div>
+    <h2>There are no QR codes to show</h2>
+    <button class="createbtnexist"><i class="material-icons">add_circle</i>Create QR Code</button>
+</div>
+
+
+  </div>
+<div class="Qr-code-container-Scan">
+  <div class="qr-flex">
+    <h2>Bar code</h2>
+    <button class="createbtn"><i class="material-icons">add_circle</i> Qr Code</button>
+  </div>      
+
+  <div class="Qr-card">
+      <div class="Qr-card-left">
+          <div class="qr-section">
+              <img src="logo-removebg-preview.png" alt="QR Code" class="qr-code">
+          </div>
+          <div class="Qr-info">
+              <div class="category">Category</div>
+              <div class="title">Title of the QR Card <i class="material-icons">edit</i></div>
+              <div class="date">Date: Jan 1, 2024 time </div>
+         
+            </div>
+      </div>
+      <div class="center">
+          <div class="folder">Folder: Documents</div>
+          <a href="#" class="link">View Details</a>
+          <div class="modified-date">Last modified: Jan 5, 2024</div>
+    
+      </div>
+     
+      <div class="Qr-card-right">
+          <div class="scans">
+              <span>Scans</span>
+              <div class="scan-count">0</div>
+          </div>
+          <div class="Qr-buttons">
+              <button class="download-btn">Download</button>
+              <button class="detail-btn">Details</button>
+              <button class="menu-btn"><i class="material-icons">more_vert</i></button>
+          </div>
+      </div>
+      </div>
+      <p><strong><span class="note">NOTE :</span>  IF THE QR DOES NOT EXIST DISPLAY FOLLOWING UI</strong></p>
+      <div class="not-exist">
+         <div class="notexistimg">
+             <img src="doesntexist.png" alt="No QR Code">
+         </div>
+         <h2>There are no QR codes to show</h2>
+         <button class="createbtnexist"><i class="material-icons">add_circle</i>Create QR Code</button>
+     </div>
+         
+  </div>
+      
+      </main>
+       </div>
+       
+     
+    <!-- Scripts -->
+    <!-- ApexCharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+    <!-- Custom JS -->
+
+    <script>
+      // SIDEBAR TOGGLE
+  let sidebarOpen = false;
+  const sidebar = document.getElementById('sidebar');
+  
+  function openSidebar() {
+      if (!sidebarOpen) {
+          sidebar.classList.add('sidebar-responsive');
+          sidebarOpen = true;
+      }
+  }
+  
+  function closeSidebar() {
+      if (sidebarOpen) {
+          sidebar.classList.remove('sidebar-responsive');
+          sidebarOpen = false;
+      }
+  }
+  
+  // Select the buttons and panels
+  const QRButton = document.querySelector('.Qr-button');
+  const ScanButton = document.querySelector('.Bar-code');
+  const QRSavePanel = document.querySelector('.Qr-code-container');
+  const BarCodeSavePanel = document.querySelector('.Qr-code-container-Scan');
+  
+  // Function to show General Information panel and hide Billing panel
+  QRButton.addEventListener('click', () => {
+      QRSavePanel.style.display = 'block';
+      BarCodeSavePanel.style.display = 'none';
+  });
+  
+  // Function to show Billing panel and hide General Information panel
+  ScanButton.addEventListener('click', () => {
+      QRSavePanel.style.display = 'none';
+      BarCodeSavePanel.style.display = 'block';
+  });
+  
+  // Set initial display to General Information panel
+  QRSavePanel.style.display = 'block';
+  
+  // Add a click event listener for QR button
+  QRButton.addEventListener("click", function() {
+      // Change the button's background color
+      QRButton.style.backgroundColor = "#fff";
+      // Change the text color
+      QRButton.style.color = "#28C258";
+      ScanButton.style.backgroundColor = "#ddd";
+      // Change the text color of Scan button
+      ScanButton.style.color = "black";
+  });
+  
+  // Add a click event listener for Scan button
+  ScanButton.addEventListener("click", function() {
+      // Change the button's background color
+      ScanButton.style.backgroundColor = "#fff";
+      // Change the text color
+      ScanButton.style.color = "#28C258";
+      QRButton.style.backgroundColor = "#ddd";
+      // Change the text color of QR button
+      QRButton.style.color = "black";
+  });
+
+document.querySelector('.menu-btn').addEventListener('click', function (event) {
+      event.stopPropagation(); // Prevent the click from closing the menu immediately
+      const dropdownMenu = document.querySelector('.dropdown-menu-panel');
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Close dropdown if clicked outside
+    document.addEventListener('click', function (event) {
+      const dropdown = document.querySelector('.dropdown-menu-panel');
+      const menuBtn = document.querySelector('.menu-btn');
+      if (!menuBtn.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
+
+
+    document.getElementById('second-menu').addEventListener('click', function (event) {
+      event.stopPropagation(); // Prevent the click from closing the menu immediately
+      const dropdownMenu = document.querySelector('.dropdown-menu-panel');
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Close dropdown if clicked outside
+    document.addEventListener('click', function (event) {
+      const dropdown = document.querySelector('.dropdown-menu-panel');
+      const menuBtn = document.getElementById('second-menu');
+      if (!menuBtn.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
+
+
+
+    document.getElementById('scan-first-menu').addEventListener('click', function (event) {
+      event.stopPropagation(); // Prevent the click from closing the menu immediately
+      const dropdownMenu = document.querySelector('.dropdown-menu-panel');
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Close dropdown if clicked outside
+    document.addEventListener('click', function (event) {
+      const dropdown = document.querySelector('.dropdown-menu-panel');
+      const menuBtn = document.getElementById('second-menu');
+      if (!menuBtn.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
+
+
+
+    document.getElementById('scan-second-menu').addEventListener('click', function (event) {
+      event.stopPropagation(); // Prevent the click from closing the menu immediately
+      const dropdownMenu = document.querySelector('.dropdown-menu-panel');
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Close dropdown if clicked outside
+    document.addEventListener('click', function (event) {
+      const dropdown = document.querySelector('.dropdown-menu-panel');
+      const menuBtn = document.getElementById('second-menu');
+      if (!menuBtn.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
+
+  </script>
+</body>
+</html>

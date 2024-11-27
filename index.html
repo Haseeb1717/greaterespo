@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom SVG Generator</title>
+</head>
+<body>
+    <h1>Custom SVG Generator</h1>
+    <form id="svgForm" method="POST" action="genrate.php" target="outputFrame">
+        <label for="pixelPerPoint">Pixel per Point:</label>
+        <input type="number" id="pixelPerPoint" name="pixelPerPoint" value="4" min="1" required>
+        
+        <label for="outerFrame">Outer Frame:</label>
+        <input type="number" id="outerFrame" name="outerFrame" value="4" min="0" required>
+        
+        <label for="backColor">Background Color (Hex):</label>
+        <input type="text" id="backColor" name="backColor" value="#FFFFFF" required>
+        
+        <label for="foreColor">Foreground Color (Hex):</label>
+        <input type="text" id="foreColor" name="foreColor" value="#000000" required>
+        
+        <label for="frame">Frame Style:</label>
+        <select id="frame" name="frame">
+            <option value="default">Default</option>
+            <option value="special">Special</option>
+        </select>
+        
+        <label for="saveAndPrint">Save and Print:</label>
+        <select id="saveAndPrint" name="saveAndPrint">
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+        
+        <button type="submit">Generate SVG</button>
+    </form>
+
+    <!-- Iframe to display generated SVG -->
+    <iframe id="outputFrame" name="outputFrame" style="width: 100%; height: 500px; border: none;"></iframe>
+</body>
+</html>

@@ -1,0 +1,2205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+  <title>Hajj and Umrah Website</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+
+    }
+    a{
+      text-decoration: none;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 70px;
+      background-color: #FFFFFF;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .logo {
+      max-width: 138px;
+      height: 50px;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+      padding: 0;
+      margin: 0;
+    }
+    .nav-links li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    .nav-links li a:hover {
+      text-decoration: underline;
+    }
+    .rightside {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-icons img {
+      margin-right: 10px;
+    }
+    .search-icon {
+      max-width: 44px;
+      height: 44px;
+    }
+    #cart-icon {
+      max-width: 116px;
+      height: 44px;
+    }
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .Register-btn {
+      padding: 10px 25px;
+      border-radius: 4px;
+      border: 1px solid #0D7434;
+      background-color: #FFFFFF;
+      color: #0D7434;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .signin {
+      padding: 10px 20px;
+      border-radius: 4px;
+      background-color: #0D7434;
+      color: #FFFFFF;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    @media (max-width: 764px) {
+      nav {
+        padding: 10px 20px;
+      }
+      .nav-links,
+      .buttons {
+        display: none;
+      }
+      .logo {
+        position: absolute;
+        left: 25%;
+        transform: translateX(-25%);
+      }
+      .rightside {
+        justify-content: flex-end;
+      }
+      .nav-toggle {
+        display: block;
+      }
+    }
+    @media (max-width: 335px) {
+      nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .logo {
+        position: static;
+        transform: none;
+        margin-bottom: 10px;
+      }
+      .rightside {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .search-icon {
+        max-width: 20px;
+        height: 20px;
+      }
+      #cart-icon {
+        max-width: 80px;
+        height: 20px;
+      }
+    }
+    .hero-section {
+      position: relative;
+      width: 100%;
+      max-width: 1560px;
+      height: 761px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .hero-section .mainimg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .overlay-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 300px;
+      height: auto;
+    }
+    .service-section {
+      max-width: 1440px;
+      margin: 0 auto;
+      margin-top: 120px;
+    }
+    .service-container {
+      max-width: 90%;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0 auto;
+      margin-top: 30px;
+    }
+    .card {
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      font-size: 1.2em;
+    }
+    
+    .card:nth-child(2) {
+      background-color: #0D7434;
+   
+    }
+    @media(max-width:764px){
+    .card{
+      text-align: center;
+      font-size: 1em;
+   
+    }
+    }
+   .parent{
+    color: #FFFFFF;
+   }
+    .img-card {
+      margin-bottom: 15px;
+    }
+    .img-card img {
+      max-width: 100%;
+      height: auto;
+    }
+    .card h2 {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 30px;
+      color: #0F1416;
+    }
+    @media(max-width:764px){
+      .cad h2{
+        font-size: 18px;
+      }
+    }
+    .card p {
+      font-weight: 400;
+      font-size: 16px;
+      color: #A6AAAC;
+      line-height: 24px;
+    }
+    @media(max-width:764px){
+      .cad p{
+        font-size: 12px;
+      }
+    }
+   
+    .main-gallery{
+      max-width: 1440px;
+      margin: 0 auto;
+      margin-top: 150px;
+    }
+
+    .gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+margin: 0 auto;
+margin-top: 50px;
+
+}
+@media(max-width:480px){
+  .flex-container {
+  margin-left: 100px;
+  }
+
+
+}
+
+@media(max-width:350px){
+  .flex-container {
+  margin-left: 50px;
+  }
+
+
+}
+.flex-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+  max-width: 80%; /* Adjust max-width as needed */
+  width: 100%;
+  justify-content: center; /* Center the grid items horizontally */
+  align-items: center;
+}
+
+
+.image img {
+  width: 190px; /* Fixed width */
+  height: auto;
+  border-radius: 12px;
+}
+
+@media (max-width: 986px) {
+  .flex-container {
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); /* 3 images per row */
+  }
+}
+
+@media (max-width: 730px) {
+  .flex-container {
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); /* 2 images per row */
+  }
+}
+
+@media (max-width: 480px) {
+  .flex-container {
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); /* 1 image per row */
+  }
+}
+.background-container {
+    padding: 60px 0;
+    position: relative;
+    height: 290px;
+    background: url('background-kabaimg.png') no-repeat center center/cover;
+}
+
+.overlay-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 197, 114, 0.51); /* Single color overlay with 51% opacity */
+}
+
+.overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Text color */
+    text-align: center;
+    padding: 20px;
+    z-index: 1;
+}
+
+.adv-para {
+    font-weight: 500;
+    font-size: 29px;
+    line-height: 36.25px;
+    color: #FFFFFF;
+    margin-bottom: 20px; /* Add some space between text and button */
+}
+
+.Book-Now {
+    padding: 25px 50px;
+    border-radius: 40px;
+    background-color: #0D7434;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 22px;
+    border: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .adv-para {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .Book-Now {
+        padding: 20px 40px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .background-container {
+        height: 200px; /* Adjust height for smaller screens */
+        padding: 40px 0;
+    }
+
+    .adv-para {
+        font-size:15px;
+        line-height: 24px;
+    }
+
+    .Book-Now {
+        padding: 15px 30px;
+        font-size: 18px;
+    }
+}
+.deals-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            padding: 20px;
+      max-width: 90%;
+      margin: 0 auto;
+        }
+        .deals-cards {
+            position: relative;
+            width:190px;
+            height: 300px;
+            border: 1px solid #ccc;
+            border-radius:12px;
+            overflow: hidden;
+        }
+        .deal-cardimg{
+          max-width:190px;
+          height:150px;
+        }
+        .disscount{
+          max-width:100px;
+          height:100px;
+        }
+        .deals-cards .overlay {
+            position: absolute;
+            bottom: -10px;
+           left: 30px;
+            text-align: center;
+            padding: 10px;
+        }
+ 
+        .deals-cards-heading{
+font-weight: 500;
+font-size: 18px;
+line-height: 27px;
+color: #05073C;
+
+        }
+        @media(max-width:764px){
+          .deals-cards-heading{
+          font-size: 14px;
+      }
+    }
+   
+        .deals-cards-para{
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18.2px;
+            color: #05073C;
+            font-family: Poppins;
+        }
+        @media(max-width:764px){
+          .deals-cards-para{
+          font-size: 10px;
+      }
+    }
+   
+        .frame-container {
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 45px; /* Increased space between frames */
+    justify-content: space-between;
+}
+
+.frame {
+    display: flex;
+    align-items: center;
+    width: calc(33.333% - 30px); /* Adjusted width to account for the larger gap */
+    box-sizing: border-box;
+    padding: 10px; /* Increased padding inside the frame */
+    border-radius: 8px;
+    border: 0.5px solid #EEEEEE;  
+}
+
+.frame img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.frame-text {
+    margin-left: 20px;
+}
+
+@media screen and (max-width: 1087px) {
+    .frame {
+        flex-direction: column; /* Stack image and text vertically */
+        width: calc(50% - 50px); /* 2 frames per row on medium screens */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .frame {
+        flex-direction: column; /* Keep the column layout */
+        width: calc(50% - 50px); /* 2 frames per row on smaller screens */
+    }
+}
+
+@media screen and (max-width:653px) {
+    .frame {
+        flex-direction: row; /* Maintain row layout on very small screens */
+        width: 100%; /* 1 frame per row on mobile screens */
+    }
+
+}
+
+@media screen and (max-width:381px) {
+    .frame {
+    flex-direction: column;
+    }
+} 
+.about-section {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 120px;
+  }
+
+  .Booking-Service {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 80%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+
+  .sub-title {
+    font-weight: 600;
+    line-height: 30px;
+    font-size: 20px;
+    color: #0D7434;
+    margin-top: 30px;
+  }
+  @media(max-width:764px){
+    .sub-title {
+  
+    font-size: 15px;
+      }
+    }
+   
+  .abt-heading {
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 45.5px;
+    font-family: Volkhov;
+  }
+
+  @media(max-width:764px){
+    .abt-heading {
+  
+    font-size: 25px;
+      }
+    }
+   
+  
+  .sub-heading {
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 45.5px;
+    font-family: Volkhov;
+    color: #E7AD3C;
+  }
+
+  @media(max-width:764px){
+    .sub-heading {
+  
+    font-size: 25px;
+      }
+    }
+
+  .abt-para {
+    font-family: Poppins;
+    font-weight: 400;
+    line-height: 27px;
+    font-size: 18px;
+    color: #0F1416;
+  }
+  @media(max-width:764px){
+    .abt-para {
+  
+      font-size: 12px;
+  
+    }
+    }
+
+  
+  .read-btn {
+    padding: 20px 40px;
+    border-radius: 40px;
+    border: none;
+    background-color: #0D7434;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .read-btn:hover {
+    background-color: #0A5C2C;
+  }
+
+  .Booking-Service-img {
+    flex: 1;
+    padding: 16px;
+  }
+
+  .Booking-Service-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    object-fit: cover;
+  }
+
+  .Booking-Service-text {
+    flex: 1;
+    padding: 16px;
+  }
+
+  .report-heading {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 36px;
+    color: #E7AD3C;
+    margin-top: 60px;
+  }
+  @media(max-width:764px){
+    .report-heading {
+  
+      font-size: 25px;
+  
+    }
+    }
+
+
+  .report-para {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25.2px;
+    color: #0F1416;
+    margin-top:10px;
+  }
+
+  @media(max-width:764px){
+    .report-heading {
+  
+      font-size: 12px;
+  
+    }
+    }
+  .report {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 1240px) {
+    .Booking-Service-img img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .abt-heading, .sub-heading {
+      font-size: 30px;
+      line-height: 40px;
+    }
+
+    .abt-para, .read-btn {
+      font-size: 16px;
+    }
+
+    .report-heading {
+      font-size: 30px;
+      line-height: 30px;
+    }
+
+    .report-para {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  @media (max-width: 764px) {
+    .Booking-Service {
+      flex-direction: column;
+    }
+
+    .Booking-Service-text {
+      text-align: center;
+    }
+
+    .abt-heading, .sub-heading {
+      font-size: 28px;
+      line-height: 38px;
+    }
+
+    .abt-para {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .report-heading {
+      font-size: 28px;
+      line-height: 28px;
+      margin-top: 40px;
+    }
+
+    .report-para {
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .report {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .report div {
+      margin-bottom: 20px;
+    }
+
+    .read-btn {
+      padding: 15px 30px;
+      font-size: 16px;
+    }
+}
+.choice{
+    max-width: 1440px;
+    margin: 0 auto;
+    margin-top: 120px;
+}
+.choice-container{
+            max-width: 85%;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .underline {
+            width: 100px;
+            height: 3px;
+            background-color:#0D7434;
+            margin: 0 auto;
+        }
+
+        .buttons-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .button{
+            background-color:#A6AAAC1A;
+            color:#0F1416;
+            padding: 18px 20px;
+            border: none;
+            border-radius:10px;
+            margin: 10px;
+            cursor: pointer;
+            flex: 1;
+            text-align: center;
+            gap: 10px;
+        }
+        .button:first-child{
+            background-color:#0D7434;
+            color:#ffffff;
+            
+        }
+
+        .choice-card-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            
+        }
+        .choice-card img {
+            margin-left: -20px;
+            width: 115%;
+            height: 200px; /* Set fixed height */
+            object-fit: cover; /* Ensure image covers the area */
+            z-index: -1; /* Send image behind content */
+    margin-top: -20px;
+        }
+        .choice-card {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        @media(max-width:764px){
+          .choice-card {
+          margin-top: 30px;
+          }
+
+        }
+        /* General styles for button container */
+.buttons-tabs {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    flex-wrap: wrap; /* Allow buttons to wrap if needed */
+    gap: 10px; /* Optional: Space between buttons */
+}
+
+/* Styles for buttons */
+.button {
+    width: 150px; /* Adjust width as needed */
+    margin: 5px; /* Margin around each button */
+}
+
+/* Media query for screens 768px wide or smaller */
+@media (max-width: 768px) {
+    .buttons-tabs {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center buttons horizontally in the column layout */
+        margin: 0 auto; /* Center the container itself if needed */
+    }
+
+    .button {
+        width: 50%; /* Adjust width for smaller screens */
+        margin: 5px 0; /* Margin around each button */
+    }
+
+
+            .choice-card-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .choice-card-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .choice-card-text-flex{
+            display: flex;
+            margin-top: 10px;
+        }
+        @media(max-width:352px){
+    .choice-card-text-flex1{
+ 
+    flex-direction: column;
+    }
+}
+
+        .choice-card-text-flex2{
+            display: flex;
+            margin-top: 20px;
+       justify-content: space-between;
+
+        }
+     
+           @media(max-width:1070px){
+
+      .choice-card-text-flex2{
+       
+
+       flex-direction: column;
+       }
+       
+       .view-btn{
+         width: 100%;
+       margin-top: 30px;
+   }
+        
+   .choice-card {
+   align-items: center;
+   text-align: center;
+   }
+   
+           }
+   @media(max-width:352px){
+       .choice-card {
+       
+       text-align: center;
+       }
+       .choice-card-text-flex2{
+    
+       flex-direction: column;
+       }
+       .choice-card-text-flex{
+       
+
+       flex-direction: column;
+       }
+
+       .view-btn{
+       margin-top: 30px;
+       width: 100%;
+       margin-left: -20px;
+       }
+       .choice-card-text-flex{
+           flex-direction: column;
+       }
+       .text-review-choice{
+           margin-top: 10px;
+       
+         }
+    }
+        @media(max-width:705px){
+          .choice-card-text-flex2{
+       
+
+    flex-direction: column;
+    }
+    .choice-card-text-flex{
+       
+
+       flex-direction: column;
+       }
+
+    .view-btn{
+      width: 100%;
+    margin-top: 30px;
+}
+     
+.choice-card {
+align-items: center;
+text-align: center;
+}
+
+.choice-card-text-flex1{
+
+flex-direction: row;
+}
+        }
+@media(max-width:352px){
+    .choice-card {
+    
+    text-align: center;
+    }
+    .choice-card-text-flex2{
+ 
+    flex-direction: column;
+    }
+    .view-btn{
+    margin-top: 30px;
+    width: 100%;
+    margin-left: -20px;
+    }
+    .choice-card-text-flex{
+        flex-direction: column;
+    }
+    .text-review-choice{
+        margin-top: 10px;
+    
+      }
+    #flex-wala{
+      flex-direction: row;
+    }
+    .map{
+      margin-top: 30px;
+    }
+      
+}
+        .text-review-choice{
+            margin-left: 30px;
+        }
+        .Package-heading{
+            display: block;
+        }
+        .view-btn{
+            padding:15px;
+            border-radius: 10px;
+            background-color: #0D7434;
+            color: #ffffff;
+        }
+        #count{
+            margin-top: 20px;
+        }
+        
+        .choose-section{
+          max-width: 1440px;
+          margin: 0 auto;
+          background: rgba(247, 248, 252, 1);
+      max-width: 150%;
+      margin-left: -8px;
+      height: 380px;
+    margin-top: 120px; 
+    }
+        .grid-choose-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 85%;
+            margin: 0 auto;
+          }
+   
+   
+          .card-choose {
+            border-radius: 8px;
+            padding: 30px;
+            
+          }
+          @media (max-width:1024px) {
+              .choose-section{
+      height: auto;
+            }
+   
+    }
+
+          @media(max-width:764px){
+          .choose-section{
+      height: auto;
+            }
+
+   
+        }
+        .heading-choose {
+            font-weight: 700;
+            font-size: 35px;
+            line-height: 35px;
+            font-family: Volkhov, serif;
+        }
+        .span-heading {
+            font-weight: 700;
+            font-size: 35px;
+            line-height: 35px;
+            font-family: Volkhov, serif;
+            margin-left: -5px;
+            color: #0D7434;
+        }
+       
+  @media(max-width:764px){
+    .span-heading {
+     
+
+      font-size: 25px;
+  
+    }
+    }
+        #choosen {
+            margin-top: 60px;
+        }
+        .Learn-more {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #0D7434;
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px; /* Adds spacing between button and text */
+        }
+        .Learn-more:hover {
+            background-color: #0A5B29; /* Darken the button on hover */
+        }
+        h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+     
+        p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Media Queries for Tablet */
+        @media (max-width: 768px) {
+            .heading-choose, .span-heading {
+                font-size: 30px;
+                line-height: 30px;
+            }
+            h3 {
+                font-size: 22px;
+            }
+            p {
+                font-size: 14px;
+            }
+            .Learn-more {
+              padding: 20px;
+         
+            }
+        }
+
+        /* Media Queries for Mobile */
+        @media (max-width: 480px) {
+            .heading-choose, .span-heading {
+                font-size: 25px;
+                line-height: 25px;
+            }
+            h3 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 14px;
+            }
+            .Learn-more {
+              padding: 16px;
+         
+            }
+        }
+
+        .background-flex-layout {
+      max-width: 1540px;
+      background-image: url('Rectangle 159.png');
+      height: 590px;
+      background-size: cover;
+      background-position: center;
+      margin-top:10px;
+    }
+    .background-flex {
+      margin: 0 auto;
+      max-width: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+    @media (max-width:764px) {
+        .background-flex-layout {
+          height:900px;
+    
+        }   
+    .background-flex {
+flex-direction: column;
+    }
+}
+    .images-background-flex, .text-background-flex {
+      flex: 1;
+      padding: 20px;
+    }
+    .trend {
+      max-width: 130px;
+      height: 30px;
+      background-color: #FFCA01;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 18px;
+      color: #1C2B38;
+      font-family: 'Poppins', sans-serif;
+    }
+    .heading-layout {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 46.44px;
+      color: #FFFFFF;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    .para-p {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 25px;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+    width:505px;
+    }
+    @media(max-width:764px){
+      .para-p {
+        width:300px;
+     
+
+      font-size: 12px;
+  
+    }
+    }
+  @media(max-width:315px){
+  .para-p {
+ width: 150px;
+  }
+}
+  .location-flex-star {
+      display: flex;
+      align-items: center;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+    }
+    @media(max-width:434px){
+      .location-flex-star {
+   
+        flex-direction: column;
+    }
+   .reviews-count-num {
+  margin-top: 20px; 
+  } 
+  }
+
+    .reviews-count-num {
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .reviews-count-num i {
+      color: #FFCA01;
+      margin-right: 5px;
+    }
+    .green-background-flex {
+      display: flex;
+      align-items: center;
+    }
+   
+    @media(max-width:434px){
+      .green-background-flex {
+   
+        flex-direction: column;
+    }
+    .icon-images-flex{
+    
+    margin-top: 20px; 
+  } 
+  }
+
+    .button-explore-flex {
+      padding: 15px 45px;
+      border-radius: 40px;
+      background-color: #0D7434;
+      color: #FFFFFF;
+      border: none;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+    }
+    .icon-images-flex{
+      position: relative;
+      left: 50px;
+    gap: 30px;
+    }
+
+    .icon-images-flex > * {
+    margin-right: 10px;
+}
+
+
+    .adu {
+        max-width: 1440px;
+        margin: 0 auto;
+        margin-top: 120px;
+      }
+      .adu-container {
+        max-width: 80%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      @media (max-width: 764px) {
+        .adu-container {
+          flex-direction: column;
+          align-items: center; /* Center items horizontally on smaller screens */
+        }
+      }
+      .img1 {
+        margin: 10px; /* Add some space between images */
+      }
+      .underline {
+            width: 100px;
+            height: 3px;
+            background-color: #0D7434;
+            margin: 0 auto;
+        
+        }
+        .customer-reviews-container {
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            margin-top: 120px;
+        }
+        .customer-reviews h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #2d513d;
+        }
+        .highlighted-review {
+            margin-bottom: 40px;
+        }
+        .highlighted-review img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
+        }
+        .review-title {
+            font-weight: bold;
+            color: #ffa500;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 33.75px;
+        }
+        .review-text {
+          font-weight: 400;
+          font-size:19px;
+          margin-bottom: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 30.4px;
+            color: #05073C;
+            align-items: center;
+        }
+   
+        .review-author {
+            font-weight: bold;
+            color: #2d513d;
+
+
+        }
+        .review-role {
+          margin-top: -10px;
+        }
+        .reviews-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin:0 auto;
+     
+          }
+        .review-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding:24px 20px;
+            max-width: 283px;
+        }
+        .review-last-img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .review-card p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 25.2px;
+        color: #12121299; 
+        }
+        .review-card{
+            font-weight: bold;
+            color: #2d513d;
+        }
+        .review-author{
+          font-weight: 400;
+          font-size: 16px;
+          color: #222222;
+        }
+        .review-card .review-role {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .review-card .review-rating {
+            color: #ffa500;
+        }
+
+        @media (max-width: 768px) {
+            .reviews-grid {
+                flex-direction: column;
+                margin: 0 auto;
+                align-items: center;
+            }
+        }
+        .review-last-flex{
+          display: flex;
+          
+        }
+        .review-last-img{
+          margin-top: 15px;
+        }
+        .review-last-text{
+          margin-left: 30px;
+          }
+          .star-review{
+            color: #ffa500;
+          }
+          .Customer-photo{
+            max-width: 132px;
+            height: 123px;
+          }
+          
+    /* Footer */
+    
+    /* Footer */
+    footer {
+      margin-top: 120px;
+      background-color: #0D7434;
+      color: #fff;
+    padding: 20px;
+      height:320px; /* Adjust height to fit content */
+      overflow-x: hidden;
+      margin-left: -10px
+    }
+    @media (max-width:993px) {
+      footer{
+        height: 400px;
+      }
+    }
+    @media(max-width:764px){
+      footer {
+        height:850px;
+      
+
+      }  
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap; /* Allows wrapping if needed */
+      justify-content: space-between;
+      max-width: 1200px; /* Ensure it spans full width */
+      margin: 0 auto;
+      padding: 0 20px; /* Adjust padding for full width */
+    }
+
+    .footer-section {
+      flex: 1 1 22%; /* Adjust width to fit 4 columns */
+      margin-bottom: 20px;
+      box-sizing: border-box; /* Ensures padding and borders are included in width */
+    }
+
+    .footer-section img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .footer-section h2 {
+      margin-bottom: 20px;
+    }
+
+    .footer-section p, .footer-section ul, .footer-section li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .footer-section ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 25px 10px;
+  margin-left: -8px;
+      background-color: #FFCA01;
+   
+
+    
+    }
+
+    .footer-bottom p {
+      margin: 0;
+    }
+
+    .footer-social-icons {
+      display: flex;
+      gap: 10px;
+     }
+
+    .footer-social-link img {
+      width: 24px; /* Adjust icon size */
+      height: 24px;
+    
+    }
+
+    @media (max-width: 1024px) {
+      .footer-section {
+        flex: 1 1 48%; /* Adjust width to fit 2 columns on medium screens */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-section {
+        margin-bottom: 30px;
+      }
+    }
+.footer-partner{
+  margin-top:30px;
+}
+@media (max-width: 480px) {
+      .footer-section ul {
+        padding: 0;
+      }
+      
+      .footer-section ul li {
+        margin-bottom: 8px;
+      }
+    }
+    .par-main-sec{
+      text-align: center;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 36px;
+      color: #0F1416;
+      
+
+    }
+    @media(max-width:764px){
+      .par-main-sec{
+      font-size: 12px;
+      }   
+    }
+    .over{
+      margin-top: 150px;
+    }
+    .icon-social{
+      background-color: #FFFFFF;
+    width: 40px;
+      height: 40px;
+align-items: center;
+justify-content: center;
+display: flex;
+      border-radius: 50px;
+      margin-top: 10px;
+   }
+   
+.social{
+  color: rgba(13, 116, 52, 1);
+}
+
+.frame-header{
+  color: rgba(13, 116, 52, 1);
+
+}
+.all-heading{
+  font-weight: 700;
+  font-size: 35px;
+  color: rgba(15, 20, 22, 1);
+  font-family: Volkhov;
+  line-height: 45.15px;
+}
+@media(max-width:764px){
+  .all-heading{
+    font-size: 25px;
+  }
+}
+#stars-review-star{
+  color:orange
+}
+
+@media(max-width:478px){
+  .choice-card-text-flex2{
+       
+         flex-direction: row;
+          }   
+          
+    .choice-card-text-flex{
+       
+
+       flex-direction:row;
+       }
+  
+        }
+        @media(max-width:340px){
+          .choice-card-text-flex2{
+       
+       flex-direction: column;
+        }   
+        
+  .choice-card-text-flex{
+     
+
+     flex-direction:column;
+     }
+      
+        }
+
+</style>
+</head>
+
+<body>
+  <nav>
+    <button class="nav-toggle">
+      <i class="ri-menu-line"></i>
+    </button>
+    <img src="imglogo.png" alt="Ministry of Hajj and Umrah logo" class="logo">
+    <ul class="nav-links">
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Packages</a></li>
+    </ul>
+    <div class="rightside">
+      <div class="nav-icons">
+        <img src="Search.png" alt="Search Icon" class="search-icon">
+        <img src="Cart.png" alt="Cart Icon" id="cart-icon">
+      </div>
+      <div class="buttons">
+        <button class="Register-btn">Register</button>
+        <button class="signin">Sign In</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <img src="Image shadow.png" alt="Hero Image" class="mainimg">
+    <img src="Play button.png" alt="Overlay Image" class="overlay-image">
+
+   </section>
+
+  <section class="service-section">
+    <div class="service-container">
+      <div class="main-heading-sec">
+      <h1 class="all-heading">Our Services</h1>
+        <div class="underline"></div>
+        <p class="par-main-sec">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet tempus felis vitae sit amet quisque.</p>
+      </div>
+     
+    </div>
+    <div class="grid-container">
+      <div class="card">
+        <div class="img-card">
+          <img src="Button.png" alt="Service Image">
+        </div>
+        <h2>24/7 Support</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="card">
+        <div class="img-card">
+          <img src="Button.png" alt="Service Image">
+        </div>
+        <h2 class="parent" style="color:#FFFFFF;">Travel Guide</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="card">
+        <div class="img-card">
+          <img src="Button.png" alt="Service Image"> 
+        </div>
+        <h2>24/7 Support</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="card">
+        <div class="img-card">
+          <img src="Button.png" alt="Service Image">
+        </div>
+        <h2>24/7 Support</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+  </section>
+<section class="main-gallery">
+  <div class="main-heading-sec">
+    <h1 class="all-heading">Popular things to do</h1>
+      <div class="underline"></div>
+      <p class="par-main-sec">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet tempus felis vitae sit amet quisque.</p>
+    </div>
+   
+  <div class="gallery">
+    <div class="flex-container">
+      <div class="image"><img src="Link.png" alt="Gallery Image 1"></div>
+      <div class="image"><img src="Link.png" alt="Gallery Image 2"></div>
+      <div class="image"><img src="Link.png" alt="Gallery Image 3"></div>
+      <div class="image"><img src="Link.png" alt="Gallery Image 4"></div>
+      <div class="image"><img src="Link.png" alt="Gallery Image 5"></div>
+    </div>
+  </div>
+  </section>
+  <section class="over">
+  <div class="background-container">
+    <div class="overlay-container">
+        <div class="overlay-content">
+            <p class="adv-para">Lorem ipsum dolor sit amet consectetur.</p>
+            <button class="Book-Now">Book Now</button>
+        </div>
+    </div>
+</div>
+</section>
+<section class="service-section">
+  <div class="main-heading-sec">
+    <h1 class="all-heading">Top Deals</h1>
+      <div class="underline"></div>
+      <p class="par-main-sec">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet tempus felis vitae sit amet quisque.</p>
+    </div>
+
+<div class="deals-cards-container">
+    <div class="deals-cards">
+        <img src="image.png" alt="Deal 1" class="deal-cardimg">
+        <div class="overlay">
+            <img src="div.featureCard__badge.png" alt="Overlay 1" class="disscount">
+            <h3 class="deals-cards-heading">Makkah</h3>
+
+            <p class="deals-cards-para">100+ Tours</p>
+
+        </div>
+    </div>
+    <div class="deals-cards">
+        <img src="image.png" alt="Deal 1" class="deal-cardimg">
+      
+        <div class="overlay">
+            <img src="div.featureCard__badge.png" alt="Overlay 1" class="disscount">
+
+            <h3 class="deals-cards-heading">Makkah</h3>
+
+            <p class="deals-cards-para">100+ Tours</p>
+        </div>
+    </div>
+    <div class="deals-cards">
+        <img src="image.png" alt="Deal 1" class="deal-cardimg">
+      
+        <div class="overlay">
+            <img src="div.featureCard__badge.png" alt="Overlay 1" class="disscount">
+            <h3 class="deals-cards-heading">Makkah</h3>
+
+            <p class="deals-cards-para">100+ Tours</p>
+        </div>
+    </div>
+    <div class="deals-cards">
+        <img src="image.png" alt="Deal 1" class="deal-cardimg">
+      
+        <div class="overlay">
+            <img src="div.featureCard__badge.png" alt="Overlay 1" class="disscount">
+<h3 class="deals-cards-heading">Makkah</h3>
+            <p class="deals-cards-para">100+ Tours</p>
+        </div>
+    </div>
+    <div class="deals-cards">
+        <img src="image.png" alt="Deal 1" class="deal-cardimg">
+      
+        <div class="overlay">
+
+            <img src="div.featureCard__badge.png" alt="Overlay 1" class="disscount">
+            <h3 class="deals-cards-heading">Makkah</h3>
+
+            <p class="deals-cards-para">100+ Tours</p>
+        </div>
+    </div>
+</div>
+</section>
+<section class="service-section">
+  <div class="main-heading-sec">
+    <h1 class="all-heading">Special Offers</h1>
+      <div class="underline"></div>
+      <p class="par-main-sec">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet tempus felis vitae sit amet quisque.</p>
+    </div>
+
+<div class="frame-container">
+    <div class="frame">
+      <div class="img"><img src="Link → image.png" alt="Image 1"></div>
+      <div class="frame-text"><h3 class="frame-header">Last day in March 13</h3><p>Up to 50% Discount on Early Booking</p></div>
+    </div>
+  
+    <div class="frame">
+      <div class="img"><img src="Link → image.png" alt="Image 2"></div>
+      <div class="frame-text"><h3 class="frame-header">Last day in March 13</h3><p>Up to 50% Discount on Early Booking</p></div>
+    </div>
+  
+    <div class="frame">
+      <div class="img"><img src="Link → image.png" alt="Image 3"></div>
+      <div class="frame-text"><h3 class="frame-header">Last day in March 13</h3><p>Up to 50% Discount on Early Booking</p></div>
+    </div>
+  
+    <div class="frame">
+      <div class="img"><img src="Link → image.png" alt="Image 4"></div>
+      <div class="frame-text"><h3 class="frame-header">Last day in March 13</h3><p>Up to 50% Discount on Early Booking</p></div>
+    </div>
+  
+    <div class="frame">
+      <div class="img"><img src="Link → image.png" alt="Image 5"></div>
+      <div class="frame-text"><h3 class="frame-header">Last day in March 13</h3><p>Up to 50% Discount on Early Booking</p></div>
+    </div>
+  
+    <div class="frame">
+      <div class="img"><img src="Link → image.png" alt="Image 6"></div>
+      <div class="frame-text"><h3 class="frame-header">Last day in March 13</h3><p>Up to 50% Discount on Early Booking</p></div>
+    </div>
+  </div>
+</section>
+
+  <section class="about-section">
+    <div class="Booking-Service">
+      <div class="Booking-Service-img">
+        <img src="aboutimg.png" alt="About Us Image">
+      </div>
+      <div class="Booking-Service-text">
+        <span class="sub-title">ABOUT US</span>
+        <h3 class="abt-heading">The Best And Most Trusted<br>
+          <span class="sub-heading">Booking Service</span>
+        </h3>
+        <p class="abt-para">Lorem ipsum dolor sit amet consectetur. Libero sit interdum nulla risus blandit eget lectus. Quis nunc cursus accumsan pellentesque. Netus porta cras commodo nullam magna etiam. Ipsum non libero augue massa. Augue id tellus et a. Mi praesent arcu hendrerit aliquam dui porta. Mauris purus.</p>
+        <button class="read-btn">Read More</button>
+        <div class="report">
+          <div class="report1">
+            <h3 class="report-heading">200+</h3>
+            <p class="report-para">Customer &<br>
+              partners</p>
+          </div>
+          <div class="report2">
+            <h3 class="report-heading">500+</h3>
+            <p class="report-para">Place in the <br>
+              world</p>
+          </div>
+          <div class="report3">
+            <h3 class="report-heading">1k+</h3>
+            <p class="report-para">Success<br>
+              Journey</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="choice">
+    <div class="choice-container">
+   <div class="main-heading-sec">
+      <h1 class="all-heading">Start Planning Your Journey</h1>
+        <div class="underline"></div>
+        <p class="par-main-sec">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet tempus felis vitae sit amet quisque.</p>
+      </div>
+        <div class="buttons-tabs">
+            <button class="button">Most Popular</button>
+            <button class="button">Special Deals</button>
+            <button class="button">Best Price</button>
+            <button class="button">Recommendation</button>
+        </div>
+    
+        <div class="choice-card-container">
+            <div class="choice-card"><img src="Rectangle 11.png">
+            <div class="choice-card-text-flex">
+                <div class="stars-review" id="stars-review-star"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+           <br>
+                <div class="text-review-choice">4.8 (8.0K Reviews)</div>
+            </div>
+        <h3 class="Package-heading">Package 1</h3>  
+        <div class="choice-card-text-flex2" id="flex-wala">
+            <div class="stars-review" ><i class="ri-map-pin-line"></i> Makkah</div>
+         <br>
+            <div class="text-review-choice"> <div class="map"><i class="ri-calendar-2-line"></i> 5 Days/4 Night</div></div>
+        </div>
+
+        <div class="choice-card-text-flex2">
+        <!--I need these two equal-->
+            <div class="stars-review" id="count"><b>$1500</b>/per person</div>
+            <div class="text-review-choice"><button class="view-btn">View More</button></div>
+        </div>
+   
+    </div>
+    <div class="choice-card"><img src="Rectangle 11.png">
+        <div class="choice-card-text-flex">
+            <div class="stars-review" id="stars-review-star"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+            <br>
+            <div class="text-review-choice">4.8 (8.0K Reviews)</div>
+        </div>
+    <h3 class="Package-heading">Package 1</h3>  
+    <div class="choice-card-text-flex2">
+        <div class="stars-review" ><i class="ri-map-pin-line"></i> Makkah</div>
+        <br>
+       
+        <div class="text-review-choice"> <div class="map"><i class="ri-calendar-2-line"></i> 5 Days/4 Night</div></div>
+      
+      </div>
+
+    <div class="choice-card-text-flex2">
+    <!--I need these two equal-->
+        <div class="stars-review" id="count"><b>$1500</b>/per person</div>
+        <div class="text-review-choice"><button class="view-btn">View More</button></div>
+    </div>
+
+</div>
+
+<div class="choice-card"><img src="Rectangle 11.png">
+    <div class="choice-card-text-flex">
+        <div class="stars-review idstars-review-star"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+        <br>
+        <div class="text-review-choice">4.8 (8.0K Reviews)</div>
+    </div>
+<h3 class="Package-heading">Package 1</h3>  
+<div class="choice-card-text-flex2">
+    <div class="stars-review" ><i class="ri-map-pin-line"></i> Makkah</div>
+    <br>
+       
+    <div class="text-review-choice"> <div class="map"><i class="ri-calendar-2-line"></i> 5 Days/4 Night</div></div>
+      
+  </div>
+
+<div class="choice-card-text-flex2">
+<!--I need these two equal-->
+    <div class="stars-review" id="count"><b>$1500</b>/per person</div>
+    <div class="text-review-choice"><button class="view-btn">View More</button></div>
+</div>
+
+</div>
+<div class="choice-card"><img src="Rectangle 11.png">
+    <div class="choice-card-text-flex">
+        <div class="stars-review" id="stars-review-star"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+        <br>
+        <div class="text-review-choice">4.8 (8.0K Reviews)</div>
+    </div>
+<h3 class="Package-heading">Package 1</h3>  
+<div class="choice-card-text-flex2">
+    <div class="stars-review" ><i class="ri-map-pin-line"></i> Makkah</div>
+    <br>
+       
+    <div class="text-review-choice"> <div class="map"><i class="ri-calendar-2-line"></i> 5 Days/4 Night</div></div>
+      
+</div>
+
+<div class="choice-card-text-flex2">
+<!--I need these two equal-->
+    <div class="stars-review" id="count"><b>$1500</b>/per person</div>
+    <div class="text-review-choice"><button class="view-btn">View More</button></div>
+</div>
+
+</div>
+
+<div class="choice-card"><img src="Rectangle 11.png">
+        <div class="choice-card-text-flex">
+            <div class="stars-review" id="stars-review-star"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+            <br>
+            <div class="text-review-choice">4.8 (8.0K Reviews)</div>
+        </div>
+    <h3 class="Package-heading">Package 1</h3>  
+    <div class="choice-card-text-flex2">
+        <div class="stars-review"><i class="ri-map-pin-line"></i> Makkah</div>
+        <br>
+       
+        <div class="text-review-choice"> <div class="map"><i class="ri-calendar-2-line"></i> 5 Days/4 Night</div></div>
+      
+    </div>
+
+    <div class="choice-card-text-flex2">
+    <!--I need these two equal-->
+        <div class="stars-review" id="count"><b>$1500</b>/per person</div>
+        <div class="text-review-choice"><button class="view-btn">View More</button></div>
+    </div>
+
+</div>
+
+<div class="choice-card"><img src="Rectangle 11.png">
+    <div class="choice-card-text-flex">
+        <div class="stars-review" id="stars-review-star"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+        <br>
+        <div class="text-review-choice">4.8 (8.0K Reviews)</div>
+    </div>
+<h3 class="Package-heading">Package 1</h3>  
+<div class="choice-card-text-flex2">
+    <div class="stars-review"><i class="ri-map-pin-line"></i> Makkah</div>
+    <br>
+       
+    <div class="text-review-choice"> <div class="map"><i class="ri-calendar-2-line"></i> 5 Days/4 Night</div></div>
+      
+</div>
+
+<div class="choice-card-text-flex2">
+<!--I need these two equal-->
+    <div class="stars-review" id="count"><b>$1500</b>/per person</div>
+    <div class="text-review-choice"><button class="view-btn">View More</button></div>
+</div>
+
+</div>
+</div>    
+    </div>
+ </section>
+ 
+ 
+ <section class="choose-section">
+  <div class="grid-choose-container">
+        <div class="card-choose">
+            <div class="heading-choose-container">
+                <h3 class="heading-choose">Why <span class="span-heading">Choose</span> Us</h3>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button class="Learn-more">Learn More</button>
+        </div>
+        <div class="card-choose" id="choosen">
+            <img src="yellow.png" alt="Best Travel Agency">
+            <h3>Best Travel Agency</h3>
+            <p>Travel agencies that provide round trip, one way, and multi trip services.</p>
+        </div>
+        <div class="card-choose" id="choosen">
+            <img src="yellow.png" alt="Best Travel Agency">
+            <h3>Best Travel Agency</h3>
+            <p>Travel agencies that provide round trip, one way, and multi trip services.</p>
+        </div>
+        <div class="card-choose" id="choosen">
+            <img src="yellow.png" alt="Best Travel Agency">
+            <h3>Best Travel Agency</h3>
+            <p>Travel agencies that provide round trip, one way, and multi trip services.</p>
+        </div>
+    </div>
+  </section>
+
+<section class="background-flex-layout">
+  <div class="background-flex">
+    <div class="images-background-flex">
+      <img src="Group 194.png" alt="Jabal Arafat" style="max-width: 100%; height: auto;">
+    </div>
+    <div class="text-background-flex">
+      <div class="trend">Trending Now</div>
+      <h3 class="heading-layout">Jabal Arafat</h3>
+      <div class="location-flex-star">
+        <div class="location-flex-icon"><i class="ri-map-pin-line"></i> Jabal Arafat, Mecca</div>
+        <div class="reviews-count-num">|  
+          <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+          4.9 (300 reviews)
+        </div>
+      </div>
+      <p class="para-p">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
+      <div class="green-background-flex">
+        <button class="button-explore-flex">Explore</button>
+        <div class="icon-images-flex">
+          <img src="Group 191 (1).png" alt="Icon 1" class="icon-flex-img-layout">
+          <img src="Group 190.png" alt="Icon 2">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-section">
+  <div class="main-heading-sec">
+    <h1 class="all-heading">Top Attractions</h1>
+      <div class="underline"></div>
+      <p class="par-main-sec">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet tempus felis vitae sit amet quisque.</p>
+    </div>
+
+<div class="frame-container">
+    <div class="frame" style="border: none;">
+      <div class="img"><img src="Link → image (1) dubara.png" alt="Image 1"></div>
+      <div class="frame-text"><h3 class="frame-header">Jabal Arafat</h3><p>Up to 50% Discount on Early Booking</p></div>
+    </div>
+  
+    <div class="frame"  style="border: none;">
+      <div class="img"><img src="Link → image (1) dubara.png" alt="Image 2"></div>
+      <div class="frame-text"><h3 class="frame-header">Jabal Arafat</h3><p>Up to 50% Discount on Early Booking</p></div>
+    </div>
+  
+    <div class="frame"  style="border: none;">
+      <div class="img"><img src="Link → image (1) dubara.png" alt="Image 3"></div>
+      <div class="frame-text"><h3 class="frame-header">Jabal Arafat</h3><p>Up to 50% Discount on Early Booking</p></div>
+    </div>
+  
+    <div class="frame"  style="border: none;">
+      <div class="img"><img src="Link → image (1) dubara.png" alt="Image 4"></div>
+      <div class="frame-text"><h3 class="frame-header">Jabal Arafat</h3><p>Up to 50% Discount on Early Booking</p></div>
+    </div>
+  
+    <div class="frame"  style="border: none;">
+      <div class="img"><img src="Link → image (1) dubara.png" alt="Image 5"></div>
+      <div class="frame-text"><h3 class="frame-header">Jabal Arafat</h3><p>Up to 50% Discount on Early Booking</p></div>
+    </div>
+  
+    <div class="frame"  style="border: none;">
+      <div class="img"><img src="Link → image (1) dubara.png" alt="Image 6"></div>
+      <div class="frame-text"><h3 class="frame-header">Jabal Arafat</h3><p>Up to 50% Discount on Early Booking</p></div>
+    </div>
+    <div class="frame"  style="border: none;">
+        <div class="img"><img src="Link → image (1) dubara.png" alt="Image 6"></div>
+        <div class="frame-text"><h3 class="frame-header">Jabal Arafat</h3><p>Up to 50% Discount on Early Booking</p></div>
+      </div>
+      <div class="frame"  style="border: none;">
+        <div class="img"><img src="Link → image (1) dubara.png" alt="Image 6"></div>
+        <div class="frame-text"><h3 class="frame-header">Jabal Arafat</h3><p>Up to 50% Discount on Early Booking</p></div>
+      </div>
+      <div class="frame"  style="border: none;">
+        <div class="img"><img src="Link → image (1) dubara.png" alt="Image 6"></div>
+        <div class="frame-text"><h3 class="frame-header">Jabal Arafat</h3><p>Up to 50% Discount on Early Booking</p></div>
+      </div>
+        
+</div>
+</section>
+<section class="adu">
+    <h1>Trusted by all the largest travel brands</h1>
+    <div class="underline"></div>
+    <p class="par-main-sec">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet tempus felis vitae sit amet quisque.</p>
+
+
+
+<div class="adu-container">
+  <div class="img1"><img src="2.svg fill.png" alt="Review 1"></div>
+  <div class="img1"><img src="4.svg.png" alt="Review 2"></div>
+  <div class="img1"><img src="5.svg fill.png" alt="Review 3"></div>
+  <div class="img1"><img src="6.svg fill.png" alt="Review 4"></div>
+  <div class="img1"><img src="1.svg.png" alt="Review 5"></div>
+  <div class="img1"><img src="2.svg fill (1).png" alt="Review 6"></div>
+</div>
+</section>
+
+
+<section class="customer-reviews">
+  <div class="customer-reviews-container">
+    <div class="main-heading-sec">
+      <h1> Customer Reviews</h1>
+        <div class="underline"></div>
+        <p class="par-main-sec">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet tempus felis vitae sit amet quisque.</p>
+      </div>
+  
+    <div class="highlighted-review">
+          <p class="review-title">Excellent Service!</p>
+          <p class="review-text">I had an amazing experience with this company. The service was top-notch, and the staff was incredibly friendly. I highly recommend them!</p>
+          <img src="Group 483.png" alt="Customer photo" class="Customer-photo">
+         
+          <p class="review-author">Hosam Hesham</p>
+          <p class="review-role">Traveler</p>
+         <img src="Frame 1000002447.png" style="width:107px; height:6px; margin-top: 20px;"> 
+        </div>
+    </div>
+      <div class="reviews-grid">
+          <div class="review-card">
+              <p>Wow, what a fun vacation with DeluxeAir, guided by professional people.</p>
+           
+              <div class="review-last-flex">
+                <div class="review-last-img">
+          
+                <img src="Image (2).png" alt="Customer photo">
+          </div>     
+                
+          <div class="review-last-text">
+            <p class="review-author">Hosam Hesham</p>
+            <p class="review-role"><i class="ri-star-fill star-review"></i><i class="ri-star-fill star-review"></i><i class="ri-star-fill star-review"></i><i class="ri-star-fill star-review"></i><i class="ri-star-line"></i></p>
+
+          </div>
+              </div>
+          </div>
+          <div class="review-card">
+              <p>Wow, what a fun vacation with DeluxeAir, guided by professional people.</p>
+              <div class="review-last-flex">
+            <div class="review-last-img">
+              <img src="Image (2).png" alt="Customer photo">
+          
+            </div>
+              <div class="review-last-text">
+                <p class="review-author">Hosam Hesham</p>
+       
+                <p class="review-role"><i class="ri-star-fill star-review"></i><i class="ri-star-fill star-review "></i><i class="ri-star-fill star-review"></i><i class="ri-star-fill star-review"></i><i class="ri-star-line"></i></p>
+              </div>
+            </div>
+          
+            </div>
+          <div class="review-card">
+              <p>Wow, what a fun vacation with DeluxeAir, guided by professional people.</p>
+              <div class="review-last-flex">
+                <div class="review-last-img">
+          
+                <img src="Image (2).png" alt="Customer photo">
+          </div>
+          <div class="review-last-text">     
+                
+            <p class="review-author">Hosam Hesham</p>
+                <p class="review-role"><i class="ri-star-fill star-review"></i><i class="ri-star-fill star-review"></i><i class="ri-star-fill star-review"></i><i class="ri-star-fill star-review"></i><i class="ri-star-line"></i></p>
+            </div>
+          </div>
+          
+            </div>
+          <div class="review-card">
+              <p>Wow, what a fun vacation with DeluxeAir, guided by professional people.</p>
+              <div class="review-last-flex">
+               <div class="review-last-img">
+                <img src="Image (2).png" alt="Customer photo">
+           
+              </div>
+              <div class="review-last-text">
+                <p class="review-author">Hosam Hesham</p>
+
+                <p class="review-role"><i class="ri-star-fill star-review"></i><i class="ri-star-fill star-review" ></i><i class="ri-star-fill star-review"></i><i class="ri-star-fill star-review"></i><i class="ri-star-line "></i></p>
+            </div>
+          </div>
+            </div>
+      </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-section about">
+      <img src="Frame 415.png" alt="About Us Image 1">
+      <br>
+      <img src="Frame 415.png" alt="About Us Image 2">
+    </div>
+    <div class="footer-section links">
+      <h2>Company</h2>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Destinations</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Flights</a></li>
+      </ul>
+    </div>
+    <div class="footer-section services">
+      <h2>Help</h2>
+      <ul>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">FAQ's</a></li>
+        <li><a href="#">Terms and Condition</a></li>
+        <li><a href="#">Privacy-Policy</a></li>
+        <li><a href="#">Sitemap</a></li>
+      </ul>
+    </div>
+    <div class="footer-section contact">
+      <img src="Group 412.png" alt="Payment Methods" class="footer-image">
+      <div class="footer-partner">
+        <p style="color: #fff;">Become a partner with us.</p>
+        <div class="footer-social-icons">
+          <a href="#" class="footer-social-link">
+        <div class="icon-social">
+            <i class="ri-twitter-line social"></i>
+          </div>
+        </a>
+          <a href="#" class="footer-social-link">
+            <div class="icon-social">
+              <i class="ri-facebook-circle-line social"></i>
+            </div></a>
+          <a href="#" class="footer-social-link"><div class="icon-social">
+            <i class="ri-instagram-line social"></i></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+</footer>
+<div class="footer-bottom">
+  &copy; Copyright 2024, ThiqaTech. All Rights Reserved
+</div>
+
+</body>
+</html>

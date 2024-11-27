@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Blog Card Grid Layout</title>
+    <style>
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Syne', sans-serif;
+    background-color: #FCFEFE; /* Optional background for better visibility */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Ensure sidebar positions correctly */
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    gap: 1.5em;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.btn {
+    background-color:#28C258;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+}
+
+.menu-icon {
+    display: none; /* Initially hide the menu icon */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+/* Sidebar styling */
+.sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color:#fff; /* Sidebar color */
+    color:black;
+    transition: left 0.3s; /* Transition for sliding effect */
+    padding: 20px;
+    z-index: 1000;
+}
+
+.sidebar.active {
+    left: 0; /* Show sidebar */
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-top: 50px;
+}
+
+.sidebar ul li {
+    margin-bottom: 30px;
+}
+
+.sidebar ul li a {
+    color:black;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+
+@media(max-width: 764px) {
+    .menu-icon {
+        display: block; /* Show the menu icon */
+    }
+
+    nav ul {
+        display: none; /* Hide navigation links on small screens */
+    }
+
+    .sidebar {
+        left: -250px; /* Initially hide sidebar */
+    }
+}
+.active{
+color: #28C258;
+       
+}
+
+
+
+       .blog{
+        max-width:1440px;
+        margin-top: 50px;
+       }
+       .container-blog{
+        max-width:90%;
+        margin: 0 auto;
+       }
+
+       .container-blog h1{
+        text-align: center;
+        
+       }
+
+       h1 {
+    font-size: 3rem;
+}
+
+h1 span {
+    color: #28C258;
+    font-weight: bold;
+
+}
+       .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 100%;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .card {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 15px;
+            color: white;
+        }
+
+        .overlay .text {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .overlay .READMORE{
+            padding: 10px 10px;
+            background-color:#28C258;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* Specific card adjustments */
+        .card1, .card2, .card5, .card6 {
+            grid-column: span 1;
+            height: 350px;
+            
+        }
+
+        .card3, .card4 {
+            grid-column: span 2;
+            height: 250px;
+        }
+.card5, .card6{
+margin-top: -80px;
+}       
+ 
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .card {
+        height: 300px;
+    }
+    .card5, .card6 {
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .card {
+        height: 250px;
+    }
+    .card5, .card6 {
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .card {
+        max-width: 100%;
+        height: auto;
+    }
+    .card5, .card6 {
+        margin-top: 5px;
+    }
+}
+        footer {
+            background-color: #fff;
+            padding: 60px 0;
+            color: black;
+            margin-top:150px;
+        }
+        
+        .container {
+            max-width: 1170px;
+            margin: auto;
+            padding: 0 20px;
+        }
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-col {
+            flex-basis: 20%;
+            margin-bottom: 20px;
+            min-width: 200px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.5rem;
+            color: black;
+            margin-bottom: 10px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color:#28C258;
+            height: 2px;
+            width: 50px;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color:#333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color:#28C258;
+        }
+        
+        .footer-col form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-col form input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        .footer-col form button {
+            padding: 10px;
+            background-color:#28C258;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .footer-col form button:hover {
+            background-color:#28C258;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            margin: 0 10px;
+            text-decoration: none;
+            color:#28C258;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #28C258;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #777;
+            padding-top: 10px;
+        }
+        
+        .footer-bottom p {
+            color:black;
+        }
+        
+        .footer-bottom a {
+            color:black;
+            text-decoration: none;
+            margin-left: 10px;
+            
+        }
+        
+        .footer-bottom a:hover {
+            color: #28C258;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+        
+            .footer-col {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+        
+
+
+
+
+/* ---------- SCROLLBARS ---------- */
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #28C258;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color:#28C258;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color:#28C258;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <!---HEADER SECTION-->
+    <header>
+        <div class="logo">Logo</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">QR Generator</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Log in</a></li>
+                <li><a href="#" class="btn">Try It Free</a></li>
+            </ul>
+            <div class="menu-icon" onclick="toggleSidebar()">
+                <i class="material-icons">menu</i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="#">QR Generator</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Log in</a></li>
+            <li><a href="#" class="btn">Try It Free</a></li>
+        </ul>
+    </div>
+  <!--Header section END-->
+    <!-- Main Section Start -->
+    
+
+    <section class="blog">
+        <div class="container-blog">
+            <h1>Blog For <span>Qr Code</span></h1>
+<div class="grid-container">
+    <div class="card card1">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0zFHjb4itHEf426O7sZgRoj5ySEc-i3yguA&s" alt="Blog Image">
+        <div class="overlay">
+            <div class="text">Blog Title 1</div>
+            <button class="READMORE">Read More</button>
+        </div>
+    </div>
+    <div class="card card2">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp_WtxlrF9BRuMOcbExXEPHxAdOpPZh-0lUg&s" alt="Blog Image">
+        <div class="overlay">
+            <div class="text">Blog Title 2</div>
+            <button class="READMORE">Read More</button>
+        </div>
+    </div>
+    <div class="card card3">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrF2X9eHTzIUcFEGW-zgf8uGYzJ5VRVEhwlw&s" alt="Blog Image">
+        <div class="overlay">
+            <div class="text">Blog Title 3</div>
+            <button class="READMORE">Read More</button>
+        </div>
+    </div>
+    <div class="card card4">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfQQmzDKEoJRMe878m4djvfocve0eVBzl92w&s" alt="Blog Image">
+        <div class="overlay">
+            <div class="text">Blog Title 4</div>
+            <button class="READMORE">Read More</button>
+        </div>
+    </div>
+    <div class="card card5">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTKDamSwdjQ1lxOjsYcgcc4CM_5sE125fBNA&s" alt="Blog Image">
+        <div class="overlay">
+            <div class="text">Blog Title 5</div>
+            <button class="READMORE">Read More</button>
+        </div>
+    </div>
+    <div class="card card6">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq8yDGD4BT_0GGre6JVqgmoqXrulPlhfqVig&s" alt="Blog Image">
+        <div class="overlay">
+            <div class="text">Blog Title 6</div>
+            <button class="READMORE">Read More</button>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- Company Column -->
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Get started</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services Column -->
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">App design</a></li>
+                        <li><a href="#">Web design</a></li>
+                        <li><a href="#">Logo design</a></li>
+                        <li><a href="#">Banner design</a></li>
+                    </ul>
+                </div>
+
+                <!-- Account Column -->
+                <div class="footer-col">
+                    <h4>Account</h4>
+                    <ul>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">My account</a></li>
+                        <li><a href="#">Preferences</a></li>
+                        <li><a href="#">Purchase</a></li>
+                    </ul>
+                </div>
+
+                <!-- Courses Column -->
+                <div class="footer-col">
+                    <h4>Courses</h4>
+                    <ul>
+                        <li><a href="#">HTML & CSS</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">Photography</a></li>
+                        <li><a href="#">Photoshop</a></li>
+                    </ul>
+                </div>
+
+                <!-- Subscribe Column -->
+                <div class="footer-col">
+                    <h4>Registration</h4>
+                    <form action="#">
+                        <button type="submit">Register</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="social-icons">
+                <a href="#"><i class="material-icons">facebook</i></a>
+                <a href="#"><i class="ri-twitter-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                <a href="#"><i class="ri-whatsapp-line" ></i></a>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 QR. All rights reserved</p>
+                <p><a href="#">Privacy policy</a> | <a href="#">Terms & conditions</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

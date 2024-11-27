@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="Qr_logo-removebg-preview.png" type="image/x-icon">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Syne', sans-serif;
+    background-color: #FCFEFE; /* Optional background for better visibility */
+
+  }
+    .qrgenrator{
+        max-width:1440px;
+        margin: 0 auto;
+    }
+    .qrgenrator-container{
+        max-width:90%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+        
+    /* Container for FAQ Cards */
+    .faq-container {
+      display: flex;
+      flex-direction: column; /* Column layout */
+      gap: 20px;
+      width: 90%;
+      max-width: 600px; /* Restrict max width */
+    }
+
+    /* FAQ Card Styles */
+    .faq-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 100%; /* Full width */
+    }
+
+    .faq-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .faq-header:hover {
+      background: #f1f5f9;
+    }
+
+    .icon img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .faq-title {
+      flex: 1;
+      margin-left: 15px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .faq-title h3 {
+      margin: 0;
+    }
+
+    .faq-title .required {
+      color: #e63946;
+      margin-left: 5px;
+      font-size: 14px;
+    }
+
+    .arrow {
+      font-size: 20px;
+      color: #ccc;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-content {
+      display: none;
+      padding: 15px 20px;
+      border-top: 1px solid #eee;
+      animation: slide-down 0.3s ease forwards;
+    }
+
+    .faq-content.active {
+      display: block;
+    }
+
+    .faq-content p {
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .faq-content input {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .faq-content input:focus {
+      border-color: #007bff;
+    }
+
+    /* Animations */
+    @keyframes slide-down {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .faq-header {
+        padding: 10px 15px;
+      }
+
+      .faq-content {
+        padding: 10px 15px;
+      }
+
+      .faq-title {
+        font-size: 14px;
+      }
+
+      .icon img {
+        width: 25px;
+        height: 25px;
+      }
+
+      .faq-container {
+        width: 100%;
+      }
+    }
+    .Genrate-qr {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .genrate-qr-container {
+      max-width:80%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-phone{
+            width: 300px;
+            height: 600px;
+            border-radius: 50px;
+            background-color: #fff;
+            position: relative;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+            overflow-y: auto; /* Enable vertical scrolling */
+            border: 10px solid #1c1c1c;
+            margin-top: 20px;
+            
+          
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 40px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        overflow-x: hidden;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .notch, .speaker, .camera, .home-button, .volume-buttons, .power-button {
+            position: absolute;
+        }
+        
+        .notch {
+            width: 80px;
+            height: 20px;
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .speaker {
+            width: 60px;
+            height: 10px;
+            background-color: #888;
+            border-radius: 5px;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .camera {
+            width: 10px;
+            height: 10px;
+            background-color: #555;
+            border-radius: 50%;
+            top: 10px;
+            right: 20px;
+        }
+
+        .home-button {
+            width: 60px;
+            height: 8px;
+            background-color: #888;
+            border-radius: 4px;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .volume-buttons {
+            top: 120px;
+            left: -10px;
+            width: 8px;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .volume-button {
+            height: 6px;
+            width: 100%;
+            background-color: #28C258;
+            margin: 8px 0;
+            border-radius: 2px;
+        }
+
+        .power-button {
+            top: 200px;
+            right: -10px;
+            width: 8px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 3px;
+        }
+
+        .inner-screen {
+         
+background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .inner-screen img{
+            margin-top: 100px;
+        }
+ /* Custom Scrollbar */
+        .screen::-webkit-scrollbar {
+  width: 1px; /* Width of the scrollbar */
+}
+
+.screen::-webkit-scrollbar-track {
+  background:#28C258; /* Track color */
+}
+
+.screen::-webkit-scrollbar-thumb {
+  background-color:#28C258; /* Scrollbar thumb color */
+  border-radius: 4px; /* Scrollbar thumb rounded corners */
+}
+
+.screen::-webkit-scrollbar-thumb:hover {
+  background:#28C258; /* Hover effect for the scrollbar thumb */
+}
+.genrate-section{
+  max-width:1440px;
+  margin: 0 auto;
+}
+.genrate-container{
+  max-width:90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+gap: 40px;
+ }
+ @media(max-width:764px){
+    .genrate-container{
+    flex-direction: column;
+    }
+    
+ }
+ @media(max-width:764px){
+    .Mobile-container {
+  margin-top: 300px;
+  }
+  .genrate-container{
+flex-direction: column;
+
+}
+ }
+.frames-container{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+} 
+
+</style>
+<section class="qrgenrator">
+    <div class="qrgenrator-container">
+        <div class="faq-container">
+        <div class="faq-card">
+            <div class="faq-header" onclick="toggleContent(this)">
+              <div class="icon">
+                <img src="https://img.icons8.com/ios-filled/50/000000/globe.png" alt="Icon">
+              </div>
+              <div class="faq-title">
+                <h3>Website Information</h3>
+                <span class="required">*</span>
+              </div>
+              <div class="arrow">
+                <span>&#8250;</span>
+              </div>
+            </div>
+            <div class="faq-content">
+                <p>Frames Makes Your QR code Stand Out from the crowd inspiring more scans.</p>
+                <div class="frames-container">
+             <div class="frame"><img src="frame-89485_640.jpg" style="width:70px; height:70px;"></div>
+             <div class="frame"><img src="./mainframes/christmas-6832524_1280.png" style="width:70px; height:70px;"></div>
+             <div class="frame"><img src="./mainframes/floral-frame-6787696_1280.png" style="width:70px; height:70px;"></div>
+             <div class="frame"><img src="./mainframes/decorative-1837495_1280.png" style="width:70px; height:70px;"></div>
+             <div class="frame"><img src="./mainframes/flowers-6616117_1280.png" style="width:70px; height:70px;"></div>
+             <div class="frame"><img src="./mainframes/frame-1534814_1280.jpg" style="width:70px; height:70px;"></div>
+             <div class="frame"><img src="./mainframes/frame-1978727_1280.png" style="width:70px; height:70px;"></div>
+             <div class="frame"><img src="./mainframes/frame-4709861_1280.png" style="width:70px; height:70px;"></div>
+             <div class="frame"><img src="./mainframes/frame-7128844_1280.png" style="width:70px; height:70px;"></div>
+             <div class="frame"><img src="./mainframes/postcard-1999687_1280.png" style="width:70px; height:70px;"></div>
+             <div class="frame"><img src="./mainframes/background-1297485_1280.png" style="width:70px; height:70px;"></div>
+             <div class="frame"><img src="./mainframes/heart-6655227_1280.png" style="width:70px; height:70px;"></div>
+             <div class="frame"><img src="./mainframes/needles-6840069_1280.png" style="width:70px; height:70px;"></div>
+             <div class="frame"><img src="./mainframes/frame-6790662_1280.png" style="width:70px; height:70px;"></div>
+            
+            </div>
+             
+            </div>
+          </div>
+          <div class="faq-card">
+            <div class="faq-header" onclick="toggleContent(this)">
+              <div class="icon">
+                <img src="https://img.icons8.com/ios-filled/50/000000/globe.png" alt="Icon">
+              </div>
+              <div class="faq-title">
+                <h3>QR Code Settings</h3>
+                <span class="required">*</span>
+              </div>
+              <div class="arrow">
+                <span>&#8250;</span>
+              </div>
+            </div>
+            <div class="faq-content">
+              <p>Customize the QR code appearance:</p>
+              <input type="text" placeholder="Enter color or size" />
+            </div>
+          </div>
+          <div class="faq-card">
+            <div class="faq-header" onclick="toggleContent(this)">
+              <div class="icon">
+                <img src="https://img.icons8.com/ios-filled/50/000000/globe.png" alt="Icon">
+              </div>
+              <div class="faq-title">
+                <h3>QR Code Settings</h3>
+                <span class="required">*</span>
+              </div>
+              <div class="arrow">
+                <span>&#8250;</span>
+              </div>
+            </div>
+            <div class="faq-content">
+              <p>Customize the QR code appearance:</p>
+              <input type="text" placeholder="Enter color or size" />
+            </div>
+          </div>
+          <div class="faq-card">
+            <div class="faq-header" onclick="toggleContent(this)">
+              <div class="icon">
+                <img src="https://img.icons8.com/ios-filled/50/000000/globe.png" alt="Icon">
+              </div>
+              <div class="faq-title">
+                <h3>QR Code Settings</h3>
+                <span class="required">*</span>
+              </div>
+              <div class="arrow">
+                <span>&#8250;</span>
+              </div>
+            </div>
+            <div class="faq-content">
+              <p>Customize the QR code appearance:</p>
+              <input type="text" placeholder="Enter color or size" />
+            </div>
+          </div>
+        
+        </div>
+
+            <div class="mobile-phone">
+            <!-- Screen 1 -->
+            <div class="screen" id="screen1">
+                <div class="notch"></div>
+                <div class="speaker"></div>
+                <div class="inner-screen">
+            <img src="QRIMG.png">
+                </div>
+   
+            <div class="volume-buttons">
+                    <div class="volume-button"></div>
+                    <div class="volume-button"></div>
+                    <div class="volume-button"></div>
+                </div>
+                <div class="power-button"></div>
+                <div class="camera"></div>
+            </div>
+    
+            <!-- Screen 2 -->
+               </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+<script>
+    function toggleContent(element) {
+      const content = element.nextElementSibling;
+      content.classList.toggle('active');
+    }
+  </script>

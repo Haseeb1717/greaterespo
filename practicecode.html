@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="Qr_logo-removebg-preview.png" type="image/x-icon">
+    <style>
+ @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Syne', sans-serif;
+    background-color: #FCFEFE; /* Optional background for better visibility */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+   }
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    gap: 1.5em;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.btn {
+    background-color:#28C258;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+}
+
+.menu-icon {
+    display: none; /* Initially hide the menu icon */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+/* Sidebar styling */
+.sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color:#fff; /* Sidebar color */
+    color:black;
+    transition: left 0.3s; /* Transition for sliding effect */
+    padding: 20px;
+    z-index: 1000;
+}
+
+.sidebar.active {
+    left: 0; /* Show sidebar */
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-top: 50px;
+}
+
+.sidebar ul li {
+    margin-bottom: 30px;
+}
+
+.sidebar ul li a {
+    color:black;
+    text-decoration: none;
+    font-size: 1rem;
+}
+#imageContainer {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #image {
+      width: 300px;
+      height: auto;
+      border: 5px solid #333;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    #text {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+    }
+
+
+@media(max-width: 764px) {
+  header{
+background-color: transparent;
+box-shadow: none;
+
+
+  }
+    .menu-icon {
+        display: block; /* Show the menu icon */
+    }
+
+    nav ul {
+        display: none; /* Hide navigation links on small screens */
+    }
+
+    .sidebar {
+        left: -250px; /* Initially hide sidebar */
+    }
+}
+.active{
+color: #28C258;
+       
+}
+
+ .qrgenrator{
+        max-width:1440px;
+        margin: 0 auto;
+    }
+    .qrgenrator-container{
+        max-width:85%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    @media(max-width:1150px){
+      .qrgenrator-container{
+            flex-direction: column;
+            margin-top: 100px;
+        }
+    
+    }
+    
+      @media(max-width:764px){
+        .qrgenrator-container{
+            flex-direction: column;
+        }
+      }  
+    /* Container for FAQ Cards */
+    .faq-container {
+      display: flex;
+      flex-direction: column; /* Column layout */
+      gap: 20px;
+      width: 90%;
+      max-width: 700px; /* Restrict max width */
+    }
+
+    /* FAQ Card Styles */
+    .faq-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 100%; /* Full width */
+    }
+
+    .faq-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 35px 20px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .faq-header:hover {
+      background: #f1f5f9;
+    }
+
+    .icon img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .faq-title {
+      flex: 1;
+      margin-left: 15px;
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .faq-title h3 {
+      margin: 0;
+    }
+
+    .faq-title .required {
+      color: #e63946;
+      margin-left: 5px;
+      font-size: 14px;
+    }
+
+    .arrow {
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-content {
+      display: none;
+      padding: 15px 20px;
+      border-top: 1px solid #eee;
+      animation: slide-down 0.3s ease forwards;
+    }
+
+    .faq-content.active {
+      display: block;
+    }
+
+    .faq-content p {
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .faq-content input {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .faq-content input:focus {
+      border-color: #007bff;
+    }
+
+    /* Animations */
+    @keyframes slide-down {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .faq-header {
+        padding: 10px 15px;
+      }
+
+      .faq-content {
+        padding: 10px 15px;
+      }
+
+      .faq-title {
+        font-size: 14px;
+      }
+
+      .icon img {
+        width: 25px;
+        height: 25px;
+      }
+
+      .faq-container {
+        width: 100%;
+        margin-top: 50px;
+      }
+    }
+    .Genrate-qr {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .genrate-qr-container {
+      max-width:80%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-phone{
+            width: 290px;
+            height: 600px;
+            border-radius: 50px;
+            background-color: #fff;
+            position: relative;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+            overflow-y: auto; /* Enable vertical scrolling */
+            border: 10px solid #1c1c1c;
+            margin-top: 60px;
+            
+          
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 40px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        overflow-x: hidden;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .notch, .speaker, .camera, .home-button, .volume-buttons, .power-button {
+            position: absolute;
+        }
+        .time{
+          margin-top: 5px;
+          margin-left: 20px;
+        }
+        .notch {
+            width: 80px;
+            height: 20px;
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .speaker {
+            width: 60px;
+            height: 10px;
+            background-color: #888;
+            border-radius: 5px;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .camera {
+            width: 10px;
+            height: 10px;
+            background-color: #555;
+            border-radius: 50%;
+            top: 10px;
+            right: 20px;
+        }
+
+        .home-button {
+            width: 60px;
+            height: 8px;
+            background-color: #888;
+            border-radius: 4px;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .volume-buttons {
+            top: 120px;
+            left: -10px;
+            width: 8px;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .volume-button {
+            height: 6px;
+            width: 100%;
+            background-color: #28C258;
+            margin: 8px 0;
+            border-radius: 2px;
+        }
+
+        .power-button {
+            top: 200px;
+            right: -10px;
+            width: 8px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 3px;
+        }
+
+        .inner-screen {
+         
+background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .inner-screen img{
+            margin-top: 100px;
+        }
+ /* Custom Scrollbar */
+        .screen::-webkit-scrollbar {
+  width: 1px; /* Width of the scrollbar */
+}
+
+.screen::-webkit-scrollbar-track {
+  background:#28C258; /* Track color */
+}
+
+.screen::-webkit-scrollbar-thumb {
+  background-color:#28C258; /* Scrollbar thumb color */
+  border-radius: 4px; /* Scrollbar thumb rounded corners */
+}
+
+.screen::-webkit-scrollbar-thumb:hover {
+  background:#28C258; /* Hover effect for the scrollbar thumb */
+}
+.genrate-section{
+  max-width:1440px;
+  margin: 0 auto;
+}
+.genrate-container{
+  max-width:90%;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+gap: 40px;
+ }
+ @media(max-width:764px){
+    .genrate-container{
+    flex-direction: column;
+    }
+    
+ }
+ @media(max-width:764px){
+    .Mobile-container {
+  margin-top: 300px;
+  }
+  .genrate-container{
+flex-direction: column;
+
+}
+ }
+ .frames-container2{
+  display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align content to the start */
+    gap:10px;
+    justify-content: center;
+    max-width:800px;
+ flex-wrap: wrap;
+  }
+ .frames-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align content to the start */
+    margin-top: 30px;
+    
+    gap: 20px;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent items from wrapping */
+    padding-bottom: 10px; /* Space for the scrollbar */
+}
+
+/* Style the WebKit scrollbar */
+.frames-container::-webkit-scrollbar {
+    height:2px; /* Set the height for horizontal scrollbar */
+}
+
+.frames-container::-webkit-scrollbar-track {
+    background:#28C258; /* Background of the scrollbar track */
+}
+
+.frames-container::-webkit-scrollbar-thumb {
+    background:#28C258; /* Color of the scrollbar handle */
+    border-radius: 1px; /* Rounded scrollbar handle */
+}
+
+.frames-container::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Change color on hover */
+}
+
+.frame {
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    display: inline-block; /* Ensure items stay in one line for horizontal scrolling */
+}
+#bordered{
+  border: 3px solid #28C258;
+}
+.frame:hover{
+  border: 3px solid #28C258;
+}
+.progress-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.step-number {
+  background-color: #ddd;
+  color: #555;
+  border-radius: 50%;
+  width: 40px;
+  height:40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.step:nth-child(5) .step-number {
+  background-color: #28C258;
+  color: white;
+}
+
+.step-line {
+  flex: 1;
+  height: 3px;
+  background-color: #ddd;
+  margin: 0 5px;
+}
+
+.step:nth-child(3) + .step-line {
+  background-color: #28C258;
+}
+
+.step-title {
+  margin-top: 8px;
+  font-size: 15px;
+  text-align: center;
+  color: #555;
+}
+
+@media (max-width: 480px) {
+  .step-title {
+    font-size: 10px;
+  }
+}
+    .input-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: block;
+      color: #4c4452;
+    }
+
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      position: relative;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #fff;
+    }
+
+    .input-wrapper input {
+      flex: 1;
+      border: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+      color: #333;
+    }
+
+    .pen-icon {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color:#28C258;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+
+    .pen-icon:hover {
+      background-color: #85e3ad;
+    }
+
+    .pen-icon svg {
+      width: 18px;
+      height: 18px;
+    color: #fff;
+    }
+
+    .pen-icon input[type="color"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+    
+</style>
+<header>
+    <div class="logo"><img src="Qr_logo-removebg-preview.png" style="width:40px; height:40px;"></div>
+    <nav>
+        <ul>
+            <li><a href="#" class="active">QR Generator</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Log in</a></li>
+            <li><a href="#" class="btn">Try It Free</a></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleSidebar()">
+            <i class="material-icons">menu</i>
+        </div>
+    </nav>
+</header>
+
+<div class="sidebar" id="sidebar">
+    <ul>
+        <li><a href="#">QR Generator</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Log in</a></li>
+        <li><a href="#" class="btn">Try It Free</a></li>
+    </ul>
+</div>
+<!--Header section END-->
+
+<section class="qrgenrator">
+  <div class="progress-bar">
+    <div class="step active">
+      <div class="step-number">1</div>
+      <div class="step-title">Select Type of QR</div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-title"> Information</div>
+    </div>
+    <div class="step-line"></div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-title">QR Design</div>
+    </div>
+  </div>
+
+  <div class="qrgenrator-container">
+      <div class="faq-container">
+        <h2>3. Design the QR</h2>
+          <div class="faq-card">
+            <div class="faq-header" onclick="toggleContent(this)">
+              <div class="icon">
+            <i class="material-icons">qr_code_scanner</i>  
+            </div>
+              <div class="faq-title">
+                <h3>QR Code Pattren</h3>
+              </div>
+              <div class="arrow">
+                <span><i class="material-icons">chevron_right</i></span>
+              </div>
+            </div>
+            <div class="faq-content">
+              <p>Customize the QR code appearance:</p>
+                   <div class="frames-container">
+          <button class="frame" id="pattren1"><img src="qrapplyfor1.png" id="pattren1"></button>
+        <button class="frame" id="pattren2"><img src="pattrenapply2for2.png" id="pattren2"></button> 
+        </div>
+      </div>
+          </div>
+          <div class="faq-card">
+            <div class="faq-header" onclick="toggleContent(this)">
+              <div class="icon">
+            <i class="material-icons">rounded_corner</i>  
+            </div>
+              <div class="faq-title">
+                <h3>QR Code Corners</h3>
+              </div>
+              <div class="arrow">
+                <span><i class="material-icons">chevron_right</i></span>
+         
+            </div>
+            </div>
+            <div class="faq-content">
+              <p>Customize the QR code appearance:</p>
+      <style>
+        .corners-flexex{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+        }
+      </style>
+              <div class="corners-flexex">
+            <div class="corner-square">
+         <p>Frame Around corners dots style</p>
+            <div class="frame" id="corner-square"><img src="cornerrr.png" id="corner-square"></div>
+            </div>
+            <div class="corner-dots">
+            <p>Corners dots type</p>
+          <div class="frame" id="corner-dots"><img src="cornerdotrr.png" id="corner-dots"></div>
+            </div>
+           </div>  
+           
+            </div>
+          </div>
+          <div class="faq-card">
+            <div class="faq-header" onclick="toggleContent(this)">
+              <div class="icon">
+          <i class="material-icons">imagesmode</i>
+            </div>
+              <div class="faq-title">
+                <h3>Add Logo</h3>
+              </div>
+              <div class="arrow">
+                <span><i class="material-icons">chevron_right</i></span>
+         
+            </div>
+            </div>
+            <div class="faq-content">
+              <p>Customize the QR code appearance:</p>
+              <input type="text" placeholder="Enter color or size" />
+           
+            </div>
+          </div>
+          <div class="faq-card">
+            <div class="faq-header" onclick="toggleContent(this)">
+              <div class="icon">
+                <i class="material-icons">filter_frames</i>
+          
+            </div>
+              <div class="faq-title">
+                <h3>Frames</h3>
+</div>
+              <div class="arrow">
+                <span><i class="material-icons">chevron_right</i></span>
+         
+            </div>
+            </div>
+            <div class="faq-content">
+                <p>Frames Makes Your QR code Stand Out from the crowd inspiring more scans.</p>
+                <div class="frames-container">
+           <button class="frame" id="bordered"><img src="https://online-qr-generator.com/themes/altum/assets/images/frame-none.png"style="width:70px; height:70px;" class="frame-none"></button>
+           <button class="frame" id="showImageBtn" ><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/1.svg" class="frame-none" style="width: 70px; height:70px;"></button>
+           <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/2.svg" style="width:70px; height:70px;"></button>
+          <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/3.svg" style="width:70px;height:70px;"></button>
+          <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/4.svg" style="width:70px; height:70px;"></button>
+      <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/5.svg" style="height:70px; width:70px;"></button>
+     <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/6.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/7.svg" style="width:70px; height:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/8.svg" style="width:70px;height:70px;"></button> 
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/9.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/10.svg" style="height:70px;width:70px;"></button>
+</div>
+<div class="frames-container">
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/11.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/12.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/13.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/14.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/15.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/16.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/17.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/18.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/19.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/20.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/21.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/22.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/23.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/24.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/25.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/26.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/27.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/28.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/29.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/30.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/31.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/32.svg" style="height:70px;width:70px;"></button>
+    <button class="frame"><img src="https://online-qr-generator.com/themes/altum/assets/images/qrframe/33.svg" style="height:70px;width:70px;"></button>
+
+  </div>
+  <br>
+  <div class="input-container">
+    <label for="styled-input">Frame text</label>
+    <div class="input-wrapper">
+      <input type="text" id="styled-input" value="Scan me!" />
+      <div class="pen-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M13.498.795l.149-.149a1.207 1.207 0 0 1 1.708 0l.849.849a1.207 1.207 0 0 1 0 1.708l-.149.149L13.498.795zM11.854 2.44l-.354.354-10.5 10.5A.5.5 0 0 0 1 14v1.5a.5.5 0 0 0 .5.5H3a.5.5 0 0 0 .354-.146l10.5-10.5.354-.354-2.354-2.354zm-1.5 1.5L1.854 12.44H1.5V12l8.5-8.5 1.354 1.354z"/>
+        </svg>
+        <input type="color" id="colorPicker" onchange="changeInputColor()" />
+      </div>
+    </div>
+  </div>
+<br>
+<style>
+ .input-container label {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Input wrapper to align input and toggle */
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* Input field styling */
+.input-wrapper input[type="text"] {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 10px;
+  
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: absolute;
+  right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* Hide default checkbox */
+.toggle-switch input[type="checkbox"] {
+  display: none;
+}
+
+/* Custom toggle */
+.toggle-switch label {
+  width: 30px;
+  height: 15px;
+  background: #ccc;
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Circle inside the toggle */
+.toggle-switch label::after {
+  content: '';
+  width: 13px;
+  height: 13px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: transform 0.3s;
+}
+
+/* Active toggle */
+.toggle-switch input[type="checkbox"]:checked + label {
+  background: #4caf50;
+
+}
+
+.toggle-switch input[type="checkbox"]:checked + label::after {
+  transform: translateX(15px);
+}
+#input-cont{
+display: flex;
+align-items: center;
+justify-content: center;
+gap:30px;
+}
+.color-picker-container {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .color-picker-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .color-picker {
+      position: relative;
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px 10px;
+      background-color: #fff;
+    }
+
+    .color-picker input[type="color"] {
+      width: 25px;
+      height: 25px;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    .color-picker input[type="text"] {
+      border: none;
+      outline: none;
+      width: 80px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .color-picker svg {
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+    }
+    
+    /* Label styles */
+    .input-container label {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    /* Input wrapper to align input and toggle */
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+
+      position: relative;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 8px;
+    }
+
+    /* Input field styling */
+    .input-wrapper input[type="text"] {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      padding: 0;
+    }
+
+    /* Toggle Switch */
+    .toggle-switch {
+      position: absolute;
+      right: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Hide default checkbox */
+    .toggle-switch input[type="checkbox"] {
+      display: none;
+    }
+
+    /* Custom toggle */
+    .toggle-switch label {
+      width: 30px;
+      height: 15px;
+      background: #ccc;
+      border-radius: 15px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    /* Circle inside the toggle */
+    .toggle-switch label::after {
+      content: '';
+      width: 13px;
+      height: 13px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      transition: transform 0.3s;
+    }
+
+    /* Active toggle */
+    .toggle-switch input[type="checkbox"]:checked + label {
+      background: #4caf50;
+    }
+
+    .toggle-switch input[type="checkbox"]:checked + label::after {
+      transform: translateX(15px);
+    }
+
+    /* Flex container to align the inputs and color picker */
+    #input-cont {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      margin-top: 10px;
+    }
+
+    /* Color picker wrapper styling */
+    .color-picker-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .color-picker {
+      position: relative;
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px 10px;
+      background-color: #fff;
+    }
+
+    .color-picker input[type="color"] {
+      width: 25px;
+      height: 25px;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    .color-picker input[type="text"] {
+      border: none;
+      outline: none;
+      width: 80px;
+      text-align: center;
+      font-size: 14px;
+    }
+    .hidden-inputs,.hidden-second{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap:20px;
+      display: none;
+    }
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    .checkbox-container input[type="checkbox"]:checked + span {
+      color: green;
+    }
+    
+.hidden {
+    display: none;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #e7e7e7;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+#extraDiv {
+    display: none; /* Hidden by default */
+  margin-left:5px;
+  background-color:black;
+  color:#fff;
+  padding:10px 80px;
+  margin-top:5px;
+}
+
+#pattrenresult,#pattren2result{
+  display: none;
+}
+#corneraround,#cornerdot{
+  display: none;
+}
+</style>
+<div class="input-container">
+  <label for="styled-input">Frame color</label>
+  <div id="input-cont">
+    <!-- Label and Toggle Input Section -->
+    <div class="input-container">
+      <label for="custom-input">Label</label>
+      <div class="input-wrapper" style="
+  background-color:#ccc">
+        <input type="text" id="custom-input" placeholder="Enter text here" style="
+  background-color:#ccc">
+        <div class="toggle-switch">
+          <input type="checkbox" id="toggle" />
+          <label for="toggle"></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- End Color Section -->
+    <div class="color-picker-wrapper">
+      <label for="end-color-1">End Color</label>
+      <div class="color-picker">
+        <input type="color" id="end-color-1" />
+        
+        <input type="text" value="#000000" readonly />
+      </div>
+    </div>
+  </div>
+  <div class="hidden-inputs">
+    <!-- Additional color pickers that will be toggled -->
+    <div class="color-picker-wrapper">
+      <label for="end-color-2">End Color</label>
+      <div class="color-picker">
+        <input type="color" id="end-color-2" />
+        <input type="text" value="#000000" readonly />
+      </div>
+    </div>
+
+    <div class="color-picker-wrapper">
+      <label for="end-color-3">End Color</label>
+      <div class="color-picker">
+        <input type="color" id="end-color-3" />
+        <input type="text" value="#000000" readonly />
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<div class="input-container">
+  <label for="styled-input">Frame background color</label>
+  <div id="input-cont">
+  
+    <!-- Label and Toggle Input Section -->
+    <div class="input-container">
+      <label for="custom-input">Label</label>
+      <div class="input-wrapper" style="
+  background-color:#ccc">
+        <input type="text" id="custom-input-2" placeholder="Enter text here" style="
+  background-color:#ccc">
+        <div class="toggle-switch">
+          <input type="checkbox" id="togglee" />
+          <label for="togglee"></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- End Color Section -->
+    <div class="color-picker-wrapper" >
+      <label for="end-color-4">End Color</label>
+      <div class="color-picker">
+        <input type="color" id="end-color-4" />
+        <input type="text" value="#000000" readonly />
+      </div>
+    </div>
+  </div>
+  <div class="hidden-second" >
+    <!-- Additional color pickers that will be toggled -->
+    <div class="color-picker-wrapper">
+      <label for="end-color-5">End Color</label>
+      <div class="color-picker">
+        <input type="color" id="end-color-5" />
+        <input type="text" value="#000000" readonly />
+      </div>
+    </div>
+
+    <div class="color-picker-wrapper">
+      <label for="end-color-6">End Color</label>
+      <div class="color-picker">
+        <input type="color" id="end-color-6" />
+        <input type="text" value="#000000" readonly />
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+   <div class="frames-container2">
+    <button class="frame"><img src="./mainframes/frame1.svg" style="width:70px; height:70px;"></svg> 
+      <button class="frame"><img src="./mainframes/frame2.svg" style="width:70px; height:70px;"></svg>
+                <button class="frame"><img src="./mainframes/frame3.svg" style="width:70px; height:70px;"></svg>
+                  <button class="frame"><img src="./mainframes/frame4.svg" style="width:70px; height:70px;"></svg>
+                    <button class="frame"><img src="./mainframes/frame5.svg" style="width:70px; height:70px;"></svg>
+                      <button class="frame"><img src="./mainframes/frame6.svg" style="width:70px; height:70px;"></svg>
+                        <button class="frame"><img src="./mainframes/frame7.svg" style="width:70px; height:70px;"></svg>
+                          <button class="frame"><img src="./mainframes/frame8.svg" style="width:70px; height:70px;"></svg>
+                            <button class="frame"><img src="./mainframes/frame9.svg" style="width:70px; height:70px;"></svg>
+                              <button class="frame"><img src="./mainframes/frame10.svg" style="width:70px; height:70px;"></svg>
+                                <button class="frame"><img src="./mainframes/frame11.svg" style="width:70px; height:70px;"></svg>
+                                  <button class="frame"><img src="./mainframes/frame12.svg" style="width:70px; height:70px;"></svg>
+                                    <button class="frame"><img src="./mainframes/frame13.svg" style="width:70px; height:70px;"></svg>
+                                      <button class="frame"><img src="./mainframes/frame14.svg" style="width:70px; height:70px;"></svg>
+                                        <button class="frame"><img src="./mainframes/frame15.svg" style="width:70px; height:70px;"></svg>
+                                          <button class="frame"><img src="./mainframes/frame16.svg" style="width:70px; height:70px;"></svg>
+                                            <button class="frame"><img src="./mainframes/frame17.svg" style="width:70px; height:70px;"></svg>
+                                              <button class="frame"><img src="./mainframes/frame18.svg" style="width:70px; height:70px;"></svg>
+                                                <button class="frame"><img src="./mainframes/frame19.svg" style="width:70px; height:70px;"></svg>
+        <button class="frame"><img src="./mainframes/frame20.svg" style="width:70px; height:70px;"></svg>
+       <button class="frame"><img src="./mainframes/frame21.svg" style="width:70px; height:70px;"></svg>
+      <button class="frame"><img src="./mainframes/frame22.svg" style="width:70px; height:70px;"></svg>
+      <button class="frame"><img src="./mainframes/frame23.svg" style="width:70px; height:70px;"></svg>
+      <button class="frame"><img src="./mainframes/frame24.svg" style="width:70px; height:70px;"></svg>
+      <button class="frame"><img src="./mainframes/frame25.svg" style="width:70px; height:70px;"></svg>
+      <button class="frame"><img src="./mainframes/frame26.svg" style="width:70px; height:70px;"></svg>
+      <button class="frame"><img src="./mainframes/frame28.svg" style="width:70px; height:70px;"></svg>
+                                             <button class="frame"><img src="./mainframes/frame29.svg" style="width:70px; height:70px;"></svg>
+                                       <button class="frame"><img src="./mainframes/frame30.svg" style="width: 70px; height: 70px;"></button>
+                                       <button class="frame"><img src="./mainframes/frame31.svg" style="width: 70px; height: 70px;"></button>
+                                      </div>
+                                        </div>
+          </div>
+      
+        </div>
+
+            <div class="mobile-phone">
+            <!-- Screen 1 -->
+            <div class="screen" id="screen1">
+              <div class="time">1:10pm</div>
+              <div class="speaker"></div>
+                <div class="inner-screen">
+         <div id="pattrenresult"><img src="pattren 2.png"></div>  
+       <div id="pattren2result"><img src="pattren3.png"></div>
+       <div id="corneraround"><img src="corneraround.png"></div>  
+      <div id="cornerdot"><img src="cornerdot.png"></div>
+      <img src="QRIMG.png" id="imageu">
+    <div id="imageContainer">
+      <img src="cornerdot.png" id="image">
+      <div id="text" class="scan-text">Scan Me</div>  
+    </div>
+    </div>
+   
+            <div class="volume-buttons">
+                    <div class="volume-button"></div>
+                    <div class="volume-button"></div>
+                    <div class="volume-button"></div>
+                </div>
+                <div class="power-button"></div>
+                <div class="camera"></div>
+            </div>
+    
+            <!-- Screen 2 -->
+               </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+<style>
+
+.imageContainer{
+  display: none;
+}
+/* Sticky bottom navigation */
+#image{
+  display: none;
+}
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #28C258;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:10px 10px;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+  border-radius: 10px; /* Rounded corners */
+  backdrop-filter: blur(5px); /* Applies the blur effect */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1); /* Light shadow for a lifted effect */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Light border for a glass effect */
+
+}
+
+.nav-icon {
+  width: 40px;
+  height: 40px;
+  color: #28C258;
+}
+
+.next-button {
+  background-color:#28C258;
+  color:#fff;
+  border: none;
+  padding: 15px 50px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .next-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+.icon-container{
+    cursor: pointer;
+}
+</style>
+<nav class="bottom-nav">
+    <div class="icon-container">
+    <i class="material-icons">arrow_back_ios</i>
+    </div>
+    <button class="next-button">Create</button>
+  </nav>
+<script>
+    function toggleContent(element) {
+      const content = element.nextElementSibling;
+      content.classList.toggle('active');
+    }
+    function changeInputColor() {
+      const input = document.getElementById('styled-input');
+      const colorPicker = document.getElementById('colorPicker');
+      input.style.backgroundColor = colorPicker.value;
+    }
+    
+    document.getElementById("toggle").addEventListener("click", function() {
+  var hiddenInputs = document.querySelector(".hidden-inputs");
+  // Toggle the display property
+  if (hiddenInputs.style.display === "block") {
+    hiddenInputs.style.display = "none";
+  } else {
+    hiddenInputs.style.display = "block";
+    hiddenInputs.style.display = 'flex';
+
+  }
+});
+
+document.getElementById("togglee").addEventListener("click", function() {
+  var hiddenSecond = document.querySelector(".hidden-second");
+  // Toggle the display property
+  if (hiddenSecond.style.display === "block") {
+    hiddenSecond.style.display = "none";
+  } else {
+    hiddenSecond.style.display = "block";
+    hiddenSecond.style.display = 'flex';
+
+  }
+});
+  </script>
+
+<script>
+  // Event listener for Pattern 1
+  document.getElementById('pattren1').addEventListener('click', function() {
+    const image = document.getElementById('image'); // Default image
+    const pattrenResult = document.getElementById('pattrenresult'); // Pattern 1 result
+    const pattrenResult2 = document.getElementById('pattren2result'); // Pattern 2 result
+    const cornerDot = document.getElementById('cornerdot'); // Corner Dot
+    const cornerSquare = document.getElementById('corner-around'); // Corner Square
+    const ImageU = document.getElementById('imageu');
+    ImageU.style.display = 'none';
+    
+    pattrenResult.style.display = 'block'; // Show Pattern 1 result
+    image.style.display = 'none'; // Hide default image
+    pattrenResult2.style.display = 'none'; // Hide Pattern 2 result
+    cornerDot.style.display = 'none'; // Hide Corner Dot
+    cornerSquare.style.display = 'none'; // Hide Corner Square
+  });
+
+  // Event listener for Pattern 2
+  document.getElementById('pattren2').addEventListener('click', function() {
+    const image = document.getElementById('image'); // Default image
+    const pattrenResult = document.getElementById('pattrenresult'); // Pattern 1 result
+    const pattrenResult2 = document.getElementById('pattren2result'); // Pattern 2 result
+    const cornerDot = document.getElementById('cornerdot'); // Corner Dot
+    const cornerSquare = document.getElementById('corner-around'); // Corner Square
+    const ImageU = document.getElementById('imageu');
+    ImageU.style.display = 'none';
+    
+    pattrenResult2.style.display = 'block'; // Show Pattern 2 result
+    image.style.display = 'none'; // Hide default image
+    pattrenResult.style.display = 'none'; // Hide Pattern 1 result
+    cornerDot.style.display = 'none'; // Hide Corner Dot
+    cornerSquare.style.display = 'none'; // Hide Corner Square
+  });
+
+  // Event listener for Corner Square
+  document.getElementById('corner-square').addEventListener('click', function() {
+    const image = document.getElementById('image'); // Default image
+    const pattrenResult = document.getElementById('pattrenresult'); // Pattern 1 result
+    const pattrenResult2 = document.getElementById('pattren2result'); // Pattern 2 result
+    const cornerDot = document.getElementById('cornerdot'); // Corner Dot
+    const cornerSquare = document.getElementById('corneraround'); // Corner Square
+    const ImageU = document.getElementById('imageu');
+    ImageU.style.display = 'none';
+    
+    cornerSquare.style.display = 'block'; // Show Corner Square
+    image.style.display = 'none'; // Hide default image
+    pattrenResult.style.display = 'none'; // Hide Pattern 1 result
+    pattrenResult2.style.display = 'none'; // Hide Pattern 2 result
+    cornerDot.style.display = 'none'; // Hide Corner Dot
+  });
+
+  // Event listener for Corner Dots
+  document.getElementById('corner-dots').addEventListener('click', function() {
+    const image = document.getElementById('image'); // Default image
+    const pattrenResult = document.getElementById('pattrenresult'); // Pattern 1 result
+    const pattrenResult2 = document.getElementById('pattren2result'); // Pattern 2 result
+    const cornerDot = document.getElementById('cornerdot'); // Corner Dot
+    const cornerSquare = document.getElementById('corneraround'); // Corner Square
+    const ImageU = document.getElementById('imageu');
+    ImageU.style.display = 'none';
+    
+    cornerDot.style.display = 'block'; // Show Corner Dot
+    image.style.display = 'none'; // Hide default image
+    pattrenResult.style.display = 'none'; // Hide Pattern 1 result
+    pattrenResult2.style.display = 'none'; // Hide Pattern 2 result
+    cornerSquare.style.display = 'none'; // Hide Corner Square
+  });
+
+  // Event listener for Show Image Button
+  document.getElementById('showImageBtn').addEventListener('click', function() {
+    const imageContainer = document.getElementById('imageContainer');
+    const ImageU = document.getElementById('imageu');
+    ImageU.style.display = 'none';
+    imageContainer.style.display = 'block';
+    cornerDot.style.display = 'none'; // Show Corner Dot
+    image.style.display = 'block'; // Hide default image
+    pattrenResult.style.display = 'none'; // Hide Pattern 1 result
+    pattrenResult2.style.display = 'none'; // Hide Pattern 2 result
+    cornerSquare.style.display = 'none'; // Hide Corner Square
+ 
+  });
+
+  // Event listener for Styled Input (to update text)
+  document.getElementById('styled-input').addEventListener('input', function() {
+    const text = document.getElementById('text');
+    text.textContent = this.value ? this.value : 'Scan Me'; // Update text based on input
+  });
+
+  // Event listener for Text Input (to update text)
+  document.getElementById('textInput').addEventListener('input', function() {
+    const text = document.getElementById('text');
+    text.textContent = this.value ? this.value : 'Scan Me'; // Update text based on input
+  });
+
+</script>

@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Syne', sans-serif;
+    background-color: #FCFEFE; /* Optional background for better visibility */
+
+  }
+
+.material-icons-outlined {
+  vertical-align: middle;
+  line-height: 1px;
+}
+
+.font-weight-bold {
+  font-weight: 600;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 280px 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 3fr;
+  grid-template-areas:
+    " sidebar header header header"
+    "sidebar main main main";
+  height: 100vh;
+}
+
+
+/* ---------- HEADER ---------- */
+
+.header {
+  grid-area: header;
+  height: 90px;
+  background-color:#E8E9EB;
+   
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px 0 30px;
+ 
+}
+
+.menu-icon {
+  display: none;
+}
+
+
+/* ---------- SIDEBAR ---------- */
+
+#sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  background-color: #fff;
+  color: #9799ab;
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+
+}
+
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 20px 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar-title > span {
+  display: none;
+}
+
+.sidebar-brand {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar-list {
+  padding: 0;
+  margin-top: 15px;
+  list-style-type: none;
+}
+
+.sidebar-list-item {
+  padding: 20px 20px 20px 20px;
+}
+
+.sidebar-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+
+.sidebar-list-item:nth-child(6) > a {
+color: #28C258;
+}
+.sidebar-list-item > a {
+  text-decoration: none;
+  color: #9799ab;
+  margin-left: 20px;
+}
+.sidebar-list-item  :hover{
+
+  color:#28C258;
+  
+}
+
+
+.sidebar-responsive {
+  display: inline !important;
+  position: absolute;
+  /*
+    the z-index of the ApexCharts is 11
+    we want the z-index of the sidebar higher so that
+    the charts are not showing over the sidebar 
+    on small screens
+  */
+  z-index: 12 !important;
+}
+
+
+/* ---------- MAIN ---------- */
+
+.main-container {
+  grid-area: main;
+  overflow-y: auto;
+  padding: 20px 20px;
+  background-color:#E8E9EB;
+    
+}
+
+
+/* ---------- SCROLLBARS ---------- */
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #a5aaad;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color:#28C258;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a5aaad;
+}
+.header-left{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- MEDIA QUERIES ---------- */
+
+
+/* Medium <= 992px */
+@media screen and (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      "header"
+      "main";
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline;
+  }
+
+  .sidebar-title > span {
+    display: inline;
+  }
+}
+
+/* Small <= 768px */
+@media screen and (max-width: 768px) {
+  .main-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
+}
+
+/* Extra Small <= 576px */
+@media screen and (max-width: 576px) {
+  .header-left {
+    display: none;
+  }
+}
+.sidebar-list-item:nth-child(6){
+  background-color:#fff;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        
+  color:#28C258;
+  border-left: 3px solid #28C258;
+  border-radius: 5px;
+  
+}
+.sidebar-list-item:hover{
+  background-color:#fff;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-left: 3px solid #28C258;
+         
+  color:#28C258;
+ 
+}
+.Explore{
+  cursor: pointer;
+  padding: 15px 40px;
+background-color: transparent;
+color: #28C258;
+border: 1px solid #28C258;
+}
+.create{
+  cursor: pointer;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  border: 1px solid #28C258;
+background-color: #28C258;
+}
+.createfolder{
+  cursor: pointer;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #28C258;
+  border: 1px solid #28C258;
+
+}
+.Explore:hover{
+  background-color: #28C258;
+  color: #fff;
+}
+.header-right{
+  display: flex;
+  align-items: center;
+  gap:10px;
+}
+</style> 
+</head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+      <h2><i class="material-icons-outlined">qr_code</i> MY QR CODE</h2>
+        </div>
+        <div class="header-right">
+<button class="createfolder"><i class="material-icons">create_new_folder</i> Create Folder</button>
+          <button class="create"><i class="material-icons">add_circle</i> Create Qr code </button>
+    
+    </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-icons-outlined">qr_code_2</span> QR CODE Genrator
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+            <li class="sidebar-list-item">
+                <a href="#" target="_blank">
+                  <span class="material-icons-outlined">dashboard</span> Dashboard
+                </a>
+              </li>
+         
+            <li class="sidebar-list-item">
+            <a href="Admin Dashboard.html" target="_blank">
+              <span class="material-icons-outlined">signal_cellular_alt</span> Analysis
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="Genrate Qr Code step1.html" target="_blank">
+              <span class="material-icons-outlined">add_circle</span>  Genrate QR CODE 
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">bookmark</span>  Saved QR CODE
+            </a>
+          </li>
+          
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">local_library</span>  QR CODE Reader 
+            </a>
+          </li>
+        
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">qr_code_2</span>   My Qr code
+            </a>
+          </li>
+          
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">link</span>       Links
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">link</span>     Projects
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">language</span>      Custom Domains
+            </a>
+          </li>
+       
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">person</span> My Account
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="Billing.html" target="_blank">
+              <span class="material-icons-outlined">credit_score</span> Billing
+            </a>
+          </li>
+         </ul>
+     <style>
+      #bottomul{
+        margin-top: 50px;
+      }
+     </style>
+     <ul class="sidebar-list" id="bottomul">
+          <hr style="width: 200px; margin-left:20px;" id="bottom">
+          <li class="sidebar-list-item" id="bottom">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">contact_phone</span> Contact Us 
+            </a>
+          </li>
+          <li class="sidebar-list-item" id="bottom">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">quiz</span> FAQ,s
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+      <!-- Main -->
+      <main class="main-container">
+  <div class="folder-container">
+    <div class="folder-card"><i class="material-icons">create_new_folder</i></div>
+   
+</div>
+       
+   <style>
+    .folder-container{
+        display: flex;
+        align-items: center;
+        gap:30px;
+    }
+  .folder-card{
+    border: 2px solid #28C258;
+    padding:50px;
+    width: 220px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #28C258;
+    cursor: pointer;
+    transition:0.5 ease-in;
+    
+  }
+.folder-card:hover{
+  background-color: #d4edda;
+ 
+}
+.update-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+       
+}
+
+.input-container,
+.dropdown-container {
+  flex: 1 1 200px;
+  min-width: 200px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 40px 10px 10px; /* Space for icon */
+  font-size: 16px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #888;
+}
+.search-input:focus + .search-icon {
+    display: none;
+}
+
+.dropdown {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+
+}
+@media (max-width: 768px) {
+  .update-container {
+    align-items: stretch;
+  }
+
+  .input-container,
+  .dropdown-container {
+    width: 100%;
+    
+  }
+
+  .search-input,
+  .dropdown {
+    width: 100%;
+  }
+}
+
+   </style>
+        <div class="update-container">
+          <div class="input-container">
+            <label for="search" class="label">Search</label>
+            <div class="search-wrapper">
+              <input type="text" id="search" class="search-input">
+              <i class="fas fa-search search-icon"></i>
+            </div>
+          </div>
+          
+          <div class="dropdown-container">
+            <label for="dropdown1" class="label">Qr code status</label>
+            <select id="dropdown1" class="dropdown">
+              <option value="">Active</option>
+              <option value="">Paused</option>
+              <option value="">Deleted</option>
+            </select>
+          </div>
+          
+          <div class="dropdown-container">
+            <label for="dropdown2" class="label">Qr codes types</label>
+            <select id="dropdown2" class="dropdown">
+              <option value="">V-CARD</option>
+              <option value="">Business</option>
+              <option value="">App</option>
+              <option value="">website</option>
+              <option value="">pdf</option>
+              <option value="">pdf</option>
+      
+            </select>
+          </div>
+          
+          <div class="dropdown-container">
+            <label for="dropdown3" class="label">Sort by</label>
+            <select id="dropdown3" class="dropdown">
+              <option value="">Most Recent </option>
+              <option value="">Name</option>
+              <option value="">Most scanned</option>
+              <option value="">Last modified</option>
+           
+            </select>
+          </div>
+          
+          <div class="dropdown-container">
+            <label for="dropdown4" class="label">Quantity</label>
+            <select id="dropdown4" class="dropdown">
+              <option value="">10</option>
+              <option value="">20</option>
+              <option value="">50</option>
+              <option value="">100</option>
+            
+            </select>
+          </div>
+        </div>
+   <style>
+    .qr-flex{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+      }
+      
+      .createbtn{
+        padding: 12px 22px;
+        background-color: transparent;
+        color:black;
+        border: 1px solid #28C258;
+  display: flex;
+        align-items: center;
+   justify-content: center;
+   gap: 10px;
+      }
+      .createbtn:hover{
+        background-color: #28C258;
+        color:#fff;
+      }
+      .Qr-button{
+        color: #28C258;
+        background-color: #fff;
+      }
+      .Bar-code{
+        background-color: #ddd;
+      }
+     </style>
+        <div class="two-button-tabs">
+      <button class="Qr-button">QR Codes</button>
+    <button class="Bar-code">Bar Code</button> 
+    </div>
+      <div class="Qr-code-container">
+<div class="qr-flex">
+  <h2>QR CODES</h2>
+  <button class="createbtn"><i class="material-icons">add_circle</i> Qr Code</button>
+</div>      
+<div class="Qr-card">
+  <div class="Qr-card-left">
+      <div class="qr-section">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW0Jobnm19agrk0pKF713gg2GeoX6wWdgsRQ&s" alt="QR Code" class="qr-code">
+      </div>
+      <div class="Qr-info">
+          <div class="category">Category</div>
+          <div class="title">Title of the QR Card <i class="material-icons">edit</i></div>
+          <div class="date">Date: Jan 1, 2024</div>
+      </div>
+  </div>
+  <div class="center">
+      <div class="folder">Folder: Documents</div>
+      <a href="#" class="link">View Details</a>
+      <div class="modified-date">Last modified: Jan 5, 2024</div>
+
+  </div>
+ 
+  <div class="Qr-card-right">
+      <div class="scans">
+          <span>Scans</span>
+          <div class="scan-count">0</div>
+      </div>
+      <div class="Qr-buttons">
+          <button class="download-btn">Download</button>
+          <button class="detail-btn">Details</button>
+          <button class="menu-btn"><i class="material-icons">more_vert</i></button>
+          <div class="dropdown-menu-panel">
+            <a href="#"><i class="material-icons">edit</i> QR content</a>
+            <a href="#"><i class="material-icons">palette</i> QR Design</a>
+            <a href="#"><i class="material-icons">change_circle</i> QR Type</a>
+            <a href="#"><i class="material-icons">content_copy</i> Duplicate</a>
+            <a href="#"><i class="material-icons">send</i> Send to</a>
+            <a href="#"><i class="material-icons">pause_circle</i> Pause</a>
+            <a href="#"><i class="material-icons">delete</i> Delete</a>
+         
+         
+          </div>
+        
+        </div>
+  </div>
+  </div>
+  <div class="Qr-card">
+    <div class="Qr-card-left">
+        <div class="qr-section">
+            <img src="logo-removebg-preview.png" alt="QR Code" class="qr-code">
+        </div>
+        <div class="Qr-info">
+            <div class="category">Category</div>
+            <div class="title">Title of the QR Card <i class="material-icons">edit</i></div>
+            <div class="date">Date: Jan 1, 2024</div>
+        </div>
+    </div>
+    <div class="center">
+        <div class="folder">Folder: Documents</div>
+        <a href="#" class="link">View Details</a>
+        <div class="modified-date">Last modified: Jan 5, 2024</div>
+  
+    </div>
+   
+    <div class="Qr-card-right">
+        <div class="scans">
+            <span>Scans</span>
+            <div class="scan-count">0</div>
+        </div>
+        <div class="Qr-buttons">
+            <button class="download-btn">Download</button>
+            <button class="detail-btn">Details</button>
+            <button class="menu-btn" id="secondmenuqr"><i class="material-icons">more_vert</i></button>
+            <div class="dropdown-menu-panel">
+              <a href="#"><i class="material-icons">edit</i> QR content</a>
+              <a href="#"><i class="material-icons">palette</i> QR Design</a>
+              <a href="#"><i class="material-icons">change_circle</i> QR Type</a>
+              <a href="#"><i class="material-icons">content_copy</i> Duplicate</a>
+              <a href="#"><i class="material-icons">send</i> Send to</a>
+              <a href="#"><i class="material-icons">pause_circle</i> Pause</a>
+              <a href="#"><i class="material-icons">delete</i> Delete</a>
+           
+           
+            </div>
+          
+          </div>
+    </div>
+    </div>
+<style>
+  p{
+    margin-top: 30px;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bolder;
+  }
+  .note{
+    color:red;
+  }.not-exist {
+    max-width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc; /* Optional styling */
+    border-radius: 8px; /* Optional styling */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional styling */
+    display: flex; /* Added to center content */
+    flex-direction: column; /* Align items in a column */
+    align-items: center; /* Horizontally center items */
+    justify-content: center; /* Vertically center items */
+    min-height: 400px; /* Optional: Ensures sufficient height for centering */
+}
+
+.notexistimg img {
+margin: 0 auto;
+margin-left: 400px;
+max-width: 700px; /* Adjust for desired size */
+    height: 400px; /* Set desired height */
+    object-fit: cover; /* Ensures the image maintains proportions */
+}
+
+.not-exist h2 {
+    margin: 20px 0;
+    font-size: 1.8rem; /* Slightly larger font */
+    color: #333; /* Adjust color if needed */
+}
+
+.not-exist button {
+    background-color:#28C258; /* Primary button color */
+    color: #fff;
+    border: none;
+    padding: 15px 30px; /* Larger button */
+    font-size: 1.2rem; /* Slightly larger font size */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+display: flex;
+align-items: center;
+gap:10px;
+  }
+
+.not-exist button:hover {
+    background-color:#28C258; /* Darker shade on hover */
+}
+
+</style>
+    <p><strong><span class="note">NOTE :</span>  IF THE QR DOES NOT EXIST DISPLAY FOLLOWING UI</strong></p>
+ <div class="not-exist">
+    <div class="notexistimg">
+        <img src="doesntexist.png" alt="No QR Code">
+    </div>
+    <h2>There are no QR codes to show</h2>
+    <button class="createbtnexist"><i class="material-icons">add_circle</i>Create QR Code</button>
+</div>
+</div>
+<style>
+  .Qr-code-container-Scan{
+    display: none;
+  }
+</style>
+<div class="Qr-code-container-Scan">
+  <div class="qr-flex">
+    <h2>Bar code</h2>
+    <button class="createbtn"><i class="material-icons">add_circle</i> Qr Code</button>
+  </div>      
+  <div class="Qr-card">
+    <div class="Qr-card-left">
+        <div class="qr-section">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKi33rFbgQTbWQrQ-JzbDVE2I-XRSMDSdgWA&s" alt="QR Code" class="qr-code">
+        </div>
+        <div class="Qr-info">
+            <div class="category">Category</div>
+            <div class="title">Title of the QR Card <i class="material-icons">edit</i></div>
+            <div class="date">Date: Jan 1, 2024</div>
+        </div>
+    </div>
+    <div class="center">
+        <div class="folder">Folder: Documents</div>
+        <a href="#" class="link">View Details</a>
+        <div class="modified-date">Last modified: Jan 5, 2024</div>
+  
+    </div>
+   
+    <div class="Qr-card-right">
+        <div class="scans">
+            <span>Scans</span>
+            <div class="scan-count">0</div>
+        </div>
+        <div class="Qr-buttons">
+            <button class="download-btn">Download</button>
+            <button class="detail-btn">Details</button>
+           
+          </div>
+    </div>
+    </div>
+    <div class="Qr-card">
+      <div class="Qr-card-left">
+          <div class="qr-section">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKi33rFbgQTbWQrQ-JzbDVE2I-XRSMDSdgWA&s" alt="QR Code" class="qr-code">
+          </div>
+          <div class="Qr-info">
+              <div class="category">Category</div>
+              <div class="title">Title of the QR Card <i class="material-icons">edit</i></div>
+              <div class="date">Date: Jan 1, 2024</div>
+          </div>
+      </div>
+      <div class="center">
+          <div class="folder">Folder: Documents</div>
+          <a href="#" class="link">View Details</a>
+          <div class="modified-date">Last modified: Jan 5, 2024</div>
+    
+      </div>
+     
+      <div class="Qr-card-right">
+          <div class="scans">
+              <span>Scans</span>
+              <div class="scan-count">0</div>
+          </div>
+          <div class="Qr-buttons">
+              <button class="download-btn">Download</button>
+              <button class="detail-btn">Details</button>
+            
+            </div>
+      </div>
+      </div>
+    
+  </div>
+      
+      </main>
+       </div>
+       
+       <style>
+        .two-button-tabs{
+          display: flex;
+       gap:5px;
+      margin-top: 30px;
+        }
+   
+      
+ .two-button-tabs button{
+    border: none;
+    cursor: pointer;
+ 
+ }
+        .two-button-tabs button{
+       
+border: none;
+        }
+       
+        .two-button-tabs button{
+          padding: 10px 30px;
+        }
+      .Qr-code-container,.Qr-code-container-Scan{
+        background-color:#fff;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        padding: 25px;
+      
+      }
+          .Qr-card {
+         justify-content: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        .Qr-card-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .qr-section .qr-code {
+            width: 80px;
+            height: 80px;
+        }
+
+        .Qr-info {
+            margin-left: 10px;
+            line-height: 1.2;
+            color: #28C258;
+        }
+
+        .category {
+            color: orange;
+            font-weight: bold;
+        }
+
+        .title {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .date, .folder, .link, .modified-date {
+            font-size: 1rem;
+            color: #888;
+            margin: 2px 0;
+            line-height: 1.5;
+        }
+
+        .link {
+            color: #28C258;
+            text-decoration: none;
+            line-height: 1.5;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .Qr-card-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .scans {
+            text-align: center;
+            margin-right: 70px;
+            background-color: #ccc;
+            padding: 10px;
+            border-radius: 40px;
+        }
+
+        .scans span {
+            display: block;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .scans:hover {
+            background-color: #28C258;
+            color: #fff;
+        }
+
+        .scan-count {
+        font-size: 24px;
+         color: #fff;      
+         font-weight: bold;
+        }
+
+        .Qr-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .download-btn, .detail-btn, .menu-btn {
+            border: 1px solid #28C258;
+            color: #28C258;
+            background-color: #fff;
+            padding: 10px 25px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn:hover, .detail-btn:hover, .menu-btn:hover {
+            background-color:#28C258;
+            color: #fff;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .Qr-card {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+                width: 90%;
+            }
+
+            .Qr-card-left, .Qr-card-right {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .scans {
+                margin-right: 0;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+
+            .Qr-buttons {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                gap: 10px;
+            }
+
+            .download-btn, .detail-btn, .menu-btn {
+                width: auto;
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 16px;
+            }
+
+            .scan-count {
+                font-size: 20px;
+            }
+
+            .download-btn, .detail-btn, .menu-btn {
+                width: 100%;
+                text-align: center;
+                padding: 10px;
+                font-size: 13px;
+            }
+
+            .Qr-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+        
+  .dropdown-menu-panel {
+display: none;
+position: fixed;
+top: 250px; /* Adjusted to display below the icon */
+right: 50px; /* Adjusted to the right of the screen */
+background-color: white;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+border-radius: 12px;
+overflow: hidden;
+z-index: 1000;
+width: 200px;
+}
+
+  .dropdown-menu-panel a {
+display: block;
+padding: 10px 20px;
+color: #333;
+transition: background-color 1s ease;
+text-decoration: none;
+display: flex;
+gap: 10px;
+}
+.dropdown-menu-panel a:last-child {
+color: red;
+}
+.dropdown-menu-panel a:last-child:hover{
+color: white;
+background-color: red;
+}
+
+.dropdown-menu-panel a:hover {
+background-color:#28C258;
+color: #fff;
+}
+
+              </style>
+    <!-- Scripts -->
+    <!-- ApexCharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+    <!-- Custom JS -->
+
+    <script>
+      // SIDEBAR TOGGLE
+  let sidebarOpen = false;
+  const sidebar = document.getElementById('sidebar');
+  
+  function openSidebar() {
+      if (!sidebarOpen) {
+          sidebar.classList.add('sidebar-responsive');
+          sidebarOpen = true;
+      }
+  }
+  
+  function closeSidebar() {
+      if (sidebarOpen) {
+          sidebar.classList.remove('sidebar-responsive');
+          sidebarOpen = false;
+      }
+  }
+  
+  // Select the buttons and panels
+  const QRButton = document.querySelector('.Qr-button');
+  const ScanButton = document.querySelector('.Bar-code');
+  const QRSavePanel = document.querySelector('.Qr-code-container');
+  const BarCodeSavePanel = document.querySelector('.Qr-code-container-Scan');
+  
+  // Function to show General Information panel and hide Billing panel
+  QRButton.addEventListener('click', () => {
+      QRSavePanel.style.display = 'block';
+      BarCodeSavePanel.style.display = 'none';
+  });
+  
+  // Function to show Billing panel and hide General Information panel
+  ScanButton.addEventListener('click', () => {
+      QRSavePanel.style.display = 'none';
+      BarCodeSavePanel.style.display = 'block';
+  });
+  
+  // Set initial display to General Information panel
+  QRSavePanel.style.display = 'block';
+  
+  // Add a click event listener for QR button
+  QRButton.addEventListener("click", function() {
+      // Change the button's background color
+      QRButton.style.backgroundColor = "#fff";
+      // Change the text color
+      QRButton.style.color = "#28C258";
+      ScanButton.style.backgroundColor = "#ddd";
+      // Change the text color of Scan button
+      ScanButton.style.color = "black";
+  });
+  
+  // Add a click event listener for Scan button
+  ScanButton.addEventListener("click", function() {
+      // Change the button's background color
+      ScanButton.style.backgroundColor = "#fff";
+      // Change the text color
+      ScanButton.style.color = "#28C258";
+      QRButton.style.backgroundColor = "#ddd";
+      // Change the text color of QR button
+      QRButton.style.color = "black";
+  });  document.querySelector('.menu-btn').addEventListener('click', function (event) {
+      event.stopPropagation(); // Prevent the click from closing the menu immediately
+      const dropdownMenu = document.querySelector('.dropdown-menu-panel');
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Close dropdown if clicked outside
+    document.addEventListener('click', function (event) {
+      const dropdown = document.querySelector('.dropdown-menu-panel');
+      const menuBtn = document.querySelector('.menu-btn');
+      if (!menuBtn.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
+
+    document.getElementById('secondmenuqr').addEventListener('click', function (event) {
+      event.stopPropagation(); // Prevent the click from closing the menu immediately
+      const dropdownMenu = document.querySelector('.dropdown-menu-panel');
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Close dropdown if clicked outside
+    document.addEventListener('click', function (event) {
+      const dropdown = document.querySelector('.dropdown-menu-panel');
+      const menuBtn = document.getElementById('secondmenuqr');
+      if (!menuBtn.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
+
+
+
+  </script>
+</body>
+</html>

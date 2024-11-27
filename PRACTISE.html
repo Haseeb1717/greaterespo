@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="Qr_logo-removebg-preview.png" type="image/x-icon">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Syne', sans-serif;
+    background-color: #FCFEFE; /* Optional background for better visibility */
+
+  }
+  /* General styling */
+.Mobile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  margin-top: -400px;  
+
+  }
+  .main-section{
+    max-width:1440px;
+    margin: 0 auto;
+  }
+  .main-section h1{
+    font-size: 3rem;
+text-align: center;
+  }  
+  .main-section span{
+    color: #28C258;
+
+  }
+
+        .button-container2 {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .toggle-button {
+            padding: 15px;
+            border-radius: 30px;
+            border: none;
+            background-color: #ddd;
+            color: #000;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .toggle-button.active {
+            background-color: #28C258;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Mobile phone styling */
+        .mobile-phone{
+            width: 300px;
+            height: 600px;
+            border-radius: 50px;
+            background-color: #fff;
+            position: relative;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+            overflow-y: auto; /* Enable vertical scrolling */
+            border: 10px solid #1c1c1c;
+            margin-top: 20px;
+            
+          
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 40px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        overflow-x: hidden;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .notch, .speaker, .camera, .home-button, .volume-buttons, .power-button {
+            position: absolute;
+        }
+        
+        .notch {
+            width: 80px;
+            height: 20px;
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .speaker {
+            width: 60px;
+            height: 10px;
+            background-color: #888;
+            border-radius: 5px;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .camera {
+            width: 10px;
+            height: 10px;
+            background-color: #555;
+            border-radius: 50%;
+            top: 10px;
+            right: 20px;
+        }
+
+        .home-button {
+            width: 60px;
+            height: 8px;
+            background-color: #888;
+            border-radius: 4px;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .volume-buttons {
+            top: 120px;
+            left: -10px;
+            width: 8px;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .volume-button {
+            height: 6px;
+            width: 100%;
+            background-color: #28C258;
+            margin: 8px 0;
+            border-radius: 2px;
+        }
+
+        .power-button {
+            top: 200px;
+            right: -10px;
+            width: 8px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 3px;
+        }
+
+        .inner-screen {
+            width: 100%;
+            height: calc(60% - 25px);
+            background: linear-gradient(100deg, #28C258, #fff);
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%; /* Makes it circular */
+    background-size: cover; /* Ensures the image covers the div */
+    background-position: center; /* Centers the background image */
+    border: 4px solid #28C258;
+    margin: 10px 0;
+}
+        .name h1 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        .contact-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;    
+            margin-top: 50px;
+        } 
+
+        .phone-icon {
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            color: #28C258;
+        }
+
+        .bottom-footer {
+            margin: 0 auto;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .bottom-footer input {
+            margin-top: 10px;
+            width: 200px;
+            height: 30px;
+        }
+
+        /* Hide inactive screens */
+        .screen.hidden {
+            display: none;
+        }
+
+        /* Screen 2 styling */
+        #screen2 {
+            background-color: #fff;
+        }
+
+        .add-to-contact {
+            padding: 20px 50px;
+            margin-top: 30px;
+            background-color: #28C258;
+            color: #fff;
+            border-radius: 5px;
+        }
+        /* Custom Scrollbar */
+        .screen::-webkit-scrollbar {
+  width: 1px; /* Width of the scrollbar */
+}
+
+.screen::-webkit-scrollbar-track {
+  background:#28C258; /* Track color */
+}
+
+.screen::-webkit-scrollbar-thumb {
+  background-color:#28C258; /* Scrollbar thumb color */
+  border-radius: 4px; /* Scrollbar thumb rounded corners */
+}
+
+.screen::-webkit-scrollbar-thumb:hover {
+  background:#28C258; /* Hover effect for the scrollbar thumb */
+}
+.genrate-section{
+  max-width:1440px;
+  margin: 0 auto;
+}
+.genrate-container{
+  max-width:80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+ }
+ @media(max-width:764px){
+  .Mobile-container {
+  margin-top: 300px;
+  }
+  .genrate-container{
+flex-direction: column;
+
+}
+ }
+ 
+
+.progress-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.step-number {
+  background-color: #ddd;
+  color: #555;
+  border-radius: 50%;
+  width: 40px;
+  height:40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.step:nth-child(3) .step-number {
+  background-color: #28C258;
+  color: white;
+}
+
+.step-line {
+  flex: 1;
+  height: 3px;
+  background-color: #ddd;
+  margin: 0 5px;
+}
+
+.step:nth-child(1) + .step-line {
+  background-color: #28C258;
+}
+
+.step-title {
+  margin-top: 8px;
+  font-size: 15px;
+  text-align: center;
+  color: #555;
+}
+
+@media (max-width: 480px) {
+  .step-title {
+    font-size: 10px;
+  }
+} </style>
+</head>
+<body>
+  <section class="main-section">
+  <h1>GENRATE YOUR <span>QR CODE</span></h1>  
+  <div class="progress-bar">
+        <div class="step active">
+          <div class="step-number">1</div>
+          <div class="step-title">Select Type of QR</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-title"> Information</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-title">Payment</div>
+        </div>
+      </div>
+
+<div class="genrate-section">
+<div class="genrate-container">
+<style>
+  .faq-container {
+    width: 80%;
+    max-width: 600px;
+    scrollbar-width: none; /* Hides scrollbar in Firefox */
+      }   
+        .faq-container::-webkit-scrollbar {
+            display: none; /* Hides scrollbar in Chrome, Safari */
+        }
+  
+
+
+.faq {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+.faq-question {
+    padding:35px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #fff;
+    box-shadow: 0 20px 15px rgba(0, 0, 0, 0.6);
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px; /* Optional: adds rounded corners for a smoother look */
+    transition: box-shadow 0.3s ease; /* Optional: adds a smooth transition effect for the shadow */
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 15px;
+    background-color: #fff;
+    color: #333;
+    transition: max-height 0.3s ease;
+
+  }
+.faq.open .faq-answer {
+    max-height: 600px; /* Adjust as per answer length */
+    padding: 15px;
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq.open .faq-question i {
+    transform: rotate(180deg);
+}
+.heading{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.group-colors-container {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap:20px;
+      }
+    
+      .group-colors {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+      }
+      .group-colors:hover{
+padding: 5px;  
+border: 2px solid #28C258;
+      }
+      .group-colors:first-child{
+        padding: 5px;  
+border: 2px solid #28C258;
+        
+      }
+      .color {
+        padding: 20px;
+        border-radius:5px;
+      }
+    
+      /* Styling for the color picker section */
+      .color-picker {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 30px;
+      }
+    
+      .color-primary {
+        border: 3px solid #527ac9;
+        padding: 20px 70px;
+        border-radius: 20px;
+      }
+    
+      .secondary-color {
+        border: 3px solid #7ec09f;
+        padding: 20px 70px;
+        border-radius: 20px;
+      }
+      .color-picker-container {
+          display: flex;
+          align-items: center; /* Align items in the center vertically */
+          justify-content: space-between; /* Space out the labels and inputs */
+          gap: 10px; /* Space between elements */
+          margin-top: 30px;
+        }
+    
+        label {
+          font-size: 16px;
+          margin-bottom: 5px;
+        }
+    
+        input[type="color"] {
+          width: 100%; /* Set input width to 40% for better alignment */
+          height: 40px;
+          border: none;
+          cursor: pointer;
+          border-radius: 5px;
+        }
+        @media(max-width:764px){
+        .color-picker-container {
+     flex-direction: column;
+        }
+    }
+    .choose-image {
+  border: 2px dotted #28C258;
+  padding:40px;
+  display: inline-block;
+  border-radius: 10px;
+  background-color: #d4edda;
+color: #28C258;
+  margin-top: 20px;
+  color:#28C258;
+
+
+}
+
+.file-label {
+  cursor: pointer;
+  font-size: 16px;
+  }
+.faq-container{
+  margin-top: 200px;
+}
+</style>
+</head>
+<body>
+
+<div class="faq-container">
+<div class="faq">
+    <div class="faq-question">
+     <div class="heading">
+     <i class="material-icons">palette</i> <h2>DESIGN</h2>
+    </div>
+ 
+    <i class="material-icons">keyboard_arrow_down</i>
+    </div>
+  
+    <div class="faq-answer">
+      <p>Choose your color </p>
+      <div class="group-colors-container">
+        <div class="group-colors">
+          <div class="color" style="background-color:#7ec09f;"></div>
+          <div class="color" style="background-color:#527ac9;"></div>
+        </div> 
+        <div class="group-colors">
+          <div class="color" style="background-color:#7ec09f;"></div>
+          <div class="color" style="background-color:#527ac9;"></div>
+        </div> 
+        <div class="group-colors">
+          <div class="color" style="background-color:goldenrod;"></div>
+          <div class="color" style="background-color:#527ac9;"></div>
+        </div> 
+        <div class="group-colors">
+          <div class="color" style="background-color:goldenrod;"></div>
+          <div class="color" style="background-color:#527ac9;"></div>
+        </div> 
+        <div class="group-colors">
+          <div class="color" style="background-color:goldenrod;"></div>
+          <div class="color" style="background-color:#527ac9;"></div>
+        </div> 
+        <div class="group-colors">
+          <div class="color" style="background-color:goldenrod;"></div>
+          <div class="color" style="background-color:#527ac9;"></div>
+        </div> 
+        <div class="group-colors">
+          <div class="color" style="background-color:goldenrod;"></div>
+          <div class="color" style="background-color:#527ac9;"></div>
+        </div> 
+        <div class="group-colors">
+          <div class="color" style="background-color:goldenrod;"></div>
+          <div class="color" style="background-color:#527ac9;"></div>
+        </div> 
+        <div class="group-colors">
+          <div class="color" style="background-color:goldenrod;"></div>
+          <div class="color" style="background-color:#527ac9;"></div>
+        </div> 
+        <div class="group-colors">
+          <div class="color" style="background-color:goldenrod;"></div>
+          <div class="color" style="background-color:#527ac9;"></div>
+        </div> 
+      
+      </div>
+      <div class="color-picker-container">
+        <div>
+          <label for="color1">Select primary Color:</label>
+          <br>
+          <input type="color" id="color1" name="color1" value="#7ec09f">
+        </div>
+        <div>
+          <label for="color2">Select Secondary Color:</label>
+          <input type="color" id="color2" name="color2" value="#527ac9">
+        </div>
+      </div>
+      </div>
+
+    </div>
+    <div class="faq">
+      <div class="faq-question">
+       <div class="heading">
+       <i class="material-icons">badge</i> <h2>Personal Info</h2>
+      </div>
+   
+      <i class="material-icons">keyboard_arrow_down</i>
+      </div>
+    
+      <div class="faq-answer">
+        <p>Choose your color </p>
+   
+        <div class="choose-image">
+          <label for="file-upload" class="file-label"><i class="material-icons">image</i></label>
+          <input type="file" id="file-upload" style="display: none;" />
+        </div>
+        <div class="flex-container">
+          <div class="input-container">
+            <label for="input1">First Name</label>
+            <div class="input-with-icon">
+              <i class="icon">🔍</i> <!-- You can replace this with any icon -->
+              <input type="text" id="userInput" class="input" placeholder="Input 1" oninput="updateDisplay()">
+            </div>
+          </div>
+          <div class="input-container">
+            <label for="input2">Surname</label>
+            <div class="input-with-icon">
+              <i class="icon">🔒</i> <!-- Replace with desired icon -->
+              <input type="text" id="userInput2" class="input" placeholder="Input 2" oninput="updateDisplay2()">
+            </div>
+          </div>
+        </div><style>
+          .flex-container {
+  display: flex;
+  gap: 10px; /* Adds space between the inputs */
+  margin-top: 30px;
+}
+
+.input-container {
+  flex: 1;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input {
+  width: 100%; /* Full width of the container */
+  padding: 10px;
+  padding-left: 30px; /* Adds space for the icon */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.icon {
+  position: absolute;
+  left: 5px; /* Position the icon inside the input */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 600px) {
+  .flex-container {
+    flex-direction: column; /* Stack inputs vertically on smaller screens */
+  }
+}
+   
+  /* Container to stack inputs in column direction */
+  .Contact-detail {
+    display: flex;
+    flex-direction: column;
+   text-align: left;
+    margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  }
+
+  /* Style for each input wrapper */
+  .Contact-detail-input-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+
+  /* Style for the label */
+  label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  /* Style for the icon */
+  .Contact-detail-input-icon {
+    position: absolute;
+    left: 0;
+    top: 35px;
+    font-size: 18px;
+    color: #888;
+  }
+
+  /* Style for the input field with only bottom border */
+  .Contact-detail-input-field {
+    padding: 10px 10px 10px 35px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #ccc; /* Only bottom border */
+    outline: none; /* Removes the blue border on focus */
+  }
+
+  /* Placeholder style */
+  .Contact-detail-input-field::placeholder {
+    color: #aaa;
+  }
+
+  /* Change bottom border color on focus */
+  .Contact-detail-input-field:focus {
+    border-bottom-color: #007BFF;
+  }    
+  .form-container-Contact{
+      width: 100%;
+      max-width: 800px; /* Increase max-width to accommodate both inputs */
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .input-group-container-Contact{
+      display: flex;
+      justify-content: space-between; /* Align inputs side by side */
+      gap: 20px; /* Add space between inputs */
+      margin-bottom: 20px;
+    }
+
+    .input-group-Contact{
+      display: flex;
+      flex-direction: column; /* Stack label and input vertically */
+      flex: 1; /* Make inputs take equal width */
+    }
+
+    label{
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .input-wrapper-Contact{
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .input-wrapper-Contact input {
+      width: 100%;
+      padding: 10px 40px 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .icon-Contact{
+      position: absolute;
+      right: 12px;
+      color: #888;
+      font-size: 16px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      .form-container-Contact{
+        padding: 15px;
+      }
+
+      .input-wrapper-Contact input {
+        padding: 8px 35px 8px 10px;
+      }
+
+      .input-group-container-Contact {
+        flex-direction: column; /* Stack inputs vertically on small screens */
+      }
+
+      .input-group-Contact{
+        margin-bottom: 15px; /* Add margin between stacked inputs */
+      }
+    }
+  #location-inp{
+   width: 100%;
+   height: 40px;
+   border-radius: 5px;
+  }
+  </style>
+        
+      </div>
+  
+      </div>
+      <div class="faq">
+        <div class="faq-question">
+         <div class="heading">
+         <i class="material-icons">info</i> <h2>Contact Details</h2>
+        </div>
+     
+        <i class="material-icons">keyboard_arrow_down</i>
+        </div>
+      
+        <div class="faq-answer">
+          <h3>Add Contact</h3> 
+          <br>       
+  <div class="form-container-Contact">
+    <div class="input-group-container-Contact">
+      <div class="input-group-Contact">
+        <label for="username">Label For Phone</label>
+        <div class="input-wrapper-Contact">
+          <input type="text" id="input1" placeholder="Enter your username" oninput="updateDisplayContactdata()">
+        </div>
+      </div>
+
+      <div class="input-group-Contact">
+        <label for="email">Phone number</label>
+        <div class="input-wrapper-Contact">
+          <input type="number" id="insertphone" placeholder="Enter your emal" oninput="updateDisplayContactdatainput()">
+          <i class="fas fa-envelope icon-Contact"></i>
+        </div>
+      </div>
+    </div>
+  </div>     
+  <h3>Add Email</h3> 
+  <br>       
+<div class="form-container-Contact">
+<div class="input-group-container-Contact">
+<div class="input-group-Contact">
+<label for="insertLabelforemail" oninput="updateDisplayEmaildata()">Label For Email</label>
+<div class="input-wrapper-Contact">
+  <input type="text" id="" placeholder="Enter your username">
+</div>
+</div>
+
+<div class="input-group-Contact">
+<label for="email">Email</label>
+<div class="input-wrapper-Contact">
+  <input type="email" id="insertemail" placeholder="Enter your email">
+  <i class="fas fa-envelope icon-Contact"></i>
+</div>
+</div>
+</div>
+</div>
+<h3>Website</h3> 
+<br>       
+<div class="form-container-Contact">
+<div class="input-group-container-Contact">
+<div class="input-group-Contact">
+<label for="username">Label for website</label>
+<div class="input-wrapper-Contact">
+<input type="text" id="insertlabelforwebsite" placeholder="Enter your username">
+</div>
+</div>
+
+<div class="input-group-Contact">
+<label for="email">Website</label>
+<div class="input-wrapper-Contact">
+<input type="email" id="insertwebsite" placeholder="Enter your email">
+<i class="fas fa-envelope icon-Contact"></i>
+</div>
+</div>
+</div>
+</div>             
+</div>
+    
+
+
+        </div>
+        <div class="faq">
+          <div class="faq-question">
+           <div class="heading">
+           <i class="material-icons">location_on</i> <h2>Location</h2>
+          </div>
+       
+          <i class="material-icons">keyboard_arrow_down</i>
+          </div>
+        
+          <div class="faq-answer">
+         <h3>Provide Your address and location Information.</h3>
+      <br>  
+         <div class="Location-input">
+         <label>Location</label>
+          <input type="text" placeholder="Enter Your Location" id="location-inp">
+      
+        </div> 
+        </div>
+      
+          </div>
+      
+          <div class="faq">
+            <div class="faq-question">
+             <div class="heading">
+             <i class="material-icons">meeting_room</i> <h2>Company Detail</h2>
+            </div>
+         
+            <i class="material-icons">keyboard_arrow_down</i>
+            </div>
+            <style>
+            /* Form container styling */
+            .form-company {
+              display: flex;
+              flex-direction: column;
+              gap: 1rem;
+              max-width: 600px;
+              margin: auto;
+              padding: 1rem;
+              border-radius: 5px;
+            }
+        
+            /* Flex container for inputs */
+            .input-group-company{
+              display: flex;
+              gap: 1rem;
+              justify-content: space-between;
+            }
+        
+            /* Styling for labels */
+            label {
+              font-weight: bold;
+              margin-bottom: 0.5rem;
+            }
+        
+            /* Styling for input fields */
+            .input-group-company input,
+            textarea {
+              width: 100%;
+              padding: 1rem;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              font-size: 1rem;
+            }
+        
+            /* Styling for text area */
+            textarea {
+              resize: vertical;
+              min-height: 100px;
+            }
+          </style>
+            <div class="faq-answer">
+              <p>Choose your color </p>
+              <div class="form-company">
+                <div class="input-group-company">
+                  <div>
+                    <label for="firstName">Company</label>
+                    <input type="text" id="firstName-company" name="firstName" placeholder="Enter your first name">
+                  </div>
+                  <div>
+                    <label for="lastName">Profession</label>
+                    <input type="text" id="lastName-company" name="lastName" placeholder="Enter your last name">
+                  </div>
+                </div>
+                
+                <div>
+                  <label for="message"><b>Summary</b></label>
+                  <textarea id="message-company" name="message" placeholder="Enter your message here"></textarea>
+                </div>
+              </div>
+            </div>
+        
+            </div>
+            <div class="faq">
+              <div class="faq-question">
+               <div class="heading">
+               <i class="material-icons">language</i> <h2>Social Network</h2>
+              </div>
+           
+              <i class="material-icons">keyboard_arrow_down</i>
+              </div>
+            
+              <div class="faq-answer">
+                <p>Choose your color</p>
+                <style>
+                  .social-flex {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 10px;
+                    gap: 20px;
+                    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+                  }
+                  
+                  .social-icon svg {
+                    width: 30px; /* Adjust icon size */
+                    height: 50px;
+                    transition: transform 0.3s ease; /* Smooth hover effect */
+                  }
+                
+                  .social-icon svg:hover {
+                    transform: scale(1.5); /* Slightly enlarges icon on hover */
+                 border: 1px solid #28C258;
+                 border-radius:60px;
+                 padding:5px;
+                  }
+                
+                  /* Smaller screens */
+                  @media (max-width: 600px) {
+                    .social-flex {
+                      gap: 15px;
+                    }
+                    
+                    .social-icon svg {
+                      width: 40px;
+                      height: 40px;
+                    }
+                  }
+                </style>
+                <div class="social-flex">
+                  <div class="social-icon">
+              
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,300,150">
+                      <g fill="#339af0" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M34.21875,5.46875c-5.98047,0 -10.84375,4.86328 -10.84375,10.84375c0,0.35938 0.08984,0.71094 0.125,1.0625c-7.39453,-0.70703 -13.93359,-4.26953 -18.375,-9.71875c-0.20703,-0.26172 -0.52734,-0.40234 -0.86328,-0.37891c-0.33203,0.02344 -0.62891,0.21484 -0.79297,0.50391c-0.93359,1.60547 -1.46875,3.45313 -1.46875,5.4375c0,2.40234 0.85938,4.60156 2.1875,6.40625c-0.25781,-0.11328 -0.53906,-0.17578 -0.78125,-0.3125c-0.30859,-0.16406 -0.67969,-0.15625 -0.98047,0.02344c-0.30078,0.17969 -0.48438,0.50391 -0.48828,0.85156v0.125c0,3.68359 1.90625,6.88281 4.71875,8.84375c-0.03125,-0.00391 -0.0625,0.00781 -0.09375,0c-0.34375,-0.05859 -0.69141,0.0625 -0.92187,0.32422c-0.23047,0.26172 -0.30469,0.625 -0.20312,0.95703c1.11719,3.47266 3.96875,6.125 7.5,7.09375c-2.8125,1.67188 -6.07422,2.65625 -9.59375,2.65625c-0.76172,0 -1.49219,-0.03906 -2.21875,-0.125c-0.46875,-0.0625 -0.91797,0.21094 -1.07422,0.65625c-0.16016,0.44531 0.01563,0.94141 0.41797,1.1875c4.51172,2.89453 9.86719,4.59375 15.625,4.59375c9.33203,0 16.65234,-3.89844 21.5625,-9.46875c4.91016,-5.57031 7.46875,-12.80469 7.46875,-19.5625c0,-0.28516 -0.02344,-0.5625 -0.03125,-0.84375c1.83203,-1.40234 3.46875,-3.04687 4.75,-4.96875c0.25391,-0.37109 0.22656,-0.86719 -0.06641,-1.21094c-0.28906,-0.34375 -0.77734,-0.44922 -1.18359,-0.25781c-0.51562,0.23047 -1.11719,0.25391 -1.65625,0.4375c0.71094,-0.94922 1.32031,-1.97266 1.6875,-3.125c0.125,-0.39453 -0.01172,-0.82812 -0.33594,-1.08594c-0.32422,-0.25391 -0.77734,-0.28516 -1.13281,-0.07031c-1.70703,1.01172 -3.59766,1.72266 -5.59375,2.15625c-1.9375,-1.8125 -4.48828,-3.03125 -7.34375,-3.03125zM34.21875,7.46875c2.55078,0 4.85547,1.08984 6.46875,2.8125c0.24219,0.25 0.59766,0.35547 0.9375,0.28125c1.30469,-0.25781 2.54297,-0.63672 3.75,-1.125c-0.69531,0.9375 -1.55469,1.73828 -2.5625,2.34375c-0.45703,0.22266 -0.67187,0.75 -0.50391,1.23047c0.16406,0.47656 0.66406,0.75391 1.16016,0.64453c1,-0.12109 1.89063,-0.52734 2.84375,-0.78125c-0.85547,0.92578 -1.79297,1.76172 -2.8125,2.5c-0.27734,0.20313 -0.42969,0.53125 -0.40625,0.875c0.01563,0.40625 0.03125,0.80859 0.03125,1.21875c0,6.25 -2.39844,13.03516 -6.96875,18.21875c-4.57031,5.18359 -11.28125,8.8125 -20.0625,8.8125c-3.98828,0 -7.75391,-0.88281 -11.15625,-2.4375c4.21875,-0.32422 8.10938,-1.81641 11.25,-4.28125c0.32813,-0.26172 0.45703,-0.69922 0.32422,-1.09766c-0.13281,-0.39844 -0.5,-0.67187 -0.91797,-0.68359c-3.29687,-0.05859 -6.05859,-1.97656 -7.53125,-4.6875c0.05469,0 0.10156,0 0.15625,0c0.98828,0 1.96484,-0.125 2.875,-0.375c0.4375,-0.12891 0.73828,-0.53516 0.72266,-0.99219c-0.01562,-0.45703 -0.33984,-0.84766 -0.78516,-0.94531c-3.55859,-0.71875 -6.22656,-3.61719 -6.84375,-7.21875c1.00781,0.34766 2.03906,0.62109 3.15625,0.65625c0.45703,0.02734 0.87109,-0.25781 1.01172,-0.69141c0.14063,-0.43359 -0.03125,-0.91016 -0.41797,-1.15234c-2.375,-1.58984 -3.9375,-4.29687 -3.9375,-7.375c0,-1.14062 0.29688,-2.1875 0.6875,-3.1875c5,5.48828 12,9.13281 19.90625,9.53125c0.3125,0.01563 0.61719,-0.11328 0.82031,-0.35156c0.20313,-0.24219 0.28125,-0.5625 0.21094,-0.86719c-0.15234,-0.64844 -0.25,-1.33594 -0.25,-2.03125c0,-4.89844 3.94531,-8.84375 8.84375,-8.84375z"></path></g></g>
+                      </svg>
+                    <!-- SVG content here -->
+                    </svg>
+                  </div>
+                  <div class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                      <radialGradient id="yOrnnhliCrdS2gy~4tD8ma_Xy10Jcu1L2Su_gr1" cx="19.38" cy="42.035" r="44.899" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fd5"></stop><stop offset=".328" stop-color="#ff543f"></stop><stop offset=".348" stop-color="#fc5245"></stop><stop offset=".504" stop-color="#e64771"></stop><stop offset=".643" stop-color="#d53e91"></stop><stop offset=".761" stop-color="#cc39a4"></stop><stop offset=".841" stop-color="#c837ab"></stop></radialGradient><path fill="url(#yOrnnhliCrdS2gy~4tD8ma_Xy10Jcu1L2Su_gr1)" d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z"></path><radialGradient id="yOrnnhliCrdS2gy~4tD8mb_Xy10Jcu1L2Su_gr2" cx="11.786" cy="5.54" r="29.813" gradientTransform="matrix(1 0 0 .6663 0 1.849)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4168c9"></stop><stop offset=".999" stop-color="#4168c9" stop-opacity="0"></stop></radialGradient><path fill="url(#yOrnnhliCrdS2gy~4tD8mb_Xy10Jcu1L2Su_gr2)" d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z"></path><path fill="#fff" d="M24,31c-3.859,0-7-3.14-7-7s3.141-7,7-7s7,3.14,7,7S27.859,31,24,31z M24,19c-2.757,0-5,2.243-5,5	s2.243,5,5,5s5-2.243,5-5S26.757,19,24,19z"></path><circle cx="31.5" cy="16.5" r="1.5" fill="#fff"></circle><path fill="#fff" d="M30,37H18c-3.859,0-7-3.14-7-7V18c0-3.86,3.141-7,7-7h12c3.859,0,7,3.14,7,7v12	C37,33.86,33.859,37,30,37z M18,13c-2.757,0-5,2.243-5,5v12c0,2.757,2.243,5,5,5h12c2.757,0,5-2.243,5-5V18c0-2.757-2.243-5-5-5H18z"></path>
+                      </svg>
+                    <!-- SVG content here -->
+                    </svg>
+                  </div>
+                 <div class="social-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                    <path fill="#FF3D00" d="M43.2,33.9c-0.4,2.1-2.1,3.7-4.2,4c-3.3,0.5-8.8,1.1-15,1.1c-6.1,0-11.6-0.6-15-1.1c-2.1-0.3-3.8-1.9-4.2-4C4.4,31.6,4,28.2,4,24c0-4.2,0.4-7.6,0.8-9.9c0.4-2.1,2.1-3.7,4.2-4C12.3,9.6,17.8,9,24,9c6.2,0,11.6,0.6,15,1.1c2.1,0.3,3.8,1.9,4.2,4c0.4,2.3,0.9,5.7,0.9,9.9C44,28.2,43.6,31.6,43.2,33.9z"></path><path fill="#FFF" d="M20 31L20 17 32 24z"></path>
+                    </svg>
+                 </div>
+              <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 40 40">
+                  <path fill="#ffb5d2" d="M20,38.5C9.799,38.5,1.5,30.201,1.5,20S9.799,1.5,20,1.5S38.5,9.799,38.5,20S30.201,38.5,20,38.5z"></path><path fill="#ea4c89" d="M20,2c9.925,0,18,8.075,18,18s-8.075,18-18,18S2,29.925,2,20S10.075,2,20,2 M20,1 C9.507,1,1,9.507,1,20s8.507,19,19,19s19-8.507,19-19S30.493,1,20,1L20,1z"></path><path fill="none" stroke="#ea4c89" stroke-miterlimit="10" d="M28.352 36.914c0 0-3.032-21.087-15.63-34.292M1.269 17.848c0 0 24.2 2.117 32.075-11.102M7.804 34.152c0 0 8.624-19.807 31.058-12.194"></path>
+                  </svg>
+              </div>
+              <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                  <linearGradient id="Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1" x1="9.993" x2="40.615" y1="9.993" y2="40.615" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2aa4f4"></stop><stop offset="1" stop-color="#007ad9"></stop></linearGradient><path fill="url(#Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1)" d="M24,4C12.954,4,4,12.954,4,24s8.954,20,20,20s20-8.954,20-20S35.046,4,24,4z"></path><path fill="#fff" d="M26.707,29.301h5.176l0.813-5.258h-5.989v-2.874c0-2.184,0.714-4.121,2.757-4.121h3.283V12.46 c-0.577-0.078-1.797-0.248-4.102-0.248c-4.814,0-7.636,2.542-7.636,8.334v3.498H16.06v5.258h4.948v14.452 C21.988,43.9,22.981,44,24,44c0.921,0,1.82-0.084,2.707-0.204V29.301z"></path>
+                  </svg>
+              </div>
+              <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                  <path fill="#fff" d="M41,24c0,9.4-7.6,17-17,17S7,33.4,7,24S14.6,7,24,7S41,14.6,41,24z"></path><path fill="#455a64" d="M21 41v-5.5c0-.3.2-.5.5-.5s.5.2.5.5V41h2v-6.5c0-.3.2-.5.5-.5s.5.2.5.5V41h2v-5.5c0-.3.2-.5.5-.5s.5.2.5.5V41h1.8c.2-.3.2-.6.2-1.1V36c0-2.2-1.9-5.2-4.3-5.2h-2.5c-2.3 0-4.3 3.1-4.3 5.2v3.9c0 .4.1.8.2 1.1L21 41 21 41zM40.1 26.4C40.1 26.4 40.1 26.4 40.1 26.4c0 0-1.3-.4-2.4-.4 0 0-.1 0-.1 0-1.1 0-2.9.3-2.9.3-.1 0-.1 0-.1-.1 0-.1 0-.1.1-.1.1 0 2-.3 3.1-.3 1.1 0 2.4.4 2.5.4.1 0 .1.1.1.2C40.2 26.3 40.2 26.4 40.1 26.4zM39.8 27.2C39.8 27.2 39.8 27.2 39.8 27.2c0 0-1.4-.4-2.6-.4-.9 0-3 .2-3.1.2-.1 0-.1 0-.1-.1 0-.1 0-.1.1-.1.1 0 2.2-.2 3.1-.2 1.3 0 2.6.4 2.6.4.1 0 .1.1.1.2C39.9 27.1 39.9 27.2 39.8 27.2zM7.8 26.4c-.1 0-.1 0-.1-.1 0-.1 0-.1.1-.2.8-.2 2.4-.5 3.3-.5.8 0 3.5.2 3.6.2.1 0 .1.1.1.1 0 .1-.1.1-.1.1 0 0-2.7-.2-3.5-.2C10.1 26 8.6 26.2 7.8 26.4 7.8 26.4 7.8 26.4 7.8 26.4zM8.2 27.9c0 0-.1 0-.1-.1 0-.1 0-.1 0-.2.1 0 1.4-.8 2.9-1 1.3-.2 4 .1 4.2.1.1 0 .1.1.1.1 0 .1-.1.1-.1.1 0 0 0 0 0 0 0 0-2.8-.3-4.1-.1C9.6 27.1 8.2 27.9 8.2 27.9 8.2 27.9 8.2 27.9 8.2 27.9z"></path><path fill="#455a64" d="M14.2,23.5c0-4.4,4.6-8.5,10.3-8.5c5.7,0,10.3,4,10.3,8.5S31.5,31,24.5,31S14.2,27.9,14.2,23.5z"></path><path fill="#455a64" d="M28.6 16.3c0 0 1.7-2.3 4.8-2.3 1.2 1.2.4 4.8 0 5.8L28.6 16.3zM20.4 16.3c0 0-1.7-2.3-4.8-2.3-1.2 1.2-.4 4.8 0 5.8L20.4 16.3zM20.1 35.9c0 0-2.3 0-2.8 0-1.2 0-2.3-.5-2.8-1.5-.6-1.1-1.1-2.3-2.6-3.3-.3-.2-.1-.4.4-.4.5.1 1.4.2 2.1 1.1.7.9 1.5 2 2.8 2 1.3 0 2.7 0 3.5-.9L20.1 35.9z"></path><path fill="#00bcd4" d="M24,4C13,4,4,13,4,24s9,20,20,20s20-9,20-20S35,4,24,4z M24,40c-8.8,0-16-7.2-16-16S15.2,8,24,8 s16,7.2,16,16S32.8,40,24,40z"></path>
+                  </svg>                
+
+              </div>
+              <div class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+                  <path fill="#e53935" d="M24 43L16 20 32 20z"></path><path fill="#ff7043" d="M24 43L42 20 32 20z"></path><path fill="#e53935" d="M37 5L42 20 32 20z"></path><path fill="#ffa726" d="M24 43L42 20 45 28z"></path><path fill="#ff7043" d="M24 43L6 20 16 20z"></path><path fill="#e53935" d="M11 5L6 20 16 20z"></path><path fill="#ffa726" d="M24 43L6 20 3 28z"></path>
+                  </svg>
+              </div>
+              <!-- Add more icons as needed -->
+                </div>
+              </div>
+        
+              
+              </div>
+              <div class="faq">
+                <div class="faq-question">
+                 <div class="heading">
+                 <i class="material-icons">text_fields</i> <h2>Fonts</h2>
+                </div>
+             
+                <i class="material-icons">keyboard_arrow_down</i>
+                </div>
+             <style>
+  .Dropdowncontainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
+
+}
+
+/* Flexbox styling for each input group */
+.Dropdowninput-group{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Style the labels */
+label {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* Style the select dropdowns */
+select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+/* Make the container responsive */
+@media (max-width: 768px) {
+  .Dropdowncontainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Dropdowninput-group {
+    width: 80%; /* Limit the width of each input group */
+  }
+}
+.screen-flex{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.prev-button{
+  padding: 15px 30px;
+  background-color: #28C258;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+ }
+             </style> 
+                <div class="faq-answer">
+                  <p>Choose your color </p>
+                  <div class="Dropdowncontainer">
+                    <div class="Dropdowninput-group">
+                      <label for="dropdown1">Select Option 1:</label>
+                      <select id="dropdown1">
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                      </select>
+                    </div>
+                    <div class="Dropdowninput-group">
+                      <label for="dropdown2">Select Option 2:</label>
+                      <select id="dropdown2">
+                        <option value="A">Option A</option>
+                        <option value="B">Option B</option>
+                        <option value="C">Option C</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+            
+                </div>
+                <div class="faq">
+                  <div class="faq-question">
+                   <div class="heading">
+                   <i class="material-icons">article</i><h2>Welcome screen</h2>
+                  </div>
+               
+                  <i class="material-icons">keyboard_arrow_down</i>
+                  </div>
+                
+                  <div class="faq-answer">
+                    <p>Choose your color </p>
+                <div class="screen-flex">
+                    <div class="choose-image">
+                      <label for="file-upload" class="file-label"><i class="material-icons">image</i></label>
+                      <input type="file" id="file-upload" style="display: none;" />
+                    </div>
+                <button class="prev-button">Preview</button>   
+                  </div>
+                </div>
+                  </div>
+                  <div class="faq">
+                    <div class="faq-question">
+                     <div class="heading">
+                     <i class="material-icons">qr_code_2</i> <h2>Name of the QR Code</h2>
+                    </div>
+                 
+                    <i class="material-icons">keyboard_arrow_down</i>
+                    </div>
+                <style>
+                    .Qrnameform-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .qr-name {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .checkbox-container {
+  display: flex;
+  align-items: center;
+margin-top: 20px; 
+}
+
+/* Custom Checkbox Styles */
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox .checkmark {
+  width: 20px;
+  height: 20px;
+  background-color: #e0e0e0;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  position: relative;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.custom-checkbox .checkmark::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+  background-color: #4caf50;
+  border-color: #4caf50;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.custom-checkbox .label-text {
+  margin-left: 10px;
+  font-size: 16px;
+  color: #333;
+}
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 20px;
+}
+
+.dropdown-label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.select-folder {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.select-folder:hover {
+  border-color: #007bff;
+}
+
+.select-folder:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+                </style>  
+                    <div class="faq-answer">
+                      <p>Choose your color </p>
+                      <div class="Qrnameform-group">
+                        <label for="qr-name">QR Name</label>
+                        <input type="text" class="qr-name" id="qr-name" placeholder="Enter QR name">
+                      </div>
+                    </div>
+                
+                    </div>
+                   
+                    <div class="faq">
+                      <div class="faq-question">
+                       <div class="heading">
+                       <i class="material-icons">key</i> <h2>Password</h2>
+                      </div>
+                   
+                      <i class="material-icons">keyboard_arrow_down</i>
+                      </div>
+                    
+                      <div class="faq-answer">
+                        <p>Choose your color </p>
+                        <div class="checkbox-container">
+                          <label class="custom-checkbox">
+                            <input type="checkbox" />
+                            <span class="checkmark"></span>
+                            <span class="label-text">I agree to the terms and conditions</span>
+                          </label>
+                        </div>
+                      </div>
+                  
+                      </div>
+                      <div class="faq">
+                        <div class="faq-question">
+                         <div class="heading">
+                         <i class="material-icons">folder_open</i> <h2>Folder</h2>
+                        </div>
+                     
+                        <i class="material-icons">keyboard_arrow_down</i>
+                        </div>
+                      
+                        <div class="faq-answer">
+                          <p>Choose your color </p>
+                          <div class="dropdown-container">
+                            <label for="folder" class="dropdown-label">Select Folder:</label>
+                            <select id="folder" class="select-folder">
+                              <option value="" disabled selected>Choose a folder</option>
+                              <option value="folder1">Folder 1</option>
+                              <option value="folder2">Folder 2</option>
+                              <option value="folder3">Folder 3</option>
+                            </select>
+                          </div>
+                        </div>
+                    
+                        </div>
+                                                              
+  </div>
+
+    <div class="Mobile-container">  
+        <div class="button-container2">
+            <button class="toggle-button active" id="button1" onclick="showScreen(1)">Preview</button>
+            <button class="toggle-button" id="button2" onclick="showScreen(2)">QR CODE</button>
+        </div>
+        
+        <div class="mobile-phone">
+            <!-- Screen 1 -->
+            <div class="screen" id="screen1">
+                <div class="notch"></div>
+                <div class="speaker"></div>
+                <div class="inner-screen">
+                    <div class="avatar"></div>
+                    <div class="name" id="name"><h1>User 1</h1></div>
+                   <br>
+                    <p id="displayText2">Account Manager</p>
+                    <div class="contact-icons">
+                        <div class="phone-icon"><i class="material-icons">call</i></div>
+                        <div class="phone-icon"><i class="material-icons">mail</i></div>
+                        <div class="phone-icon"><i class="material-icons">location_on</i></div>
+            
+                      </div>
+                </div>
+                <div class="bottom-footer">
+                  <br>  
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi distinctio.</p>
+             <br>
+
+             <div class="Contact-detail">
+              <!-- Input 1 -->
+              <div class="Contact-detail-input-wrapper">
+                <label for="label" id="label">Contact</label>
+                <span class="Contact-detail-input-icon"><i class="material-icons">call</i></span>
+                <input type="text" id="phoneinp" class="Contact-detail-input-field" placeholder="Enter your first name" >
+              </div>
+            
+              <!-- Input 2 -->
+              <div class="Contact-detail-input-wrapper">
+                <label for="Labelforemail">Email</label>
+                <span class="Contact-detail-input-icon">✉️</span>
+                <input type="email" id="input2" class="Contact-detail-input-field" placeholder="Enter your email">
+              </div>
+            
+              <!-- Input 3 -->
+              <div class="Contact-detail-input-wrapper">
+                <label for="input3">Password</label>
+                <span class="Contact-detail-input-icon">🔒</span>
+                <input type="password" id="input3" class="Contact-detail-input-field" placeholder="Enter your password">
+              </div>
+            </div>
+            
+             <button class="add-to-contact"><i class="material-icons">person_add</i> to contact</button>
+             
+
+            </div>
+
+
+            <div class="volume-buttons">
+                    <div class="volume-button"></div>
+                    <div class="volume-button"></div>
+                    <div class="volume-button"></div>
+                </div>
+                <div class="power-button"></div>
+                <div class="camera"></div>
+            </div>
+
+            <!-- Screen 2 -->
+            <div class="screen hidden" id="screen2">
+                <div class="notch"></div>
+                <div class="speaker"></div>
+                <div class="inner-screen">
+                    <div class="qr-image"></div>
+                    <div class="name"><h1>User 2</h1></div>
+                </div>
+                <div class="volume-buttons">
+                    <div class="volume-button"></div>
+                    <div class="volume-button"></div>
+                    <div class="volume-button"></div>
+                </div>
+                <div class="power-button"></div>
+                <div class="home-button"></div>
+                <div class="camera"></div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+</section>
+    <script>
+        function showScreen(screenNumber) {
+            const screens = document.querySelectorAll('.screen');
+            const buttons = document.querySelectorAll('.toggle-button');
+
+            screens.forEach(screen => screen.classList.add('hidden'));
+            buttons.forEach(button => button.classList.remove('active'));
+
+            document.getElementById(`screen${screenNumber}`).classList.remove('hidden');
+            document.getElementById(`button${screenNumber}`).classList.add('active');
+        }
+        document.querySelectorAll('.faq-question').forEach(item => {
+    item.addEventListener('click', () => {
+        const faq = item.parentNode;
+        faq.classList.toggle('open');
+    });
+});
+// Get elements for the color pickers and the box
+const color1Picker = document.getElementById('color1');
+const color2Picker = document.getElementById('color2');
+const colorBox = document.querySelector('.inner-screen ');
+
+// Function to update the color box
+function updateColorBox() {
+  const primaryColor = color1Picker.value;
+  const secondaryColor = color2Picker.value;
+  
+  // Set the background of the color box to a gradient of both colors
+  colorBox.style.background = `linear-gradient(to right, ${primaryColor}, ${secondaryColor})`;
+}
+
+// Event listeners for both color pickers
+color1Picker.addEventListener('input', updateColorBox);
+color2Picker.addEventListener('input', updateColorBox);
+
+// Initial color box update on page load
+updateColorBox();
+
+document.getElementById('file-upload').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            // Set the background image of the avatar div
+            const avatarDiv = document.querySelector('.avatar');
+            avatarDiv.style.backgroundImage = `url(${e.target.result})`;  // Set the image as background
+        };
+        
+        reader.readAsDataURL(file); // Read the image file as a data URL
+    }
+});
+function updateDisplay() {
+            var userInput = document.getElementById('userInput').value;
+            document.getElementById('name').textContent = userInput;
+        }
+   
+function updateDisplay2() {
+            var userInput = document.getElementById('userInput2').value;
+            document.getElementById('displayText2').textContent = userInput;
+        }
+        function updateDisplayContactdata() {
+    var userInput = document.getElementById('label').value;
+    document.getElementById('input1').value = userInput; // Update the value of input1
+}
+
+function updateDisplayContactdata() {
+    var userInput = document.getElementById('input1').value; // Get the value from the input field
+    document.getElementById('label').textContent = userInput; // Update the label text content
+}
+
+const input1 = document.getElementById('insertphone');
+    const input2 = document.getElementById('phoneinp');
+
+    input1.addEventListener('input', () => {
+      input2.value = input1.value;
+    });
+    
+    function updateDisplayEmaildata() {
+    var userInput = document.getElementById('insertLabelforemail').value; // Get the value from the input field
+    document.getElementById('Labelforemail').textContent = userInput; // Update the label text content
+}
+
+
+
+
+
+</script>
+
+</body>
+</html>

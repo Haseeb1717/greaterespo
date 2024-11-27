@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>QR CODE PROJECT</title>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Syne', sans-serif;
+    background-color: #FCFEFE; /* Optional background for better visibility */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Ensure sidebar positions correctly */
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    gap: 1.5em;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.btn {
+    background-color:#28C258;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+}
+
+.menu-icon {
+    display: none; /* Initially hide the menu icon */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+/* Sidebar styling */
+.sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color:#fff; /* Sidebar color */
+    color:black;
+    transition: left 0.3s; /* Transition for sliding effect */
+    padding: 20px;
+    z-index: 1000;
+}
+
+.sidebar.active {
+    left: 0; /* Show sidebar */
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-top: 50px;
+}
+
+.sidebar ul li {
+    margin-bottom: 30px;
+}
+
+.sidebar ul li a {
+    color:black;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+
+@media(max-width: 764px) {
+    .menu-icon {
+        display: block; /* Show the menu icon */
+    }
+
+    nav ul {
+        display: none; /* Hide navigation links on small screens */
+    }
+
+    .sidebar {
+        left: -250px; /* Initially hide sidebar */
+    }
+}
+.active{
+color: #28C258;
+       
+}
+
+
+
+  
+footer {
+            background-color: #fff;
+            padding: 60px 0;
+            color: black;
+            margin-top:150px;
+        }
+        
+        .container {
+            max-width: 1170px;
+            margin: auto;
+            padding: 0 20px;
+        }
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-col {
+            flex-basis: 20%;
+            margin-bottom: 20px;
+            min-width: 200px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.5rem;
+            color: black;
+            margin-bottom: 10px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color:#28C258;
+            height: 2px;
+            width: 50px;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color:#333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color:#28C258;
+        }
+        
+        .footer-col form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-col form input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        .footer-col form button {
+            padding: 10px;
+            background-color:#28C258;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .footer-col form button:hover {
+            background-color:#28C258;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            margin: 0 10px;
+            text-decoration: none;
+            color:#28C258;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #28C258;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #777;
+            padding-top: 10px;
+        }
+        
+        .footer-bottom p {
+            color:black;
+        }
+        
+        .footer-bottom a {
+            color:black;
+            text-decoration: none;
+            margin-left: 10px;
+            
+        }
+        
+        .footer-bottom a:hover {
+            color: #28C258;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+        
+            .footer-col {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+        
+
+
+i{
+    color: #28C258;
+    margin-right: 20px;
+
+}
+h1{
+    font-size: 3rem;
+
+}
+.mainspan{
+    font-size: 3rem;
+    color: #28C258;
+}
+@media(max-width:764px){
+    h1{
+        font-size: 2rem;
+    }
+    .mainspan{
+        font-size: 2rem;
+    }
+}
+
+.step:nth-child(1) .step-number {
+  background-color: #28C258;
+  color: white;
+}
+   
+
+.information-section {
+           max-width: 1440px;
+           margin: 20px auto;
+           padding: 20px;
+           background-color: #f9f9f9;
+       }
+   
+       .information-container {
+           max-width: 90%;
+           margin: 0 auto;
+           display: flex;
+           align-items: flex-start;
+           justify-content: space-between;
+           gap: 20px;
+           background-color: #FCFEFE;
+           border-radius: 8px;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+           padding: 30px;
+           flex-wrap: wrap;
+       }
+   
+       .form {
+           width: 100%;
+           max-width: 600px;
+           background-color: #fff;
+           border-radius: 8px;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+           padding: 30px;
+           flex: 1;
+           height: 100vh;
+       }
+   
+       .form h2 {
+           font-size: 24px;
+           color: #333;
+           margin-bottom: 20px;
+           text-align: center;
+       }
+   
+       .form label {
+           display: block;
+           font-size: 14px;
+           color: #333;
+           margin-bottom: 8px;
+       }
+   
+       .form input[type="text"],
+       .form select {
+           width: 100%;
+           padding: 12px;
+           margin-bottom: 15px;
+           font-size: 16px;
+           border: 1px solid #ccc;
+           border-radius: 4px;
+           outline: none;
+           transition: border-color 0.3s ease;
+       }
+   
+       .form input[type="text"]:focus,
+       .form select:focus {
+           border-color: #4CAF50;
+       }
+   
+       .form input::placeholder {
+           color: #999;
+       }
+   
+       .payment {
+           width: 100%;
+           padding: 15px;
+           background-color: #28C258;
+           color: #fff;
+           border: none;
+           font-size: 1.2rem;
+           cursor: pointer;
+           border-radius: 4px;
+           transition: background-color 0.3s ease;
+           display: flex;
+           align-items: center;
+       justify-content: center;
+       gap: 10px;
+
+        }
+   
+       .payment:hover {
+           background-color: #239b4a;
+       }
+   
+       .pricing-information {
+           flex: 1;
+           max-width: 400px;
+           border-radius: 8px;
+           text-align: left;
+       }
+   
+       .pricing-information h2 {
+           font-size: 24px;
+           color: #333;
+           margin-bottom: 20px;
+       }
+   
+       .plans-flex, .plans-flex2 {
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           margin-bottom: 15px;
+       }
+   
+       .right-plane {
+           font-size: 16px;
+           color: #555;
+       }
+   
+       .left-plane, .left-plane2 {
+           font-size: 16px;
+           color: #333;
+       }
+   
+       hr {
+           border: none;
+           border-top: 1px solid #ddd;
+           margin: 20px 0;
+       }
+   
+       ul {
+           list-style: none;
+           padding: 0;
+       }
+   
+       ul li {
+           font-size: 16px;
+           color: #555;
+           display: flex;
+           align-items: center;
+           margin-bottom: 10px;
+       }
+   
+       ul li i {
+           font-size: 20px;
+           color: #28C258;
+           margin-right: 10px;
+       }
+   
+       @media (max-width: 768px) {
+           .information-container {
+               flex-direction: column;
+               align-items: center;
+           }
+   
+           .form, .pricing-information {
+               width: 100%;
+               max-width: 90%;
+           }
+   
+           .plans-flex, .plans-flex2 {
+               flex-direction: column;
+               align-items: flex-start;
+           }
+         
+       }
+       @media(max-width:500px){
+        .information-container{
+background-color:transparent;
+box-shadow: none;
+           }
+           .form{
+            box-shadow: none;
+           }
+       }
+       
+/* ---------- SCROLLBARS ---------- */
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #28C258;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color:#28C258;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color:#28C258;
+      
+}
+ 
+input{
+        transition: background-color 0.6s ease, border-color 0.5s ease, transform 0.3s ease; /* Smooth transition for background, border, and scaling */
+        }
+
+        @keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+input:focus {
+    border: 1px solid #28C258; /* Green border on focus */
+    outline: none; /* Remove default outline */
+    animation: pulse 0.6s ease; /* Pulse animation on focus */
+}
+.progress-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.step-number {
+  background-color: #ddd;
+  color: #555;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.step:nth-child(3) .step-number {
+  background-color: #28C258;
+  color: white;
+}
+
+.step-line {
+  flex: 1;
+  height: 3px;
+  background-color: #ddd;
+  margin: 0 5px;
+}
+
+.step:nth-child(1) + .step-line {
+  background-color: #28C258;
+}
+
+.step-title {
+  margin-top: 8px;
+  font-size: 12px;
+  text-align: center;
+  color: #555;
+}
+
+@media (max-width: 480px) {
+  .step-title {
+    font-size: 10px;
+  }
+}
+
+ 
+</style>
+</head>
+<body>
+   <!---HEADER SECTION-->
+   <header>
+       <div class="logo">Logo</div>
+       <nav>
+           <ul>
+               <li><a href="#" class="active">QR Generator</a></li>
+               <li><a href="#">Pricing</a></li>
+               <li><a href="#">Log in</a></li>
+               <li><a href="#" class="btn">Try It Free</a></li>
+           </ul>
+           <div class="menu-icon" onclick="toggleSidebar()">
+               <i class="material-icons">menu</i>
+           </div>
+       </nav>
+   </header>
+
+   <div class="sidebar" id="sidebar">
+       <ul>
+           <li><a href="#">QR Generator</a></li>
+           <li><a href="#">Pricing</a></li>
+           <li><a href="#">Log in</a></li>
+           <li><a href="#" class="btn">Try It Free</a></li>
+       </ul>
+   </div>
+    <div class="progress-bar">
+        <div class="step active">
+          <div class="step-number">1</div>
+          <div class="step-title"> Plans & Pricing</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-title"> Information</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-title">Payment</div>
+        </div>
+      </div>
+      
+   <section class="information-section">
+       <div class="information-container">
+           <!-- Billing Form -->
+           <div class="form">
+               <form>
+                   <h2>Billing Information</h2>
+   
+                   <label for="name">Full Name</label>
+                   <input type="text" id="name" placeholder="First and last name" required>
+   
+                   <label for="country">Country or Region</label>
+                   <select id="country" required>
+                       <option value="" disabled selected>Select your country</option>
+                       <option value="us">United States</option>
+                       <option value="uk">United Kingdom</option>
+                       <option value="ca">Canada</option>
+                       <option value="au">Australia</option>
+                       <option value="in">India</option>
+                       <option value="fr">France</option>
+                       <option value="de">Germany</option>
+                       <option value="jp">Japan</option>
+                       <option value="cn">China</option>
+                       <option value="br">Brazil</option>
+                   </select>
+   
+                   <label for="address">Address Line One</label>
+                   <input type="text" id="address" placeholder="Street address, P.O. box, etc." required>
+   
+                   <button class="payment">Continue For Payment <i class="material-icons">arrow_right_alt</i></button>
+         
+                </form>
+           </div>
+   
+           <!-- Summary Section -->
+           <div class="pricing-information">
+               <h2>Summary</h2>
+               <div class="plans-flex">
+                   <div class="left-plane">3 months plan</div>
+                   <div class="right-plane">$29.95 USD/mo<br><br>(.ع.ر 11.38 OMR)</div>
+               </div>
+               <hr>
+               <div class="plans-flex2">
+                   <div class="left-plane2"><h2>Total</h2></div>
+                   <div class="right-plane">$89.85 USD<br><br>(.ع.ر 11.38 OMR)</div>
+               </div>
+               <h2>Quarterly Plan</h2>
+               <ul>
+                   <li><i class="material-icons">task_alt</i> Create unlimited dynamic QR codes</li>
+                   <li><i class="material-icons">task_alt</i> Access a variety of QR types</li>
+                   <li><i class="material-icons">task_alt</i> Unlimited modifications of QR codes</li>
+                   <li><i class="material-icons">task_alt</i> Unlimited scans</li>
+                   <li><i class="material-icons">task_alt</i> Multiple QR code download formats</li>
+                   <li><i class="material-icons">task_alt</i> Unlimited users</li>
+                   <li><i class="material-icons">task_alt</i> Premium customer support</li>
+                   <li><i class="material-icons">task_alt</i> Cancel at anytime</li>
+               </ul>
+           </div>
+       </div>
+   </section>
+   
+   </body>
+   </html>
+   
+   <!-- Footer Section -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- Company Column -->
+            <div class="footer-col" id="footer-col1">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Get started</a></li>
+                </ul>
+            </div>
+
+            <!-- Services Column -->
+            <div class="footer-col" id="footer-col2">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">App design</a></li>
+                    <li><a href="#">Web design</a></li>
+                    <li><a href="#">Logo design</a></li>
+                    <li><a href="#">Banner design</a></li>
+                </ul>
+            </div>
+
+            <!-- Account Column -->
+            <div class="footer-col" id="footer-col3">
+                <h4>Account</h4>
+                <ul>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">My account</a></li>
+                    <li><a href="#">Preferences</a></li>
+                    <li><a href="#">Purchase</a></li>
+                </ul>
+            </div>
+
+            <!-- Courses Column -->
+            <div class="footer-col" id="footer-col4">
+                <h4>Courses</h4>
+                <ul>
+                    <li><a href="#">HTML & CSS</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                    <li><a href="#">Photography</a></li>
+                    <li><a href="#">Photoshop</a></li>
+                </ul>
+            </div>
+
+            <!-- Subscribe Column -->
+            <div class="footer-col" id="footer-col5">
+                <h4>Registration</h4>
+                <form action="#">
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="social-icons" id="footer-col6">
+            <a href="#"><i class="material-icons">facebook</i></a>
+            <a href="#"><i class="ri-twitter-line"></i></a>
+            <a href="#"><i class="ri-instagram-line"></i></a>
+            <a href="#"><i class="ri-linkedin-fill"></i></a>
+            <a href="#"><i class="ri-whatsapp-line" ></i></a>
+        </div>
+
+        <div class="footer-bottom"7 id="footer-col">
+            <p>&copy; 2024 QR. All rights reserved</p>
+            <p><a href="#">Privacy policy</a> | <a href="#">Terms & conditions</a></p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

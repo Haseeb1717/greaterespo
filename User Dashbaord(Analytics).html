@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+<style>
+    body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Syne', sans-serif;
+  background-color:#E8E9EB;
+  
+  
+ }
+
+.material-icons-outlined {
+  vertical-align: middle;
+  line-height: 1px;
+}
+
+.font-weight-bold {
+  font-weight: 600;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 260px 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 3fr;
+  grid-template-areas:
+    " sidebar header header header"
+    "sidebar main main main";
+  height: 100vh;
+}
+
+
+/* ---------- HEADER ---------- */
+
+.header {
+  grid-area: header;
+  height: 70px;
+  background-color:transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px 0 30px;
+}
+
+.menu-icon {
+  display: none;
+}
+
+
+/* ---------- SIDEBAR ---------- */
+
+#sidebar {
+  grid-area: sidebar;
+  height: 100%;
+  background-color: #fff;
+  color: #9799ab;
+  overflow-y: auto;
+  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+}
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 20px 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar-title > span {
+  display: none;
+}
+
+.sidebar-brand {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar-list {
+  padding: 0;
+  margin-top: 15px;
+  list-style-type: none;
+}
+
+.sidebar-list-item {
+  padding: 20px 25px 20px 20px;
+}
+
+.sidebar-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+#analyse{
+/* Your styles here */
+color: #28C258;
+}
+.sidebar-list-item > a {
+  text-decoration: none;
+  color: #9799ab;
+  margin-left: 20px;
+}
+.sidebar-list-item  :hover{
+
+  color:#28C258;
+  
+}
+
+
+.sidebar-responsive {
+  display: inline !important;
+  position: absolute;
+  /*
+    the z-index of the ApexCharts is 11
+    we want the z-index of the sidebar higher so that
+    the charts are not showing over the sidebar 
+    on small screens
+  */
+  z-index: 12 !important;
+}
+
+
+/* ---------- MAIN ---------- */
+
+.main-container {
+  grid-area: main;
+  overflow-y: auto;
+  padding: 20px 20px;
+  background-color:#E8E9EB;
+  
+}
+
+
+/* ---------- SCROLLBARS ---------- */
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #a5aaad;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color:#28C258;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a5aaad;
+}
+
+
+/* ---------- MEDIA QUERIES ---------- */
+
+
+/* Medium <= 992px */
+@media screen and (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+      "header"
+      "main";
+  }
+
+  #sidebar {
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline;
+  }
+
+  .sidebar-title > span {
+    display: inline;
+  }
+}
+
+/* Small <= 768px */
+@media screen and (max-width: 768px) {
+  .main-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
+}
+
+/* Extra Small <= 576px */
+@media screen and (max-width: 576px) {
+  .header-left {
+    display: none;
+  }
+}
+#analyse{
+  background-color:#fff;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);     
+  color:#28C258;
+  border-left: 3px solid #28C258;
+  border-radius: 5px;
+ 
+
+  
+}
+
+.sidebar-list-item:hover {
+    /* Your styles here */
+    background-color:#fff;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        
+  color:#28C258;
+  border-left: 3px solid #28C258;
+  border-radius: 5px;
+ 
+  
+}
+  
+.Explore{
+  padding: 10px 30px;
+background-color: transparent;
+color: #28C258;
+border: 1px solid #28C258;
+}
+
+.Explore:hover{
+  background-color: #28C258;
+  color: #fff;
+}
+</style> 
+</head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+      <h2>Analysis</h2>
+        </div>
+        <div class="header-right">
+        <button class="Explore">Explore info</button>
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-icons-outlined">qr_code_2</span> QR CODE Genrator
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+            <li class="sidebar-list-item">
+                <a href="#" target="_blank">
+                  <span class="material-icons-outlined">dashboard</span> Dashboard
+                </a>
+              </li>
+         
+            <li class="sidebar-list-item" id="analyse">
+            <a href="#" target="_blank" style="color: #28C258;">
+              <span class="material-icons-outlined">signal_cellular_alt</span> Analysis
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">add_circle</span>  Genrate QR CODE 
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">bookmark</span>  Saved QR CODE
+            </a>
+          </li>
+          
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">local_library</span>  QR CODE Reader 
+            </a>
+          </li>
+        
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">qr_code_2</span>   My Qr code
+            </a>
+          </li>
+          
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">link</span>       Links
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">link</span>     Projects
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="Genrate Qr Code step1.html" target="_blank">
+              <span class="material-icons-outlined">adjust</span> Pixels 
+            </a>
+          </li>
+      
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">language</span>      Custom Domains
+            </a>
+          </li>
+       
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">person</span> My Account
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">credit_score</span> Billing
+            </a>
+          </li>
+        </ul>
+     <style>
+       
+      #bottomul{
+        margin-top: 50px; 
+      }
+     </style>
+     <ul class="sidebar-list" id="bottomul">
+          <hr style="width: 200px; margin-left:20px;" id="bottom">
+          <li class="sidebar-list-item" id="bottom">
+            <a href="#" target="_blank" style=" background-color:none; color:none; box-shadow: none;
+           ">
+              <span class="material-icons-outlined">contact_phone</span> Contact Us 
+            </a>
+          </li>
+          <li class="sidebar-list-item" id="bottom">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">quiz</span> FAQ,s
+            </a>
+          </li>
+        </ul>
+      </aside>
+     
+      <!-- End Sidebar -->
+<style>
+  .container-cards{
+      max-width: 100%;
+      margin: 0 auto;
+
+    }
+
+    /* Filter Section */
+    .filters {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      background-color: #fff;
+    
+    }
+
+    .filter-item {
+      flex: 1;
+      min-width: 150px;
+      background-color: #fff;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .filter-item label {
+      font-size: 14px;
+      color:#28C258;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .filter-item select, .filter-item input[type="date"] {
+      padding: 8px;
+      border-radius: 5px;
+    border: 1px solid #28C258;
+      font-size: 14px;
+      color: #333;
+    }
+
+    /* Card Section */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .card h3 {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .card .value {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .card .percentage {
+      font-size: 12px;
+      color: #4caf50; /* Green color for positive percentages */
+    }
+.icon{
+  background-color:#E8E9EB;
+padding: 20px;
+border-radius: 30px;
+}
+.icon2{
+  background-color: azure;
+
+  color: #28C258;
+
+}
+.icon3{
+  background-color:#E0FFFF;
+  color:#0096FF;
+}
+@media(max-width:900px){
+  .card {
+
+flex-direction: column;
+  }
+  .filters {
+    flex-wrap: wrap;
+  flex-direction: column;
+  }
+}
+</style>
+      <!-- Main -->
+      <main class="main-container">
+  
+        <div class="container-cards">
+          <!-- Filter Section -->
+          <div class="filters">
+            <div class="filter-item">
+              <label for="period">Period</label>
+              <select id="period">
+                <option value="last12days">Last 12 days</option>
+                <option value="last30days">Last 30 days</option>
+                <option value="custom">Custom</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <label for="start-date">Pick a Range</label>
+              <input type="date" id="start-date">
+               </div>
+            <div class="filter-item">
+              <label for="qr-code">QR Code</label>
+              <select id="qr-code">
+                <option value="all">All Selected (58)</option>
+                <option value="specific1">QR Code 1</option>
+                <option value="specific2">QR Code 2</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <label for="os">Operating System</label>
+              <select id="os">
+                <option value="all">All Selected (58)</option>
+                <option value="windows">Windows</option>
+                <option value="mac">Mac</option>
+                <option value="android">Android</option>
+                <option value="ios">iOS</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <label for="countries">Countries</label>
+              <select id="countries">
+                <option value="all">All Selected (58)</option>
+                <option value="country1">Country 1</option>
+                <option value="country2">Country 2</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <label for="cities">Cities</label>
+              <select id="cities">
+                <option value="all">All Selected (58)</option>
+                <option value="city1">City 1</option>
+                <option value="city2">City 2</option>
+              </select>
+            </div>
+          </div>
+      
+          <!-- Cards Section -->
+          <div class="card-grid">
+            <div class="card">
+              <div class="icon"><i class="material-icons-outlined">qr_code_2</i></div>
+              <div class="heading-ofcard">
+              <h3>Total QR Codes</h3>
+              <p class="percentage">Last 12 days +15%</p>
+            </div>
+              <div class="value">59</div>
+            
+            </div>
+            <div class="card">
+              <div class="icon icon2"><i class="material-icons-outlined">qr_code_scanner</i></div>
+              <div class="heading-ofcard">
+              <h3>Total QR Codes</h3>
+              <p class="percentage">Last 12 days +15%</p>
+            </div>
+              <div class="value">59</div>
+            
+            </div>
+            
+            <div class="card">
+              <div class="icon icon3"><i class="material-icons-outlined">qr_code_scanner</i></div>
+              <div class="heading-ofcard">
+              <h3>Total QR Codes</h3>
+              <p class="percentage">Last 12 days +15%</p>
+            </div>
+              <div class="value">59</div>
+            
+            </div>
+            
+            <!-- Add more cards if needed -->
+          </div>
+      <style>
+          .card-chart {
+            width: 100%;
+            max-width: 1110px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px auto;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .card-header h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        
+        .card-body {
+            position: relative;
+            height: 300px;
+            margin: 0 auto;
+        }
+        #jobStatisticsChart {
+            width: 100% !important;
+            height: 100% !important;
+        }
+        @media(max-width:1428px){
+          .card-chart{
+            max-width:800px;
+          }
+        }
+        @media (max-width: 768px) {
+          .card-chart {
+            max-width: 350px;
+            margin: 0 auto;
+            margin-top: 80px;
+    
+          }
+          .card-body {
+                height: 250px;
+            }
+        }
+        @media (max-width: 480px) {
+          .card-chart {
+            max-width: 430px;
+            margin: 0 auto;
+            margin-top: 80px;
+      
+          }
+        
+          .card-body {
+                height: 200px;
+            }
+            .card-header h3 {
+                font-size: 1em;
+            }
+            .dropdown-btn {
+                padding: 6px 10px;
+            }
+        }
+        h2 {
+            text-align: center;
+            margin: 0 auto;
+        }
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 60px;
+        }
+
+        .table-container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .table {
+            display: flex;
+            flex-direction: column;
+            padding:30px;
+        }
+
+        .table-header, .table-row {
+            display: flex;
+          align-items: center;
+         justify-content: center;
+          padding: 10px;
+        background-color: #f9fbfd;
+        }
+
+        .table-header {
+          background-color: #f1f5fb;
+      color: #333;
+            font-weight: bold;
+         }
+
+        .table-row {
+            transition: background-color 0.9s ease;
+        }
+
+        .table-row:hover {
+         background-color: #28C258;
+         color: #fff; 
+        }
+
+        .table-cell {
+            flex: 1;
+            text-align: center;
+            padding: 10px 10px;
+        }
+
+        .table-cell:first-child {
+            text-align: left;
+        }
+
+        .table-cell:last-child {
+            text-align: right;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .table-header, .table-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .table-cell {
+                text-align: left;
+                width: 100%;
+                padding: 5px 0;
+            }
+        }
+ 
+      </style>
+          <div class="card-chart">
+            <div class="card-header">
+            </div>
+            <h2>Scan Activation</h2>
+            <div class="card-body">
+                <canvas id="jobStatisticsChart"></canvas>
+            </div>
+        </div>
+        <div class="dashboard">
+          <!-- Table 1 -->
+          <div class="table-container">
+              
+            <div class="table">
+              <h3>Scans By Operating System</h3>
+         <br>
+              <div class="table-header">
+                      <div class="table-cell">Operating System</div>
+                      <div class="table-cell">Scans</div>
+                      <div class="table-cell">%</div>
+                  </div>
+                  <div class="table-row">
+                    <div class="table-cell">ios</div>
+                      <div class="table-cell">24</div>
+                      <div class="table-cell">57.68%</div>
+                 
+                    </div>
+                  <div class="table-row">
+                      <div class="table-cell">Window</div>
+                      <div class="table-cell">34</div>
+                      <div class="table-cell">33.33%</div>
+                  </div>
+                  <div class="table-row">
+                      <div class="table-cell">Linux</div>
+                      <div class="table-cell">12</div>
+                      <div class="table-cell">8.89%</div>
+                  </div>
+                  <div class="table-row">
+                    <div class="table-cell">Mac OS</div>
+                    <div class="table-cell">15</div>
+                    <div class="table-cell">50.78</div>
+                </div>
+                <div class="table-row">
+                  <div class="table-cell">Fedora</div>
+                  <div class="table-cell">16</div>
+                  <div class="table-cell">22.78% </div>
+              </div>
+            
+                </div>
+          </div>
+  
+          <!-- Table 2 -->
+          <div class="table-container">
+              <div class="table">
+            <h3>Scans By Country</h3>
+                <br>
+
+             <div class="table-header">
+                       <div class="table-cell">#</div>
+                      <div class="table-cell">Country</div>
+                      <div class="table-cell">scans</div>
+                      <div class="table-cell">%</div>
+                 
+                    </div>
+                  <div class="table-row">
+                      <div class="table-cell">01</div>
+                      <div class="table-cell">Oman</div>
+                      <div class="table-cell">66</div>
+                      <div class="table-cell">76.89%</div>
+                    
+                    </div>
+                  <div class="table-row">
+                    <div class="table-cell">01</div>
+                    <div class="table-cell">Oman</div>
+                    <div class="table-cell">66</div>
+                    <div class="table-cell">76.89%</div>
+               
+                  </div>
+                  <div class="table-row">
+                    <div class="table-cell">01</div>
+                      <div class="table-cell">Oman</div>
+                      <div class="table-cell">66</div>
+                      <div class="table-cell">76.89%</div>
+                 
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Table 3 -->
+          <div class="table-container">
+              <div class="table">
+                <h3>Scans By Region/City</h3>
+                  <div class="table-header">
+                      <div class="table-cell">#</div>
+                      <div class="table-cell">City</div>
+                      <div class="table-cell">Scans</div>
+                      <div class="table-cell">%</div>
+             
+                    </div>
+                  <div class="table-row">
+                    <div class="table-cell">01</div>
+                    <div class="table-cell">Oman</div>
+                    <div class="table-cell">66</div>
+                    <div class="table-cell">76.89%</div>
+              
+                  </div>
+                  <div class="table-row">
+                    <div class="table-cell">01</div>
+                    <div class="table-cell">Oman</div>
+                    <div class="table-cell">66</div>
+                    <div class="table-cell">76.89%</div>
+              
+                  </div>
+                  <div class="table-row">
+                    <div class="table-cell">01</div>
+                    <div class="table-cell">Oman</div>
+                    <div class="table-cell">66</div>
+                    <div class="table-cell">76.89%</div>
+              
+                  </div>
+              </div>
+          </div>
+      </div>
+        </div>
+      </main>
+      <!-- End Main -->
+
+    </div>
+
+    <!-- Scripts -->
+    <!-- ApexCharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+    <!-- Custom JS -->
+<script>
+    // SIDEBAR TOGGLE
+
+let sidebarOpen = false;
+const sidebar = document.getElementById('sidebar');
+
+function openSidebar() {
+  if (!sidebarOpen) {
+    sidebar.classList.add('sidebar-responsive');
+    sidebarOpen = true;
+  }
+}
+
+function closeSidebar() {
+  if (sidebarOpen) {
+    sidebar.classList.remove('sidebar-responsive');
+    sidebarOpen = false;
+  }
+}
+
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Data for Scans and Unique Scans
+        const xValues = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+        const scansData = [55, 49, 44, 24, 15, 30, 55, 30, 30, 70, 12, 80];
+        const uniqueScansData = [40, 38, 30, 20, 10, 20, 40, 20, 20, 50, 10, 60];
+
+        new Chart("jobStatisticsChart", {
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [
+                    {
+                        label: "Scans",
+                        backgroundColor: " #28C258",
+                        data: scansData
+                    },
+                    {
+                        label: "Unique Scans",
+                        backgroundColor: "#A2C4C9",
+                        data: uniqueScansData
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 10
+                        }
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        enabled: true,
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.raw; // Show the exact value on hover
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>  
+</body>
+</html>

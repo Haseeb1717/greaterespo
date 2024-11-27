@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="Qr_logo-removebg-preview.png" type="image/x-icon">
+       
+
+
+<style>
+        @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Syne', sans-serif;
+    background-color: #FCFEFE; /* Optional background for better visibility */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Ensure sidebar positions correctly */
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    gap: 1.5em;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.btn {
+    background-color:#28C258;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+}
+
+.menu-icon {
+    display: none; /* Initially hide the menu icon */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+/* Sidebar styling */
+.sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color:#fff; /* Sidebar color */
+    color:black;
+    transition: left 0.3s; /* Transition for sliding effect */
+    padding: 20px;
+    z-index: 1000;
+}
+
+.sidebar.active {
+    left: 0; /* Show sidebar */
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-top: 50px;
+}
+
+.sidebar ul li {
+    margin-bottom: 30px;
+}
+
+.sidebar ul li a {
+    color:black;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+
+@media(max-width: 764px) {
+    .menu-icon {
+        display: block; /* Show the menu icon */
+    }
+
+    nav ul {
+        display: none; /* Hide navigation links on small screens */
+    }
+
+    .sidebar {
+        left: -250px; /* Initially hide sidebar */
+    }
+}
+.active{
+color: #28C258;
+       
+}
+
+        .information-section {
+            max-width: 1440px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .information-container {
+            max-width: 90%;
+            margin: 0 auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            background-color: #FCFEFE;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px ;
+            flex-wrap: wrap;
+        }
+
+        .form {
+            width: 100%;
+            max-width: 650px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .form h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .pricing-information {
+            flex: 1;
+            max-width: 400px;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .pricing-information h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .plans-flex, .plans-flex2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .right-plane {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .left-plane, .left-plane2 {
+            font-size: 16px;
+            color: #333;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 20px 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 16px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        ul li i {
+            font-size: 20px;
+            color: #28C258;
+            margin-right: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #28C258;
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+        }
+
+        .user-icon {
+            font-size: 24px;
+            color: #555;
+            margin-right: 10px;
+        }
+
+        .user-name {
+            flex-grow: 1;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .edit-button {
+            background-color: #28C258;
+            color: #fff;
+            border: none;
+            padding: 8px 5px;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-button:hover {
+            background-color: #2bbf68;
+        }
+
+        .card-inputs {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .input-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .input-container label {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        #card-number {
+            padding: 10px 50px 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #expiration-date,
+        #security-code {
+            padding: 8px 10px 8px 0px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            max-width: 150px;
+            flex: 1; /* Allow inputs to grow */
+        }
+
+        .input-container .icon {
+            position: absolute;
+            right: 10px;
+            top: 65%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #888;
+        }
+
+        .input-container input:focus {
+            outline: 2px solid #28C258;
+        }
+
+        .buttons-flexex {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 30px;
+            flex-direction: row; /* Maintain row direction */
+        }
+
+        .Returnbtn {
+            background-color: transparent;
+            color: black;
+            border: none;
+            padding: 15px 50px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+
+        .Nextbtn {
+            background-color: #28C258;
+            color: #fff;
+            padding: 15px 50px;
+            border: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .information-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .form, .pricing-information {
+                width: 100%;
+                max-width: 90%;
+            }
+
+            .card-inputs {
+                flex-direction: column;
+            }
+
+            #expiration-date,
+            #security-code {
+                max-width: 100%; /* Make input fields full width */
+            }
+
+            .buttons-flexex {
+                flex-direction: column;
+            }
+
+            .plans-flex, .plans-flex2 {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .information-container {
+                background-color: transparent;
+                box-shadow: none;
+            }
+
+            .form {
+                box-shadow: none;
+            }
+        }
+        
+        footer {
+            background-color: #fff;
+            padding: 60px 0;
+            color: black;
+            margin-top:150px;
+        
+        }
+        
+        .container {
+            max-width: 1170px;
+            margin: auto;
+            padding: 0 20px;
+        }
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-col {
+            flex-basis: 20%;
+            margin-bottom: 20px;
+            min-width: 200px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.5rem;
+            color: black;
+            margin-bottom: 10px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color:#28C258;
+            height: 2px;
+            width: 50px;
+        }
+     
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color:#333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color:#28C258;
+        }
+        
+        .footer-col form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-col form input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        .footer-col form button {
+            padding: 10px;
+            background-color:#28C258;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .footer-col form button:hover {
+            background-color:#28C258;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            margin: 0 10px;
+            text-decoration: none;
+            color:#28C258;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #28C258;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #777;
+            padding-top: 10px;
+        }
+        
+        .footer-bottom p {
+            color:black;
+        }
+        
+        .footer-bottom a {
+            color:black;
+            text-decoration: none;
+            margin-left: 10px;
+            
+        }
+        
+        .footer-bottom a:hover {
+            color: #28C258;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+        
+            .footer-col {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+        
+
+    </style>
+</head>
+<body>
+    <!---HEADER SECTION-->
+    <header>
+        <div class="logo"><img src="Qr_logo-removebg-preview.png" style="width:40px; height:40px;"></div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">QR Generator</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Log in</a></li>
+                <li><a href="#" class="btn">Try It Free</a></li>
+            </ul>
+            <div class="menu-icon" onclick="toggleSidebar()">
+                <i class="material-icons">menu</i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="#">QR Generator</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Log in</a></li>
+            <li><a href="#" class="btn">Try It Free</a></li>
+        </ul>
+    </div>
+  <!--Header section END-->
+    <!-- Main Section Start -->
+
+<section class="information-section">
+    <div class="information-container">
+        <!-- Billing Form -->
+        <div class="form">
+            <form>
+                <h2>Billing Information</h2>
+                <div class="user-info">
+                    <i class="material-icons user-icon">account_circle</i>
+                    <span class="user-name">John Doe</span>
+                    <button type="button" class="edit-button"><i class="material-icons">edit</i></button>
+                </div>
+                <div class="user-info">
+                    <i class="material-icons user-icon">article</i>
+                    <span class="user-name">Annually</span>
+                    <button type="button" class="edit-button"><i class="material-icons">edit</i></button>
+                </div>
+
+                <h2>Payment Method</h2>
+                <div class="card-inputs">
+                    <div class="input-container">
+                        <label for="card-number">Card Number</label>
+                        <input type="text" id="card-number" placeholder="1234 5678 9101 1121" required>
+                        <span class="icon">💳</span>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="expiration-date">Expiration Date</label>
+                        <input type="text" id="expiration-date" placeholder="MM/YY" required>
+                        <span class="icon">📅</span>
+                    </div>
+
+                    <div class="input-container">
+                        <label for="security-code">Security Code</label>
+                        <input type="text" id="security-code" placeholder="123" required>
+                        <span class="icon">🔒</span>
+                    </div>
+                </div>
+
+                <p>By providing your card information, you allow Online QR Generator to charge your card for future payments in accordance with their terms.</p>
+
+                <div class="buttons-flexex">
+                    <a href="Anually-Billing-Informationstep2.html">
+                        <button type="button" class="Returnbtn"><i class="material-icons">keyboard_backspace</i> Back</button>
+                    </a>
+                    <a href="#">
+                        <button type="submit" class="Nextbtn">Next</button>
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="pricing-information">
+            <h2>Summary</h2>
+            <div class="plans-flex">
+                <div class="left-plane"><h2>12 months plan</h2></div>
+                <div class="right-plane">$120.00</div>
+            </div>
+            <hr>
+            <div class="plans-flex2">
+                <div class="left-plane2">Total</div>
+                <div class="right-plane">$120.00</div>
+            </div>
+      
+            <ul>
+                <li><i class="material-icons">check_circle</i> Unlimited QR codes</li>
+                <li><i class="material-icons">check_circle</i> Customizable QR codes</li>
+                <li><i class="material-icons">check_circle</i> Analytics dashboard</li>
+                <li><i class="material-icons">check_circle</i> 24/7 Support</li>
+            </ul>
+            
+        </div>
+        </div>
+        
+
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- Company Column -->
+            <div class="footer-col" id="footer-col1">
+                <h4>Services</h4>
+               
+                <ul>
+                    <li><a href="#">Create QR CODE </a></li>
+                    <li><a href="#">Plans And Prices</a></li>
+                    <li><a href="#">Language</a></li>
+               
+                </ul>
+            </div>
+
+            <!-- Services Column -->
+            <div class="footer-col" id="footer-col2">
+                <h4>Company</h4>
+               
+                <ul>
+                    <li><a href="#">Create QR CODE </a></li>
+                    <li><a href="#">Plans And Prices</a></li>
+                    <li><a href="#">Language</a></li>
+                </ul>
+            </div>
+
+            <!-- Account Column -->
+            <div class="footer-col" id="footer-col3">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="#">Contact us </a></li>
+                    <li><a href="#">Faq</a></li>
+                </ul>
+            </div>
+
+            <!-- Courses Column -->
+            <div class="footer-col" id="footer-col4">
+                <h4>Courses</h4>
+                <ul>
+                    <li><a href="#">HTML & CSS</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                    <li><a href="#">Photography</a></li>
+                    <li><a href="#">Photoshop</a></li>
+                </ul>
+            </div>
+
+            <!-- Subscribe Column -->
+            <div class="footer-col" id="footer-col5">
+                <h4>Registration</h4>
+                <form action="#">
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="social-icons" id="footer-col6">
+            <a href="#"><i class="material-icons">facebook</i></a>
+            <a href="#"><i class="ri-twitter-line"></i></a>
+            <a href="#"><i class="ri-instagram-line"></i></a>
+            <a href="#"><i class="ri-linkedin-fill"></i></a>
+            <a href="#"><i class="ri-whatsapp-line" ></i></a>
+        </div>
+
+        <div class="footer-bottom"7 id="footer-col">
+            <p>&copy; 2024 QR. All rights reserved</p>
+            <p><a href="#">Privacy policy</a> | <a href="#">Terms & conditions</a></p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
